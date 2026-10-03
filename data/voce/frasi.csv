@@ -1,0 +1,960 @@
+id;testo
+# --- titolo e menu
+saluto;Ciao! Pronta per una nuova avventura?
+saluto_nome;Ciao {nome}! Pronta per una nuova avventura?
+saluto_continua;Ciao! Continuiamo la nostra avventura?
+saluto_continua_nome;Ciao {nome}! Continuiamo la nostra avventura?
+saluto_gioca;Ciao! Giochiamo insieme?
+saluto_gioca_nome;Ciao {nome}! Giochiamo insieme?
+premi_a;Premi il bottone rosso per giocare!
+menu_scegli;Scegli un gioco!
+menu_scegli_b;A che cosa giochiamo adesso?
+menu_scegli_c;Che gioco scegli?
+ultimo_gioco;Ancora un gioco, e poi la nanna!
+g_conta;I numeri!
+g_parole;Le parole!
+g_sequenze;Che cosa viene dopo?
+g_balla;Balla con me!
+g_nome;Il mio nome!
+g_memory;Il memory!
+g_ritmo;Batti il ritmo!
+g_dove;Sopra e sotto!
+g_emozioni;Le emozioni!
+g_storie;La storia in ordine!
+sblocco;Evviva! Hai sbloccato un nuovo gioco!
+bloccato;Questo gioco arriva presto: continua a giocare!
+istruzioni;Usa la croce nera per scegliere, poi premi il bottone rosso!
+aiuto_b;Per riascoltare, premi il bottone giallo.
+# --- prova dei tasti (prime sessioni)
+prova_croce;Proviamo i tasti! Premi la croce nera, a sinistra.
+prova_rosso;Adesso premi il bottone rosso, a destra!
+prova_no_croce;Cerca la croce nera, a sinistra!
+prova_no_rosso;Cerca il bottone rosso, a destra!
+# --- Conta
+conta_intro;Giochiamo a contare!
+q_stelle;Quante stelline ci sono?
+q_cuori;Quanti cuoricini ci sono?
+q_rossetti;Quanti rossetti ci sono?
+q_smalti;Quanti smalti ci sono?
+q_fiocchi;Quanti fiocchi ci sono?
+q_microfoni;Quanti microfoni ci sono?
+q_scarpette;Quante scarpette da ballo ci sono?
+q_farfalle;Quante farfalle ci sono?
+q_fiori;Quanti fiori ci sono?
+q_diamanti;Quanti diamanti ci sono?
+# --- numeri
+n01;Uno.
+n01f;Una.
+n02;Due.
+n03;Tre.
+n04;Quattro.
+n05;Cinque.
+n06;Sei.
+n07;Sette.
+n08;Otto.
+n09;Nove.
+n10;Dieci.
+n11;Undici.
+n12;Dodici.
+n13;Tredici.
+n14;Quattordici.
+n15;Quindici.
+n16;Sedici.
+n17;Diciassette.
+n18;Diciotto.
+n19;Diciannove.
+n20;Venti.
+# --- risposte
+ok_1;Bravissima!
+ok_2;Sì, giusto!
+ok_3;Evviva!
+ok_4;Perfetto!
+ok_5;Che brava!
+ok_6;Fantastico!
+ok_nome;Bravissima, {nome}!
+ko_1;Uhm... prova di nuovo!
+ko_2;Quasi! Adesso lo facciamo insieme.
+ko_1_b;Non è questa... prova ancora!
+ko_1_c;Guarda bene... e riprova!
+ko_1_d;Non proprio! Prova un'altra volta!
+aiuto;Contiamo insieme!
+aiuto_scegli;Adesso scegli il numero giusto!
+livello_su;Sei bravissima! Adesso una sfida più grande!
+# --- Parole
+par_intro;Giochiamo con le parole!
+par_ascolta;Ascolta bene...
+par_cosa;Che cosa ho detto?
+par_quanti;Quanti pezzetti ha questa parola?
+par_battiamo;Battiamo le mani insieme!
+par_inizia;Quale parola inizia con...
+par_lettera;Quale parola inizia con la lettera...
+par_scegli;Adesso scegli la figura giusta!
+w_stella;Stella.
+w_cuore;Cuore.
+w_farfalla;Farfalla.
+w_fiore;Fiore.
+w_diamante;Diamante.
+w_corona;Corona.
+w_scarpetta;Scarpetta.
+w_rossetto;Rossetto.
+w_fiocco;Fiocco.
+w_microfono;Microfono.
+w_pennello;Pennello.
+w_smalto;Smalto.
+w_palla;Palla.
+w_mela;Mela.
+w_luna;Luna.
+w_sole;Sole.
+w_pesce;Pesce.
+w_casa;Casa.
+w_torta;Torta.
+w_banana;Banana.
+w_gelato;Gelato.
+w_palloncino;Palloncino.
+w_ape;Ape.
+w_uva;Uva.
+w_uovo;Uovo.
+w_ombrello;Ombrello.
+w_isola;Isola.
+w_elefante;Elefante.
+s_stella;Stel... la.
+s_cuore;Cuo... re.
+s_farfalla;Far... fal... la.
+s_fiore;Fio... re.
+s_diamante;Dia... man... te.
+s_corona;Co... ro... na.
+s_scarpetta;Scar... pet... ta.
+s_rossetto;Ros... set... to.
+s_fiocco;Fioc... co.
+s_microfono;Mi... cro... fo... no.
+s_pennello;Pen... nel... lo.
+s_smalto;Smal... to.
+s_palla;Pal... la.
+s_mela;Me... la.
+s_luna;Lu... na.
+s_sole;So... le.
+s_pesce;Pe... sce.
+s_casa;Ca... sa.
+s_torta;Tor... ta.
+s_banana;Ba... na... na.
+s_gelato;Ge... la... to.
+s_palloncino;Pal... lon... ci... no.
+s_ape;A... pe.
+s_uva;U... va.
+s_uovo;Uo... vo.
+s_ombrello;Om... brel... lo.
+s_isola;I... so... la.
+s_elefante;E... le... fan... te.
+sy_me;Me.
+sy_lu;Lu.
+sy_so;So.
+sy_pe;Pe.
+sy_ca;Ca.
+sy_ba;Ba.
+sy_ge;Ge.
+sy_co;Co.
+sy_mi;Mi.
+l_a;A.
+l_e;E.
+l_i;I.
+l_o;O.
+l_u;U.
+# --- Il mio nome
+nome_intro;Giochiamo a scrivere! Scegli le lettere giuste, una alla volta.
+nome_tuo;Scriviamo il tuo nome!
+nome_parola;Scriviamo...
+nome_trova;Trova le lettere uguali!
+nome_fatto;Hai scritto...
+nome_fatto_tuo;Hai scritto il tuo nome!
+nome_fatto_nome;Hai scritto il tuo nome: {nome}!
+nome_scegli;Adesso scegli la lettera giusta!
+lt_a;A.
+lt_b;Bi.
+lt_c;Ci.
+lt_d;Di.
+lt_e;E.
+lt_f;Effe.
+lt_g;Gi.
+lt_h;Acca.
+lt_i;I.
+lt_j;I lunga.
+lt_k;Cappa.
+lt_l;Elle.
+lt_m;Emme.
+lt_n;Enne.
+lt_o;O.
+lt_p;Pi.
+lt_q;Cu.
+lt_r;Erre.
+lt_s;Esse.
+lt_t;Ti.
+lt_u;U.
+lt_v;Vu.
+lt_w;Doppia vu.
+lt_x;Ics.
+lt_y;Ipsilon.
+lt_z;Zeta.
+# --- Rime (Parole)
+rima_q;Quale parola fa rima con...
+rima_si;Fanno rima!
+rima_aiuto;Ascolta come finiscono.
+w_cane;Cane.
+w_pane;Pane.
+w_gatto;Gatto.
+w_piatto;Piatto.
+w_nave;Nave.
+w_chiave;Chiave.
+w_porta;Porta.
+w_vela;Vela.
+w_candela;Candela.
+w_padella;Padella.
+w_caramella;Caramella.
+w_letto;Letto.
+w_rana;Rana.
+w_campana;Campana.
+w_pulcino;Pulcino.
+s_cane;Ca... ne.
+s_pane;Pa... ne.
+s_gatto;Gat... to.
+s_piatto;Piat... to.
+s_nave;Na... ve.
+s_chiave;Chia... ve.
+s_porta;Por... ta.
+s_vela;Ve... la.
+s_candela;Can... de... la.
+s_padella;Pa... del... la.
+s_caramella;Ca... ra... mel... la.
+s_letto;Let... to.
+s_rana;Ra... na.
+s_campana;Cam... pa... na.
+s_pulcino;Pul... ci... no.
+# --- Conta: di più, dopo, prima, insieme
+piu_q;Dove ce ne sono di più?
+piu_aiuto;Contiamo quanti sono in ogni gruppo!
+piu_scegli;Scegli il gruppo con il numero più grande!
+dopo_q;Che numero viene dopo...
+prima_q;Che numero viene prima di...
+insieme_q;Quante sono in tutto?
+# --- Sequenze
+seq_intro;Guarda bene la fila!
+seq_dopo;Che cosa viene dopo?
+seq_manca;Che cosa manca?
+# --- Balla con me
+balla_intro;Balla con me! Guarda i passi e rifalli con la croce nera!
+balla_guarda;Guarda!
+balla_tocca;Tocca a te!
+balla_ops;Ops! Guarda di nuovo.
+balla_insieme;Facciamolo insieme: segui la freccia!
+# --- Memory del camerino
+memory_intro;Trova le coppie uguali! Gira due carte alla volta.
+memory_sbircia;Sbirciamo un momento!
+memory_fatto;Hai trovato tutte le coppie!
+# --- Batti il ritmo
+ritmo_intro;Ascolta il ritmo, poi rifallo con il bottone rosso!
+ritmo_ascolta;Ascolta!
+ritmo_ops;Quasi! Ascolta di nuovo.
+ritmo_insieme;Facciamolo insieme: premi il bottone rosso per ogni pallino!
+# --- Sopra e sotto
+dove_intro;Io ti dico dove mettere la stella o la palla. Tu la porti con la croce nera, e la lasci con il bottone rosso!
+dv_guarda;Guarda dove brilla!
+dv_w_sopra;Sopra!
+dv_w_sotto;Sotto!
+dv_w_dentro;Dentro!
+dv_w_fuori;Fuori!
+dv_w_sinistra;A sinistra!
+dv_w_destra;A destra, brava!
+dv_stella_sopra_tavolo;Metti la stella sopra il tavolo.
+dv_palla_sopra_tavolo;Metti la palla sopra il tavolo.
+dv_stella_sotto_tavolo;Metti la stella sotto il tavolo.
+dv_palla_sotto_tavolo;Metti la palla sotto il tavolo.
+dv_stella_sinistra_tavolo;Metti la stella a sinistra del tavolo.
+dv_palla_sinistra_tavolo;Metti la palla a sinistra del tavolo.
+dv_stella_destra_tavolo;Metti la stella a destra del tavolo.
+dv_palla_destra_tavolo;Metti la palla a destra del tavolo.
+dv_stella_dentro_scatola;Metti la stella dentro la scatola.
+dv_palla_dentro_scatola;Metti la palla dentro la scatola.
+dv_stella_fuori_scatola;Metti la stella fuori dalla scatola.
+dv_palla_fuori_scatola;Metti la palla fuori dalla scatola.
+dv_stella_sopra_casa;Metti la stella sopra la casa.
+dv_palla_sopra_casa;Metti la palla sopra la casa.
+dv_stella_sinistra_casa;Metti la stella a sinistra della casa.
+dv_palla_sinistra_casa;Metti la palla a sinistra della casa.
+dv_stella_destra_casa;Metti la stella a destra della casa.
+dv_palla_destra_casa;Metti la palla a destra della casa.
+# --- Le emozioni di Deva
+emo_intro;A volte Deva è felice, a volte è triste. Aiutami a capire come si sente!
+emo_come;Come si sente Deva?
+emo_felice;Felice!
+emo_triste;Triste.
+emo_arrabbiata;Arrabbiata.
+emo_spaventata;Spaventata.
+emo_sorpresa;Sorpresa.
+emo_e_felice;Sì! Deva è felice!
+emo_e_triste;Sì, Deva è triste. Un abbraccio la aiuta!
+emo_e_arrabbiata;Sì, Deva è arrabbiata. Facciamo un bel respiro!
+emo_e_spaventata;Sì, Deva è spaventata. Ma non è da sola!
+emo_e_sorpresa;Sì! Deva è sorpresa!
+emo_d_felice;Quando siamo felici, sorridiamo.
+emo_d_triste;Quando siamo tristi, a volte piangiamo.
+emo_d_arrabbiata;Quando siamo arrabbiati, stringiamo i denti.
+emo_d_spaventata;Quando abbiamo paura, tremiamo.
+emo_d_sorpresa;Quando siamo sorpresi, facciamo: oh!
+emo_scegli;Adesso scegli la faccina giusta!
+emo_s_torta;È il compleanno di Deva: c'è la torta con le candeline!
+emo_s_corona;Deva ha vinto una coroncina!
+emo_s_microfono;Deva canta sul palco, e tutti battono le mani.
+emo_s_palloncino;Oh no! Il palloncino di Deva è volato via.
+emo_s_gelato_caduto;Oh no! Il gelato di Deva è caduto per terra.
+emo_s_disegno;Qualcuno ha strappato il disegno di Deva!
+emo_s_letto;È ora di dormire, ma Deva vuole ancora giocare!
+emo_s_tuono;Fuori c'è il temporale, e il tuono fa: bum!
+emo_s_luna;È notte, è tutto buio, e Deva sente un rumore strano.
+emo_s_regalo;Deva apre un pacco misterioso, e dentro c'è un regalo che non si aspettava!
+emo_s_pulcino;All'improvviso, dall'uovo esce un pulcino!
+# --- La storia in ordine
+storie_intro;Ogni storia ha un inizio, un pezzo in mezzo e una fine. Mettiamo le figure in ordine!
+storie_dopo;Guarda la prima figura. Cosa succede dopo?
+storie_prima;Cosa succede prima?
+storie_poi;E poi, cosa succede?
+storie_fine;E alla fine, come finisce la storia?
+storie_inizio;E all'inizio, cosa c'era?
+storia_seme_1;Un semino nella terra.
+storia_seme_2;Spunta una piantina.
+storia_seme_3;È nato un fiore!
+storia_uovo_1;Un uovo nel nido.
+storia_uovo_2;L'uovo si rompe.
+storia_uovo_3;Ecco il pulcino!
+storia_gelato_1;Un gelato con due palline.
+storia_gelato_2;Una pallina sola.
+storia_gelato_3;Il gelato è finito!
+storia_palloncino_1;Un palloncino sgonfio.
+storia_palloncino_2;Il palloncino è gonfio.
+storia_palloncino_3;Il palloncino vola via!
+storia_candela_1;Una candela lunga, accesa.
+storia_candela_2;La candela si consuma.
+storia_candela_3;La candela si è spenta.
+storia_giorno_1;È notte: c'è la luna.
+storia_giorno_2;Il sole sta arrivando.
+storia_giorno_3;È giorno: splende il sole!
+storia_seme;Prima il semino, poi la piantina, e alla fine il fiore!
+storia_uovo;Prima l'uovo, poi si rompe, e alla fine esce il pulcino!
+storia_gelato;Prima due palline, poi una, e alla fine il gelato è finito!
+storia_palloncino;Prima è sgonfio, poi si gonfia, e alla fine vola via!
+storia_candela;Prima è lunga, poi si consuma, e alla fine si spegne!
+storia_giorno;Prima la notte, poi arriva il sole, e alla fine è giorno!
+# --- La storia: l'incantesimo grigio (terzo campo: voce del personaggio)
+st_prologo_1;C'era una volta il Regno delle Stelle, pieno di colori e di musica.
+st_prologo_2;Ma un giorno arrivò la Strega Grisella, che odia i colori!
+st_prologo_3;Ih ih ih! Da oggi tutto sarà grigio!;strega
+st_prologo_4;Tutti i colori finirono in cinque gemme magiche.
+st_prologo_4b;La strega fece una magia a quattro mostri buoni, e gli diede le gemme da nascondere. La Gemma Viola la tenne lei!
+st_prologo_5;Ciao Deva! Sono il Mago Pistacchio. Tu hai un cuore gentile: solo tu puoi salvare il regno!;mago
+st_prologo_6;Ecco la mia bacchetta magica. Ogni volta che giochi, la bacchetta si carica di magia!;mago
+st_prologo_7;Quando la bacchetta è carica, potrai sfidare il mostro!;mago
+st_cap1;Nel Bosco Incantato vive il Mostro Ciuffone. Ha la Gemma Verde!;mago
+st_cap2;Nella Palude dei Rospi c'è il Mostro Melmoso. Ha la Gemma Azzurra!;mago
+st_cap3;Nella Grotta dei Cristalli si nasconde il Mostro Rocciolo. Ha la Gemma Rosa!;mago
+st_cap4;Sul Monte delle Nuvole brontola il Mostro Tuonello. Ha la Gemma Gialla!;mago
+st_cap5;Manca solo la Gemma Viola: ce l'ha la Strega Grisella, nel suo castello. Coraggio, Deva!;mago
+mappa_gioca;Premi il bottone rosso e gioca! Così la bacchetta si carica di magia.
+rit_1;Bentornata, Deva! Contiamo le gemme che abbiamo ritrovato!;mago
+rit_2;Bentornata, Deva! Contiamo le stelle che abbiamo ritrovato!;strega_buona
+rit_3;Bentornata, Deva! Contiamo le note che abbiamo ritrovato!;stregone_buono
+rit_4;Bentornata, Deva! Contiamo le chiavi che abbiamo ritrovato!;orco_buono
+mancano_4;Ne mancano quattro!
+mancano_3;Ne mancano tre!
+mancano_2;Ne mancano due!
+mancano_1;Ne manca una!
+mappa_sfida;La bacchetta è carica! Premi il bottone rosso e sfida il mostro!
+mappa_sfida_giocattolo;La bacchetta è carica! Premi il bottone rosso e sfida il giocattolo!
+mappa_sfida_grisella;La bacchetta è carica! Premi il bottone rosso e sfida la strega!
+mappa_sfida_mezzanotte;La bacchetta è carica! Premi il bottone rosso e sfida lo stregone!
+mappa_finita;Il regno è di nuovo pieno di colori! Grazie, Deva!;mago
+bacchetta_su;La bacchetta si carica di magia!
+bacchetta_pronta;La bacchetta è carica! Adesso puoi sfidare il mostro!
+bacchetta_pronta_giocattolo;La bacchetta è carica! Adesso puoi sfidare il giocattolo stregato!
+bacchetta_pronta_grisella;La bacchetta è carica! Adesso puoi sfidare la strega!
+bacchetta_pronta_mezzanotte;La bacchetta è carica! Adesso puoi sfidare lo stregone!
+g_sfida;Sfida il mostro!
+g_sfida_giocattolo;Sfida il giocattolo!
+g_sfida_grisella;Sfida la strega!
+g_sfida_mezzanotte;Sfida lo stregone!
+sf_ciuffone;Grraaah! Sono il Mostro Ciuffone! La gemma è mia!;mostro
+sf_melmoso;Blub blub! Sono il Mostro Melmoso! Qui non passa nessuno!;mostro
+sf_rocciolo;Crac crac! Sono il Mostro Rocciolo, duro come la pietra!;mostro
+sf_tuonello;Bum bum! Sono il Mostro Tuonello! Adesso faccio un bel temporale!;tuono
+sf_grisella;Ih ih ih! Sei arrivata fin qui? Vediamo quanto sei brava con la magia!;strega
+sf_regole;Vedi le bolle magiche? Sono l'incantesimo! Ogni risposta giusta ne fa scoppiare una.;mago
+sf_regole2;Vedi le bolle magiche? Sono l'incantesimo! Ogni risposta giusta ne fa scoppiare una.;strega_buona
+sf_colpo_1;Ahi! Mi fai il solletico!;mostro
+sf_colpo_2;Ih ih! Basta, mi fai ridere!;mostro
+sf_colpo_3;Ohi ohi! Che magia forte!;mostro
+sf_colpo_strega;Ahi ahi! La mia magia!;strega
+vt_rompe;L'incantesimo si rompe!
+vt_ciuffone;Oh! Non ruggisco più: adesso faccio solo le coccole! Grazie, Deva! Ecco la Gemma Verde.;mostro_buono
+vt_melmoso;Blub! Adesso nella palude passano tutti! Grazie, Deva! Ecco la Gemma Azzurra.;mostro_buono
+vt_rocciolo;Crac! Sono duro come la pietra, ma adesso ho il cuore tenero! Grazie, Deva! Ecco la Gemma Rosa.;mostro_buono
+vt_tuonello;Niente più temporale: è tornato il sole! Grazie, Deva! Ecco la Gemma Gialla.;mostro_buono
+vt_colori_1;Il Bosco Incantato ha di nuovo i suoi colori!
+vt_colori_2;La Palude dei Rospi ha di nuovo i suoi colori!
+vt_colori_3;La Grotta dei Cristalli ha di nuovo i suoi colori!
+vt_colori_4;Il Monte delle Nuvole ha di nuovo i suoi colori!
+fn_pianto;La magia della strega si rompe... e la strega si mette a piangere.
+fn_domanda;Guarda bene la strega. Come si sente?;mago
+fn_triste;Sì, la strega è triste.
+fn_strega_1;Io non odio i colori... Ma nessuno mi invita mai alle feste! Ero triste, e ho rubato i colori.;strega_buona
+fn_invito;Deva prende la mano della strega, e la invita a ballare con tutti!
+fn_balla;Balla con lei! Usa la croce nera.
+fn_strega_2;Che bello ballare insieme! Grazie, Deva! Ecco la Gemma Viola. Scusate tutti!;strega_buona
+fn_fine_1;E così il Regno delle Stelle tornò pieno di colori e di musica.
+fn_fine_2;E da quel giorno, la Strega Grisella balla ogni sera con Deva e i suoi amici!
+fn_fine_3;Fine! E la prossima volta... una nuova avventura!
+# --- La seconda avventura: la notte senza stelle (0.7)
+st2_prologo_1;Dopo la grande festa, Deva andò dall'altra parte del regno. Lì tutti dormivano sotto un cielo pieno di stelle.
+st2_prologo_2;Ma a mezzanotte arrivò lo Stregone Mezzanotte, e mise tutte le stelle nel suo sacco!
+st2_prologo_3;Ah ah ah! Adesso le stelle sono tutte mie!;stregone
+st2_prologo_4;Il cielo diventò buio buio. Nel sacco, le stelle diventarono cinque Stelle Grandi.
+st2_prologo_4b;Lo stregone fece una magia a quattro mostri buoni, e gli diede le stelle da nascondere. La Stella d'Oro la tenne lui!
+st2_prologo_5;Deva! Sono io, Grisella! Ti ricordi? Mi hai invitata a ballare, e adesso sono tua amica!;strega_buona
+st2_prologo_6;La tua bacchetta è pronta, Deva! Ogni volta che giochi, si carica di magia, come l'altra volta!;mago
+st2_prologo_7;Riportiamo le stelle in cielo, Deva! Noi siamo con te!;strega_buona
+st2_cap1;Sulla Spiaggia delle Conchiglie c'è Polpone, il polpo gigante. Ha la Stella Rossa!;strega_buona
+st2_cap2;Nel Giardino dei Giganti si nasconde Lumacone. Ha la Stella Arancione!;strega_buona
+st2_cap3;Sulle Montagne di Ghiaccio vive Nevone, il mostro delle nevi. Ha la Stella Azzurra!;strega_buona
+st2_cap4;Nel Vulcano Fumante sbuffa Fumino, il draghetto. Ha la Stella Verde!;strega_buona
+st2_cap5;Manca la Stella d'Oro: ce l'ha lo Stregone Mezzanotte, nella Torre della Luna. Coraggio, Deva!;strega_buona
+mappa2_finita;Le stelle sono tornate in cielo! Grazie, Deva!;strega_buona
+sf_polpone;Splash splash! Sono Polpone! Con le mie otto braccia, la stella non te la do!;mostro
+sf_lumacone;Slurp! Sono Lumacone! Sono lento lento, ma la stella è mia!;mostro
+sf_nevone;Uuuh! Sono Nevone! Qui è tutto freddo e buio!;mostro
+sf_fumino;Puff puff! Sono il draghetto Fumino! Attenta al mio fumo!;mostro
+sf_mezzanotte;Ah ah ah! Sei arrivata fin qui? Le stelle restano con me!;stregone
+sf_colpo_stregone;Ohi ohi! La mia magia!;stregone
+vt_polpone;Splash! Adesso con le mie otto braccia faccio otto abbracci! Grazie, Deva! Ecco la Stella Rossa.;mostro_buono
+vt_lumacone;Slurp! Sono sempre lento lento, ma adesso sono tuo amico! Grazie, Deva! Ecco la Stella Arancione.;mostro_buono
+vt_nevone;Che bello, adesso ho il cuore caldo! Grazie, Deva! Ecco la Stella Azzurra.;mostro_buono
+vt_fumino;Puff! Niente più fumo nero: adesso faccio nuvolette a forma di cuore! Grazie, Deva! Ecco la Stella Verde.;mostro_buono
+vt2_stelle_1;Grazie alla Stella Rossa, sulla Spiaggia delle Conchiglie torna la luce!
+vt2_stelle_2;Grazie alla Stella Arancione, sul Giardino dei Giganti torna la luce!
+vt2_stelle_3;Grazie alla Stella Azzurra, sulle Montagne di Ghiaccio torna la luce!
+vt2_stelle_4;Grazie alla Stella Verde, sul Vulcano Fumante torna la luce!
+st2_paura;La magia dello stregone si rompe... e lo stregone si mette a tremare.
+st2_domanda;Guarda bene lo stregone. Come si sente?;strega_buona
+st2_emo_spaventato;Spaventato.
+st2_emo_arrabbiato;Arrabbiato.
+st2_spaventato;Sì, lo stregone ha paura.
+st2_stregone_1;Io ho tanta paura del buio... Ho preso le stelle per avere tutta la luce per me.;stregone_buono
+st2_lanterna;Aiuta Deva a fare una lanterna magica: premi il bottone rosso!
+st2_segreto;Poi Deva gli dice un segreto: anche lei, a volte, ha paura del buio!
+st2_stregone_2;Grazie, Deva! Con la lanterna, il buio non fa più paura. Scusate tutti! Ecco la Stella d'Oro!;stregone_buono
+st2_fine_1;E lo stregone rimise tutte le stelle nel cielo, una per una.
+st2_fine_2;Quella notte ci fu una grande festa sotto le stelle, con Deva e tutti i suoi amici!
+st2_fine_3;Fine! Le stelle brillano di nuovo, grazie a Deva! E la prossima volta... una nuova avventura!
+# --- Duelli della seconda avventura: i giochi che non sono a carte (0.7)
+dl_passo_guarda;Guarda i passi del mostro!
+dl_passo_guarda_giocattolo;Guarda i passi del giocattolo!
+dl_passo_guarda_mezzanotte;Guarda i passi dello stregone!
+dl_passo_quale;Che passo ha fatto?
+dl_passi_quali;Che passi ha fatto?
+dl_su;Su, in alto!
+dl_giu;Giù, in basso!
+dl_destra;A destra!
+dl_ritmo_ascolta;Ascolta il tamburo del mostro!
+dl_ritmo_ascolta_giocattolo;Ascolta il tamburo del giocattolo!
+dl_ritmo_ascolta_mezzanotte;Ascolta il tamburo dello stregone!
+dl_ritmo_quale;Quale ritmo ha suonato?
+dl_ritmo_ancora;Ascolta ancora!
+dl_dove_sopra_tavolo;Trova la stella sopra il tavolo!
+dl_dove_sotto_tavolo;Trova la stella sotto il tavolo!
+dl_dove_sinistra_tavolo;Trova la stella a sinistra del tavolo!
+dl_dove_destra_tavolo;Trova la stella a destra del tavolo!
+dl_dove_dentro_scatola;Trova la stella dentro la scatola!
+dl_dove_fuori_scatola;Trova la stella fuori dalla scatola!
+dl_dove_sopra_scatola;Trova la stella sopra la scatola!
+dl_sparito_guarda;Guarda bene questi trucchi!
+dl_sparito_quale;Oh! Quale trucco è sparito?
+dl_sparito_ancora;Guarda di nuovo!
+alb_storia2;Le stelle e gli amici della seconda avventura!
+# --- premio nel camerino
+round_fine;Evviva, tutte le stelline! Hai vinto un premio!
+round_fine_b;Tutte le stelline! Ecco un premio per te!
+round_fine_c;Che brava, hai finito il giro! È l'ora del premio!
+premio_scegli;Scegli il tuo trucco!
+premio_tutti;Hai vinto tutti i trucchi! Scegli quello che ti piace di più!
+t_ombretto_rosa;Ombretto rosa!
+t_ombretto_azzurro;Ombretto azzurro!
+t_ombretto_viola;Ombretto viola!
+t_ombretto_oro;Ombretto dorato!
+t_rossetto_rosso;Rossetto rosso!
+t_rossetto_rosa;Rossetto rosa!
+t_rossetto_viola;Rossetto viola!
+t_guance;Guance rosa!
+t_adesivo_stella;Una stellina sulla guancia!
+t_adesivo_cuore;Un cuoricino sulla guancia!
+t_brillantini;Brillantini!
+t_coroncina;Una coroncina!
+t_fiore;Un fiore tra i capelli!
+premio_bella;Che bello! Adesso balliamo!
+premio_adesivo_primo;Hai vinto tutti i trucchi! Adesso ci sono gli adesivi... scegline uno per il tuo album!
+premio_adesivo;Scegli un adesivo per il tuo album!
+premio_adesivo_bello;Che bello! Lo attacchiamo nell'album.
+continua;Premi il bottone rosso per continuare!
+continua_b;Quando sei pronta, premi il bottone rosso!
+continua_c;Premi il bottone rosso, si riparte!
+# --- fine sessione
+fine;Abbiamo giocato tanto! Adesso è ora di fare la nanna. Ciao ciao, a domani!
+fine_nome;Abbiamo giocato tanto! Adesso è ora di fare la nanna. Ciao ciao {nome}, a domani!
+# --- menu principale (0.5)
+m_gioca;Giochiamo!
+m_camerino;Andiamo nel camerino dei trucchi!
+m_album;L'album dei tesori!
+m_salvataggi;Chi gioca oggi?
+m_opzioni;Le opzioni, per mamma e papà.
+m_grandi;Questo è per mamma e papà!
+torna_giallo;Per tornare indietro, premi il bottone giallo!
+m_esci;Vuoi andare a fare la nanna?
+m_nanna_si;Sì, a nanna!
+m_nanna_no;No, gioco ancora!
+# --- pausa
+pausa;Pausa! Il gioco ti aspetta.
+p_continua;Continua a giocare!
+p_giochi;Torna ai giochi!
+p_mappa;Torna alla mappa!
+p_inizio;Torna all'inizio!
+# --- camerino libero e album
+cam_intro;Benvenuta nel camerino! Scegli i trucchi da mettere. Quando hai finito, premi il bottone giallo.
+cam_bloccato;Questo lo vincerai giocando!
+alb_storia;Le gemme e gli amici che hai liberato!
+alb_giochi;Le stelle dei tuoi giochi!
+alb_trucchi;I trucchi che hai vinto!
+alb_stelle;Tutte le stelle che hai raccolto!
+alb_adesivi;Ecco gli adesivi del tuo album!
+# --- salvataggi e nome
+sal_intro;Chi gioca oggi? Scegli il tuo nome!
+sal_nuovo;Qui c'è posto per un nuovo nome!
+tas_intro;Scrivi il tuo nome con le lettere!
+tas_fatto;Che bel nome!
+# --- Ginnastica (0.6)
+g_ginnastica;Facciamo ginnastica!
+gi_intro;Facciamo ginnastica! Ascolta l'esercizio, poi fallo tu con i tasti.
+gi_tasto_salto;Il bottone rosso fa saltare!
+gi_tasto_capriola;La freccia in giù fa la capriola!
+gi_tasto_ruota;Le frecce di lato fanno la ruota!
+gi_tasto_saluto;E la freccia in su fa il saluto finale!
+gi_ascolta;Ascolta l'esercizio!
+gi_salto_1;Un salto!
+gi_salto_2;Due salti!
+gi_salto_3;Tre salti!
+gi_salto_4;Quattro salti!
+gi_salto_5;Cinque salti!
+gi_salto_6;Sei salti!
+gi_capriola_1;Una capriola!
+gi_capriola_2;Due capriole!
+gi_capriola_3;Tre capriole!
+gi_ruota_1;Una ruota!
+gi_ruota_2;Due ruote!
+gi_ruota_3;Tre ruote!
+gi_saluto;E poi il saluto!
+gi_troppi;Ops, troppi! Riproviamo.
+gi_pochi;Aspetta, non hai ancora finito!
+gi_sbagliato;Ops, era un'altra mossa! Riascolta.
+gi_insieme;Facciamolo insieme: premi il tasto che si illumina!
+gi_guarda_salti;Guarda il mostro sul tappeto elastico: conta i salti!
+gi_quanti;Quanti salti ha fatto?
+# --- Trucca i mostri (0.6): terzo campo = voce del personaggio
+g_trucco;Facciamo belli i mostri!
+tm_intro;I mostri vogliono farsi belli per la festa! Ascolta che trucco vogliono, e scegli quello giusto.
+tm_intro_mago;Il Mago Pistacchio vuole farsi bello! Ascolta che trucco vuole, e scegli quello giusto.
+tm_ciao_ciuffone;Ciao Deva! Mi fai bello?;mostro_buono
+tm_ciao_melmoso;Blub! Truccami, per favore!;mostro_buono
+tm_ciao_rocciolo;Crac! Oggi voglio essere elegante!;mostro_buono
+tm_ciao_tuonello;Fammi splendere come l'arcobaleno!;mostro_buono
+tm_ciao_strega;Stasera c'è la festa: truccami tu!;strega_buona
+tm_ciao_mago;Anche un mago vuole essere bello!;mago
+tm_grazie_ciuffone;Grazie! Sono bellissimo!;mostro_buono
+tm_grazie_melmoso;Blub blub! Mi sento una stella!;mostro_buono
+tm_grazie_rocciolo;Sono il sasso più elegante del regno!;mostro_buono
+tm_grazie_tuonello;Brillo più del sole!;mostro_buono
+tm_grazie_strega;Grazie, Deva! Sono proprio bella!;strega_buona
+tm_grazie_mago;Magnifico! Che eleganza!;mago
+tm_ciao_polpone;Otto braccia, e neanche un trucco! Mi fai bello?;mostro_buono
+tm_ciao_lumacone;Slurp! Con calma, con calma... mi trucchi?;mostro_buono
+tm_ciao_nevone;Uuuh, che freddo! Un po' di colore mi scalda!;mostro_buono
+tm_ciao_fumino;Puff! Voglio essere il draghetto più bello del vulcano!;mostro_buono
+tm_ciao_stregone;Anche uno stregone buono vuole essere elegante!;stregone_buono
+tm_grazie_polpone;Splash! Grazie! Sono bellissimo!;mostro_buono
+tm_grazie_lumacone;Slurp! Che meraviglia! Grazie, Deva!;mostro_buono
+tm_grazie_nevone;Che bello! Adesso ho caldo al cuore!;mostro_buono
+tm_grazie_fumino;Puff puff! Sono il draghetto più bello! Grazie!;mostro_buono
+tm_grazie_stregone;Magnifico! Grazie, Deva!;stregone_buono
+tm_ancora;Che cosa manca ancora?
+tm_aiuto;Ascolta bene!
+tm_ombretto_rosa;Vuole l'ombretto rosa!
+tm_ombretto_azzurro;Vuole l'ombretto azzurro!
+tm_ombretto_viola;Vuole l'ombretto viola!
+tm_ombretto_oro;Vuole l'ombretto dorato!
+tm_rossetto_rosso;Vuole il rossetto rosso!
+tm_rossetto_rosa;Vuole il rossetto rosa!
+tm_rossetto_viola;Vuole il rossetto viola!
+tm_guance;Vuole le guance rosa!
+tm_adesivo_stella;Vuole la stellina sulla guancia!
+tm_adesivo_cuore;Vuole il cuoricino sulla guancia!
+tm_brillantini;Vuole i brillantini!
+tm_coroncina;Vuole la coroncina!
+tm_fiore;Vuole il fiore!
+tm_e_ombretto_rosa;E anche l'ombretto rosa!
+tm_e_ombretto_azzurro;E anche l'ombretto azzurro!
+tm_e_ombretto_viola;E anche l'ombretto viola!
+tm_e_ombretto_oro;E anche l'ombretto dorato!
+tm_e_rossetto_rosso;E anche il rossetto rosso!
+tm_e_rossetto_rosa;E anche il rossetto rosa!
+tm_e_rossetto_viola;E anche il rossetto viola!
+tm_e_guance;E anche le guance rosa!
+tm_e_adesivo_stella;E anche la stellina sulla guancia!
+tm_e_adesivo_cuore;E anche il cuoricino sulla guancia!
+tm_e_brillantini;E anche i brillantini!
+tm_e_coroncina;E anche la coroncina!
+tm_e_fiore;E anche il fiore!
+# --- Forme e colori (0.6)
+g_forme;Forme e colori!
+fc_intro;Benvenuta nel laboratorio del Mago Pistacchio! Per la sua pozione servono forme di tutti i colori: aiutalo a trovare quella giusta!
+fc_s_cerchio;Trova il cerchio!
+fc_s_quadrato;Trova il quadrato!
+fc_s_triangolo;Trova il triangolo!
+fc_s_rettangolo;Trova il rettangolo!
+fc_s_stella;Trova la stella!
+fc_s_cuore;Trova il cuore!
+fc_c_rosso;Trova quello rosso!
+fc_c_blu;Trova quello blu!
+fc_c_giallo;Trova quello giallo!
+fc_c_verde;Trova quello verde!
+fc_c_arancione;Trova quello arancione!
+fc_c_viola;Trova quello viola!
+fc_c_rosa;Trova quello rosa!
+fc_non_cerchio;Quale non è un cerchio?
+fc_non_quadrato;Quale non è un quadrato?
+fc_non_triangolo;Quale non è un triangolo?
+fc_non_rettangolo;Quale non è un rettangolo?
+fc_non_stella;Quale non è una stella?
+fc_non_cuore;Quale non è un cuore?
+fc_nonc_rosso;Quale non è rosso?
+fc_nonc_blu;Quale non è blu?
+fc_nonc_giallo;Quale non è giallo?
+fc_nonc_verde;Quale non è verde?
+fc_nonc_arancione;Quale non è arancione?
+fc_nonc_viola;Quale non è viola?
+fc_nonc_rosa;Quale non è rosa?
+fc_diverso;Qual è quello diverso?
+fc_h_cerchio;Il cerchio è tondo tondo, senza punte!
+fc_h_quadrato;Il quadrato ha quattro lati tutti uguali!
+fc_h_triangolo;Il triangolo ha tre punte!
+fc_h_rettangolo;Il rettangolo è lungo, come un mattoncino!
+fc_h_stella;La stella ha cinque punte!
+fc_h_cuore;Il cuore è come quelli che disegni per la mamma!
+fc_hc_rosso;Rosso come una fragola!
+fc_hc_blu;Blu come il mare!
+fc_hc_giallo;Giallo come il sole!
+fc_hc_verde;Verde come un prato!
+fc_hc_arancione;Arancione come un'arancia!
+fc_hc_viola;Viola, come l'uva!
+fc_hc_rosa;Rosa come lo zucchero filato!
+fc_h_non;Guarda bene: due si somigliano, trova quello diverso!
+fc_mago_1;Bravissima, maghetta!;mago
+fc_mago_2;Magnifico!;mago
+fc_mago_3;Che bella magia!;mago
+# --- Forme e colori: forma e colore insieme (domanda e nome della carta)
+fc_cerchio_rosso;Trova il cerchio rosso!
+fc_cerchio_blu;Trova il cerchio blu!
+fc_cerchio_giallo;Trova il cerchio giallo!
+fc_cerchio_verde;Trova il cerchio verde!
+fc_cerchio_arancione;Trova il cerchio arancione!
+fc_cerchio_viola;Trova il cerchio viola!
+fc_cerchio_rosa;Trova il cerchio rosa!
+fc_quadrato_rosso;Trova il quadrato rosso!
+fc_quadrato_blu;Trova il quadrato blu!
+fc_quadrato_giallo;Trova il quadrato giallo!
+fc_quadrato_verde;Trova il quadrato verde!
+fc_quadrato_arancione;Trova il quadrato arancione!
+fc_quadrato_viola;Trova il quadrato viola!
+fc_quadrato_rosa;Trova il quadrato rosa!
+fc_triangolo_rosso;Trova il triangolo rosso!
+fc_triangolo_blu;Trova il triangolo blu!
+fc_triangolo_giallo;Trova il triangolo giallo!
+fc_triangolo_verde;Trova il triangolo verde!
+fc_triangolo_arancione;Trova il triangolo arancione!
+fc_triangolo_viola;Trova il triangolo viola!
+fc_triangolo_rosa;Trova il triangolo rosa!
+fc_rettangolo_rosso;Trova il rettangolo rosso!
+fc_rettangolo_blu;Trova il rettàngolo blu!
+fc_rettangolo_giallo;Trova il rettangolo giallo!
+fc_rettangolo_verde;Trova il rettangolo verde!
+fc_rettangolo_arancione;Trova il rettangolo arancione!
+fc_rettangolo_viola;Trova il rettangolo viola!
+fc_rettangolo_rosa;Trova il rettangolo rosa!
+fc_stella_rosso;Trova la stella rossa!
+fc_stella_blu;Trova la stella blu!
+fc_stella_giallo;Trova la stella gialla!
+fc_stella_verde;Trova la stella verde!
+fc_stella_arancione;Trova la stella arancione!
+fc_stella_viola;Trova la stella viola!
+fc_stella_rosa;Trova la stella rosa!
+fc_cuore_rosso;Trova il cuore rosso!
+fc_cuore_blu;Trova il cuore blu!
+fc_cuore_giallo;Trova il cuore giallo!
+fc_cuore_verde;Trova il cuore verde!
+fc_cuore_arancione;Trova il cuore arancione!
+fc_cuore_viola;Trova il cuore viola!
+fc_cuore_rosa;Trova il cuore rosa!
+fc_n_cerchio_rosso;Il cerchio rosso!
+fc_n_cerchio_blu;Il cerchio blu!
+fc_n_cerchio_giallo;Il cerchio giallo!
+fc_n_cerchio_verde;Il cerchio verde!
+fc_n_cerchio_arancione;Il cerchio arancione!
+fc_n_cerchio_viola;Il cerchio viola!
+fc_n_cerchio_rosa;Il cerchio rosa!
+fc_n_quadrato_rosso;Il quadrato rosso!
+fc_n_quadrato_blu;Il quadrato blu!
+fc_n_quadrato_giallo;Il quadrato giallo!
+fc_n_quadrato_verde;Il quadrato verde!
+fc_n_quadrato_arancione;Il quadrato arancione!
+fc_n_quadrato_viola;Il quadrato viola!
+fc_n_quadrato_rosa;Il quadrato rosa!
+fc_n_triangolo_rosso;Il triangolo rosso!
+fc_n_triangolo_blu;Il triangolo blu!
+fc_n_triangolo_giallo;Il triangolo giallo!
+fc_n_triangolo_verde;Il triangolo verde!
+fc_n_triangolo_arancione;Il triangolo arancione!
+fc_n_triangolo_viola;Il triangolo viola!
+fc_n_triangolo_rosa;Il triangolo rosa!
+fc_n_rettangolo_rosso;Il rettangolo rosso!
+fc_n_rettangolo_blu;Il rettangolo blu!
+fc_n_rettangolo_giallo;Il rettangolo giallo!
+fc_n_rettangolo_verde;Il rettangolo verde!
+fc_n_rettangolo_arancione;Il rettangolo arancione!
+fc_n_rettangolo_viola;Il rettangolo viola!
+fc_n_rettangolo_rosa;Il rettàngolo rosa!
+fc_n_stella_rosso;La stella rossa!
+fc_n_stella_blu;La stella blu!
+fc_n_stella_giallo;La stella gialla!
+fc_n_stella_verde;La stella verde!
+fc_n_stella_arancione;La stella arancione!
+fc_n_stella_viola;La stella viola!
+fc_n_stella_rosa;La stella rosa!
+fc_n_cuore_rosso;Il cuore rosso!
+fc_n_cuore_blu;Il cuore blu!
+fc_n_cuore_giallo;Il cuore giallo!
+fc_n_cuore_verde;Il cuore verde!
+fc_n_cuore_arancione;Il cuore arancione!
+fc_n_cuore_viola;Il cuore viola!
+fc_n_cuore_rosa;Il cuore rosa!
+# --- Le lettere (0.10): la prima lettera di una parola
+g_lettere;Le lettere!
+let_intro;Benvenuta nella mia biblioteca! Ogni parola comincia con una lettera. Ascolta bene, e trova la lettera giusta!;mago
+let_comincia;Con che lettera comincia?
+let_con_la;comincia con la...
+let_prima;La prima lettera è...
+# --- Le ombre (0.10): di chi è l'ombra?
+g_ombre;Le ombre!
+omb_intro;Benvenuta al teatro delle ombre! La lampada fa un'ombra sul telo. Indovina di chi è!
+omb_chi;Di chi è quest'ombra?
+omb_quale;Qual è la sua ombra?
+omb_nuvola;Una nuvoletta copre un pezzetto. Guarda bene!
+omb_guarda;Guarda bene la forma!
+# --- Il sentiero (0.10): le frecce, il primo coding
+g_sentiero;Il sentiero!
+sen_intro;Questo è il sentiero dei sassolini! Con le frecce dici a Deva dove andare. Poi premi il bottone rosso, e Deva cammina!
+sen_stella;Porta Deva sulla stella!
+sen_fiore;Prima prendi il fiore, poi porta Deva sulla stella!
+sen_frecce;Premi le frecce per fare la strada, poi premi il bottone rosso!
+sen_insieme;Facciamolo insieme! Premi le frecce che brillano, poi il bottone rosso!
+sen_sasso;Oh! C'è un sasso!
+sen_fuori;Oh! Di là non c'è strada!
+sen_giallo;Il bottone giallo toglie l'ultima freccia.
+sen_senza_fiore;Oh! Hai dimenticato il fiore! Prima il fiore, poi la stella.
+sen_quasi;Quasi! Deva non è arrivata sulla stella. Riprova!
+sen_duello;Quale strada porta Deva alla nota magica?
+sen_duello_gemma;Quale strada porta Deva alla gemma magica?
+sen_duello_stella;Quale strada porta Deva alla stella magica?
+sen_duello_chiave;Quale strada porta Deva alla chiave magica?
+sen_guarda;Guarda Deva: fa la strada giusta!
+sen_scegli;Adesso scegli la strada giusta!
+# --- La terza avventura: la musica perduta (0.10); orco = l'Orco Brontolone
+st3_prologo_1;Dopo la festa sotto le stelle, Deva arrivò nella Valle della Musica. Lì tutto canta: i fiori, il lago, perfino i funghi!
+st3_prologo_2;Ma sulla collina viveva l'Orco Brontolone, che non riusciva mai a dormire. Brontolava, e pestava i piedi: bum, bum!
+st3_prologo_3;Troppa musica! Io voglio dormire! Adesso soffio via tutta la musica!;orco
+st3_prologo_4;Tutta la musica diventò cinque note magiche.
+st3_prologo_4b;L'orco fece una magia a quattro mostri buoni, e gli diede le note da nascondere. La Nota d'Oro la tenne lui!
+st3_prologo_5;Deva! Sono io, lo Stregone Mezzanotte! Ti ricordi? Mi hai regalato la lanterna, e adesso sono tuo amico!;stregone_buono
+st3_prologo_6;La tua bacchetta è pronta, Deva! Ogni volta che giochi, si carica di magia, come le altre volte!;mago
+st3_prologo_7;Riportiamo la musica nella valle! Noi siamo con te!;stregone_buono
+st3_cap1;Nel Paese dei Dolci c'è Caramellone, l'orsetto di caramella. Ha la Nota Rossa, che suona il Do!;stregone_buono
+st3_cap2;Nella Foresta dei Funghi si nasconde Fungone. Ha la Nota Arancione, che suona il Re!;stregone_buono
+st3_cap3;Nel Lago delle Ninfee gracida Ranocchione, la rana gigante. Ha la Nota Azzurra, che suona il Mi!;stregone_buono
+st3_cap4;Nel Circo c'è Trombone, l'elefantino con la tromba. Ha la Nota Verde, che suona il Fa!;stregone_buono
+st3_cap5;Manca la Nota d'Oro, che suona il Sol: ce l'ha l'Orco Brontolone, nella sua casetta sulla collina. Coraggio, Deva!;stregone_buono
+vt3_musica_1;Grazie alla Nota Rossa, il Paese dei Dolci suona di nuovo!
+vt3_musica_2;Grazie alla Nota Arancione, la Foresta dei Funghi suona di nuovo!
+vt3_musica_3;Grazie alla Nota Azzurra, il Lago delle Ninfee suona di nuovo!
+vt3_musica_4;Grazie alla Nota Verde, il Circo suona di nuovo!
+mappa3_finita;La musica è tornata in tutta la valle! Grazie, Deva!;stregone_buono
+sf_regole3;Vedi le bolle magiche? Sono l'incantesimo! Ogni risposta giusta ne fa scoppiare una.;stregone_buono
+sf_caramellone;Gnam gnam! Sono Caramellone! La mia nota è dolce, e non te la do!;mostro
+sf_fungone;Sono Fungone! Nella mia foresta, la nota resta con me!;mostro
+sf_ranocchione;Croac, croac! Sono Ranocchione! La nota è mia!;mostro
+sf_trombone;Sono Trombone! La nota è mia, e il circo resta chiuso!;mostro
+sf_orco;Brontolo brontolo! Sei arrivata fin qui? La Nota d'Oro resta con me!;orco
+sf_colpo_orco;Ahi ahi! La mia magia!;orco
+vt_caramellone;Gnam! Adesso divido i miei dolci con tutti! Grazie, Deva! Ecco la Nota Rossa.;mostro_buono
+vt_fungone;Evviva! Adesso nella mia foresta sono tutti invitati! Grazie, Deva! Ecco la Nota Arancione.;mostro_buono
+vt_ranocchione;Croac, croac! Adesso canto di nuovo! Grazie, Deva! Ecco la Nota Azzurra.;mostro_buono
+vt_trombone;Che bello! La mia tromba suona di nuovo per tutti! Grazie, Deva! Ecco la Nota Verde.;mostro_buono
+st3_sbuffa;La magia dell'orco si rompe... e l'orco si mette a sbuffare e a pestare i piedi.
+st3_domanda;Guarda bene l'orco. Come si sente?;stregone_buono
+st3_emo_sorpreso;Sorpreso.
+st3_arrabbiato;Sì, l'orco è arrabbiato. Ed è anche tanto stanco!
+st3_orco_1;Io non riesco mai a dormire... La musica mi sveglia sempre, e allora brontolo!;orco
+st3_ninna;Allora Deva prende le quattro note magiche, e suona una ninna nanna per l'orco.
+st3_suona;Suona tu: premi il bottone rosso, una nota alla volta!
+st3_dorme;Zitti zitti... L'orco si è addormentato, e sorride!
+st3_orco_2;Che bella dormita! Grazie, Deva! Non sono più brontolone. Scusate tutti! Ecco la Nota d'Oro!;orco_buono
+st3_fine_1;E l'orco soffiò piano piano: la musica tornò in tutta la valle. Di giorno canzoni allegre, e di sera la ninna nanna!
+st3_fine_2;Quella sera ci fu una grande festa al circo, con Deva e tutti i suoi amici. E l'orco ballava più di tutti!
+st3_fine_3;Fine! La musica suona di nuovo, grazie a Deva! E la prossima volta... una nuova avventura!
+g_sfida_orco;Sfida l'orco!
+mappa_sfida_orco;La bacchetta è carica! Premi il bottone rosso e sfida l'orco!
+bacchetta_pronta_orco;La bacchetta è carica! Adesso puoi sfidare l'orco!
+dl_passo_guarda_orco;Guarda i passi dell'orco!
+dl_ritmo_ascolta_orco;Ascolta il tamburo dell'orco!
+alb_storia3;Le note e gli amici della terza avventura!
+tm_ciao_caramellone;Gnam! Mi fai dolce dolce, come una caramella?;mostro_buono
+tm_ciao_fungone;Ciao Deva! Anche un fungo vuole essere bello!;mostro_buono
+tm_ciao_ranocchione;Croac, croac! Truccami, per favore!;mostro_buono
+tm_ciao_trombone;Voglio essere il più bello del circo!;mostro_buono
+tm_ciao_orco;Ho dormito benissimo! Adesso mi fai bello?;orco_buono
+tm_grazie_caramellone;Gnam gnam! Sono dolcissimo! Grazie!;mostro_buono
+tm_grazie_fungone;Che bello! Sono il fungo più elegante della foresta!;mostro_buono
+tm_grazie_ranocchione;Croac, croac! Sono la rana più bella del lago!;mostro_buono
+tm_grazie_trombone;Che eleganza! Grazie, Deva!;mostro_buono
+tm_grazie_orco;Grazie, Deva! Sono un orco bellissimo!;orco_buono
+# --- La quarta avventura: i giocattoli del Re Capriccio (0.11); orco_buono = la guida, re = il Re Capriccio
+st4_prologo_1;Dopo la festa al circo, Deva arrivò nel Regno dei Giocattoli. Lì i giocattoli sono vivi: il trenino corre, la trottola gira, e tutti giocano insieme!
+st4_prologo_2;Ma nel castello dei giochi viveva il piccolo Re Capriccio. Voleva tutti i giocattoli per sé, e non li prestava mai a nessuno!
+st4_prologo_3;È mio! È tutto mio! Fermi tutti, giocattoli!;re
+st4_prologo_4;Il re prese le cinque chiavi della carica, e tutti i giocattoli si fermarono.
+st4_prologo_4b;Poi fece una magia a quattro giocattoli, e gli diede le chiavi da nascondere. La Chiave d'Oro la tenne lui!
+st4_prologo_5;Deva! Sono io, l'Orco Brontolone! Con la tua ninna nanna dormo benissimo, e adesso sono tuo amico!;orco_buono
+st4_prologo_6;La tua bacchetta è pronta, Deva! Ogni volta che giochi, si carica di magia, come sempre!;mago
+st4_prologo_7;Riportiamo le chiavi ai giocattoli! Noi siamo con te!;orco_buono
+st4_cap1;Nella Fabbrica dei Giocattoli c'è Robottone, il robot di latta. Ha la Chiave Rossa!;orco_buono
+st4_cap2;Sulla Pista dei Birilli salta Saltamolla, il pupazzo a molla. Ha la Chiave Arancione!;orco_buono
+st4_cap3;Nel Castello di Cubi c'è Dinozzo, il dinosauro. Ha la Chiave Azzurra!;orco_buono
+st4_cap4;Sulla Giostra gira Trottolina, la trottola. Ha la Chiave Verde!;orco_buono
+st4_cap5;Manca la Chiave d'Oro: ce l'ha il Re Capriccio, nel suo castello dei giochi. Coraggio, Deva!;orco_buono
+vt4_carica_1;Grazie alla Chiave Rossa, nella Fabbrica i giocattoli si muovono di nuovo!
+vt4_carica_2;Grazie alla Chiave Arancione, sulla Pista dei Birilli si gioca di nuovo!
+vt4_carica_3;Grazie alla Chiave Azzurra, nel Castello di Cubi si gioca di nuovo!
+vt4_carica_4;Grazie alla Chiave Verde, la Giostra gira di nuovo!
+mappa4_finita;I giocattoli si muovono di nuovo in tutto il regno! Grazie, Deva!;orco_buono
+sf_regole4;Vedi le bolle magiche? Sono l'incantesimo! Ogni risposta giusta ne fa scoppiare una.;orco_buono
+sf_robottone;Bip bip! Sono Robottone! La chiave è mia, e qui comando io!;mostro
+sf_saltamolla;Salta, salta! Sono Saltamolla! Prendimi, se ci riesci!;mostro
+sf_dinozzo;Sono Dinozzo, il dinosauro! Il mio castello è il più alto, e la chiave resta qui!;mostro
+sf_trottolina;Giro giro tondo! Sono Trottolina! Mi gira la testa, ma la chiave non te la do!;mostro
+sf_re;È mio! È tutto mio! Sei arrivata fin qui? La Chiave d'Oro non te la presto!;re
+sf_colpo_re;Ahi ahi! La mia magia!;re
+vt_robottone;Bip! Non comando più io: adesso giochiamo insieme! Grazie, Deva! Ecco la Chiave Rossa.;mostro_buono
+vt_saltamolla;Salta, salta! Adesso salto per giocare con te! Grazie, Deva! Ecco la Chiave Arancione.;mostro_buono
+vt_dinozzo;Che bello! Adesso il castello lo costruiamo insieme! Grazie, Deva! Ecco la Chiave Azzurra.;mostro_buono
+vt_trottolina;Che bello, giro di nuovo per gioco! Grazie, Deva! Ecco la Chiave Verde.;mostro_buono
+st4_piange;La magia del re si rompe... e il re si mette a piangere.
+st4_domanda;Guarda bene il re. Come si sente?;orco_buono
+st4_triste;Sì, il re è triste. Ha tanti giocattoli, ma nessuno con cui giocare.
+st4_re_1;Nessuno gioca con me, perché io non presto mai niente... Ma non so come si fa!;re
+st4_turno;Allora Deva prende una palla, e gli insegna a fare a turno: un po' tu, e un po' io!
+st4_lancia;Lancia la palla al re: premi il bottone rosso!
+re_tocca_me;Evviva, tocca a me!;re
+re_tocca_te;Adesso tocca a te!;re
+re_aspetta;Aspetta! Adesso tocca a me!;re
+st4_re_2;Che bello giocare insieme! Grazie, Deva! Scusate tutti! Ecco la Chiave d'Oro!;re
+st4_fine_1;E con la Chiave d'Oro, tutti i giocattoli del regno si caricarono di nuovo!
+st4_fine_2;Quella sera ci fu una grande festa sulla giostra. E il re prestava i suoi giocattoli a tutti!
+st4_fine_3;Fine! I giocattoli giocano di nuovo, grazie a Deva! E la prossima volta... una grande festa!
+ep_1;Un giorno, il Mago Pistacchio preparò una grande festa a sorpresa, tutta per Deva!
+ep_grisella;Deva, ti ricordi? Mi hai invitata a ballare. Grazie!;strega_buona
+ep_mezzanotte;E a me hai regalato la lanterna. Adesso il buio non mi fa più paura!;stregone_buono
+ep_orco;E a me hai suonato la ninna nanna. Adesso dormo benissimo!;orco_buono
+ep_re;E a me hai insegnato a fare a turno: un po' tu, e un po' io!;re
+ep_mago;Deva, hai un cuore gentile: sei una vera maga! La bacchetta è tua, per sempre!;mago
+ep_fuochi;Festeggiamo! Premi il bottone rosso, e accendi i fuochi d'artificio!
+ep_fine;E così finiscono le avventure di Deva. Ma i suoi amici sono sempre qui: si gioca ancora, quando vuoi!
+g_sfida_re;Sfida il re!
+mappa_sfida_re;La bacchetta è carica! Premi il bottone rosso e sfida il re!
+bacchetta_pronta_re;La bacchetta è carica! Adesso puoi sfidare il re!
+dl_passo_guarda_re;Guarda i passi del re!
+dl_ritmo_ascolta_re;Ascolta il tamburo del re!
+alb_storia4;Le chiavi e gli amici della quarta avventura!
+alb_rivedi;Premi il bottone rosso, e rivediamo la storia!
+tm_ciao_robottone;Bip bip! Mi fai bello?;mostro_buono
+tm_ciao_saltamolla;Salta, salta! Truccami, per favore!;mostro_buono
+tm_ciao_dinozzo;Ciao Deva! Anche un dinosauro vuole essere bello!;mostro_buono
+tm_ciao_trottolina;Che giramento di testa! Mi fai bella?;mostro_buono
+tm_ciao_re;Ciao Deva! Anche il re vuole essere bello!;re
+tm_grazie_robottone;Bip! Sono il robot più bello della fabbrica!;mostro_buono
+tm_grazie_saltamolla;Che bello! Salto dalla gioia! Grazie, Deva!;mostro_buono
+tm_grazie_dinozzo;Che bello! Sono il dinosauro più elegante del regno!;mostro_buono
+tm_grazie_trottolina;Che bello! Sono la trottola più bella della giostra!;mostro_buono
+tm_grazie_re;Grazie, Deva! Sono un re bellissimo!;re
+# --- Il negozio (0.11): le monete e i prezzi
+g_negozio;Il negozio!
+neg_intro;Benvenuta nel negozio dei giocattoli! Ogni giocattolo ha il suo prezzo. Conta bene le monete, e paga il giusto!
+neg_c_trenino;Il trenino costa...
+neg_c_orsetto;L'orsetto costa...
+neg_c_palla;La palla costa...
+neg_c_aquilone;L'aquilone costa...
+neg_c_trottola;La trottola costa...
+neg_c_robot;Il robot costa...
+neg_c_dinosauro;Il dinosauro costa...
+neg_c_palloncino;Il palloncino costa...
+neg_c_corona;La corona costa...
+neg_c_tamburo;Il tamburo costa...
+neg_paga;Quali monete ci vogliono?
+neg_quante;Quante monete ci sono?
+neg_quanto;Quanto fanno, tutte insieme?
+neg_vale_2;Guarda: la moneta d'argento vale due!
+neg_vale_5;E la moneta d'oro vale cinque!
+neg_aiuto;Contiamo insieme le monete!
+neg_paga_queste;Ecco! Adesso paga con queste monete!
+neg_grazie_1;Grazie! Ecco il tuo giocattolo!
+neg_grazie_2;Grazie, e buon divertimento!
+neg_grazie_3;Ecco a te! Grazie!
+# --- Le misure (0.11): grande e piccolo, lungo e corto, alto e basso, pieno e vuoto, pesante e leggero
+g_misure;Le misure!
+mis_intro;Benvenuta nella stanza dei giochi! I giocattoli ti chiedono aiuto: guarda bene chi è grande e chi è piccolo, chi è lungo e chi è corto!
+mis_grande;Qual è il più grande?
+mis_piccolo;Qual è il più piccolo?
+mis_lungo;Qual è il più lungo?
+mis_corto;Qual è il più corto?
+mis_alto;Qual è il più alto?
+mis_basso;Qual è il più basso?
+mis_pieno;Qual è quello pieno?
+mis_vuoto;Qual è quello vuoto?
+mis_pesa_piu;Quale pesa di più?
+mis_pesa_meno;Quale pesa di meno?
+mis_fila_piccolo;Mettiamoli in fila! Prima il più piccolo.
+mis_fila_corto;Mettiamoli in fila! Prima il più corto.
+mis_fila_basso;Mettiamoli in fila! Prima il più basso.
+mis_poi;E adesso, il prossimo!
+mis_h_grande;Guarda bene: il più grande è grosso grosso, il più piccolo è piccolino!
+mis_h_lungo;Guarda dove arrivano! Il più lungo va più lontano, il più corto finisce prima.
+mis_h_alto;Guarda dove arrivano! Il più alto arriva più su, il più basso resta giù.
+mis_h_pieno;Guarda dentro! Quello pieno arriva fino in cima. Quello vuoto non ha niente dentro.
+mis_h_peso;Guarda bene le molle! Quella che scende di più porta la cosa più pesante.
+mis_grazie_1;Grazie, Deva!;mostro_buono
+mis_grazie_2;Proprio quello che volevo!;mostro_buono
+mis_grazie_3;Evviva, che bello!;mostro_buono
+w_piuma;La piuma.
+w_foglia;La foglia.
+w_libro;Il libro.
+w_anguria;L'anguria.
+w_masso;Il masso.
+w_zucca;La zucca.

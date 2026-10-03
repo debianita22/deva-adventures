@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manuale per i genitori</title>
+<style>
+:root{--ink:#2b2333;--soft:#6f6577;--line:#d9ccb9;--accent:#c2417a;--bg:#ffffff;--tint:#fbf3e8;--note:#fdf0f5}
+@media screen and (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f1eaf5;--soft:#b5a9bd;--line:#4a4153;
+--accent:#ef7fb0;--bg:#1d1922;--tint:#28232f;--note:#30222b}}
+@media screen{:root[data-theme="dark"]{--ink:#f1eaf5;--soft:#b5a9bd;--line:#4a4153;--accent:#ef7fb0;--bg:#1d1922;
+--tint:#28232f;--note:#30222b}}
+@page{size:A4;margin:13mm 14mm 14mm}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:10.5pt/1.42 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:182mm;margin:0 auto;padding:16px}
+h1{font-size:23pt;line-height:1.1;margin:0 0 4px;color:var(--accent)}
+h2{font-size:14pt;margin:18px 0 6px;padding-bottom:3px;border-bottom:2px solid var(--accent);break-after:avoid}
+h3{font-size:11pt;margin:12px 0 4px;color:var(--accent);break-after:avoid}
+h2 + p,h3 + p{margin-top:0}
+p{margin:4px 0 6px}
+ul,ol{margin:3px 0 6px;padding-left:19px}li{margin:2px 0}
+a{color:var(--accent)}
+code,kbd,pre{font-family:ui-monospace,Menlo,Consolas,monospace}
+code{font-size:9.3pt;background:var(--tint);padding:0 3px;border-radius:3px;overflow-wrap:anywhere}
+.nw{white-space:nowrap;overflow-wrap:normal}
+pre{font-size:9pt;line-height:1.35;background:var(--tint);border:1px solid var(--line);border-radius:6px;padding:7px 9px;
+margin:5px 0 8px;white-space:pre-wrap;overflow-wrap:anywhere;break-inside:avoid}
+kbd{font-size:9pt;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 4px;background:var(--tint);
+white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:9.4pt;margin:5px 0 9px}
+th,td{border:1px solid var(--line);padding:3px 6px;text-align:left;vertical-align:top}
+th{background:var(--tint);font-weight:600}
+tr{break-inside:avoid}
+thead{display:table-header-group}
+.sub{color:var(--soft);margin:0 0 10px;font-size:11pt}
+.small{font-size:9pt;color:var(--soft)}
+.box{border:1px solid var(--line);border-radius:8px;padding:7px 12px;margin:8px 0;break-inside:avoid}
+.note{background:var(--note);border-left:4px solid var(--accent);border-radius:4px;padding:6px 10px;margin:8px 0;
+break-inside:avoid}
+.note p{margin:2px 0}
+.cover{display:grid;grid-template-columns:1fr;gap:6px}
+.hero{display:block;width:100%;max-width:128mm;margin:4px auto 2px;border-radius:6px;image-rendering:pixelated}
+.toc{columns:2;column-gap:12mm;padding-left:18px;margin:4px 0}
+.toc li{break-inside:avoid}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;margin:8px 0}
+.shots.three{grid-template-columns:1fr 1fr 1fr}
+figure{margin:0;break-inside:avoid}
+figure img{display:block;width:100%;height:auto;border-radius:5px;image-rendering:pixelated;border:1px solid var(--line)}
+figcaption{font-size:8.8pt;color:var(--soft);margin-top:2px;line-height:1.3}
+.side{display:grid;grid-template-columns:1fr 62mm;gap:12px;align-items:start}
+.newpage{break-before:page}
+.keep{break-inside:avoid}
+.cols{columns:2;column-gap:10mm}
+.cols > *{break-inside:avoid}
+@media (max-width:640px){
+  main{padding:12px}
+  h1{font-size:19pt}
+  .shots,.shots.three{grid-template-columns:1fr 1fr}
+  .side{grid-template-columns:1fr}
+  .toc,.cols{columns:1}
+  table{font-size:8.6pt;display:block;overflow-x:auto}
+}
+@media print{
+  body{background:#fff;color:#000}
+  main{padding:0;max-width:none}
+  a{color:inherit;text-decoration:none}
+  h2{margin-top:12px}
+}
+</style>
+</head>
+<body>
+<main>
+
+<section class="cover">
+<h1>Deva's Awesome Adventures</h1>
+<p class="sub">Manuale per i genitori · versione 1.0.0 · ottobre 2026</p>
+<img class="hero" src="img/menu.png" alt="Il menu principale del gioco: il logo, le carte Gioca, Camerino, Album e Deva sul palco">
+
+<div class="box">
+<strong>In breve</strong>
+<ul>
+<li>Un gioco educativo per bambini di cinque anni, in italiano e <strong>tutto a voce</strong>: non serve saper leggere.</li>
+<li><strong>Diciotto giochi</strong> (numeri, monete, misure, parole, lettere, forme, ombre, sequenze, ritmo, memoria,
+posizioni, emozioni, ballo, ginnastica, trucchi, primo coding) con livelli da 1 a 5 che si adattano da soli.</li>
+<li><strong>Quattro avventure</strong> con la mappa e i mostri stregati da far tornare buoni; camerino, album, tre profili.</li>
+<li>Gira in <strong>RetroArch</strong> come «core senza contenuto» (niente ROM da cercare): console Linux arm64 come la
+XiFan RF35H, oppure PC Linux.</li>
+<li>Niente internet, pubblicità, acquisti o dati inviati: tutto resta sulla console.</li>
+<li>Sessioni di <strong>15 minuti</strong> (si cambia), poi Deva va a nanna e il gioco si chiude. Le porte per i grandi si
+aprono solo tenendo premuti <kbd>L</kbd> e <kbd>R</kbd>.</li>
+</ul>
+</div>
+
+<strong>Indice</strong>
+<ol class="toc">
+<li><a href="#installare">Installare</a></li>
+<li><a href="#prima">Prima di darle la console</a></li>
+<li><a href="#giocare">Come si gioca</a></li>
+<li><a href="#giochi">I diciotto giochi</a></li>
+<li><a href="#avventure">Le quattro avventure</a></li>
+<li><a href="#premi">Premi, camerino e album</a></li>
+<li><a href="#grandi">Per i grandi</a></li>
+<li><a href="#cfg">Le impostazioni</a></li>
+<li><a href="#file">I file e gli spegnimenti</a></li>
+<li><a href="#prova">La prima prova</a></li>
+<li><a href="#problemi">Problemi e soluzioni</a></li>
+<li><a href="#aggiornare">Aggiornare, tornare indietro, togliere</a></li>
+<li><a href="#licenze">Licenze e crediti</a></li>
+</ol>
+</section>
+
+<section id="installare" class="newpage">
+<h2>1. Installare</h2>
+
+<table>
+<thead><tr><th style="width:38%">Pacchetto</th><th>Per</th></tr></thead>
+<tr><td><code class="nw">deva-adventures-1.0.0-aarch64.zip</code></td><td>console Linux a 64 bit ARM con RetroArch (RK3326 come la
+XiFan RF35H, e le altre arm64)</td></tr>
+<tr><td><code class="nw">deva-adventures-1.0.0-x86_64.zip</code></td><td>PC Linux con RetroArch</td></tr>
+<tr><td><code class="nw">deva-adventures-1.0.0-src.tar.gz</code></td><td>i sorgenti: per l'immagine di devaOS o di Lakka, per altre
+architetture, per chi vuole modificarlo</td></tr>
+</table>
+<p>Servono RetroArch su Linux con la libreria C glibc 2.17 o più nuova (tutte le distribuzioni dal 2014 in poi; con
+musl il core va compilato dai sorgenti) e circa 17 MB liberi. Prima di copiarli, sul computer, controllate che i
+pacchetti siano arrivati interi: <code>sha256sum -c SHA256SUMS</code> nella cartella dove li avete scaricati.</p>
+
+<h3>Con lo script di installazione (consigliato)</h3>
+<p>Copiate lo zip sulla console, poi da un terminale (SSH) o, per il pacchetto x86_64, dal terminale del PC:</p>
+<pre>unzip deva-adventures-1.0.0-aarch64.zip
+cd deva-adventures-1.0.0-aarch64
+sh install.sh --dry-run     # mostra le cartelle e che cosa farebbe, senza toccare niente
+sh install.sh               # installa, dopo aver chiesto conferma</pre>
+<p>Lo script, in quest'ordine:</p>
+<ol>
+<li>trova <code>retroarch.cfg</code> (nella cartella di configurazione dell'utente, poi nei percorsi di Lakka e ArkOS) e ne
+legge le cartelle dei core, delle info, di sistema e dei salvataggi;</li>
+<li>verifica il pacchetto con le impronte di <code>SHA256SUMS</code>;</li>
+<li>mostra le cartelle e chiede conferma; avvisa se una cartella sta in RAM e si svuoterebbe al riavvio;</li>
+<li>mette da parte quello che c'è già (core, scheda <code>.info</code>, dati con le vostre impostazioni, salvataggi) in
+<code>&lt;cartella di sistema&gt;/deva_adventures_backup/&lt;data-ora&gt;/</code>;</li>
+<li>prepara i dati nuovi accanto ai vecchi, completi, e solo allora li mette al loro posto; core e <code>.info</code> sono
+copiati accanto e poi rinominati, così non resta mai un core a metà;</li>
+<li>tiene le vostre impostazioni: se avevate cambiato <code>deva_adventures.cfg</code> resta il vostro, e quello nuovo di
+serie va in <code>deva_adventures.cfg.default</code>;</li>
+<li>ricontrolla i file copiati con le impronte del pacchetto e scrive <code>INSTALLATO.txt</code> nella cartella dei dati (che
+cosa, dove, quando, dove sono i salvataggi).</li>
+</ol>
+<p>Se qualcosa si interrompe a metà, rimette tutto com'era. I salvataggi non vengono mai toccati: sono solo copiati
+nella copia di sicurezza.</p>
+<table>
+<thead><tr><th style="width:43%">Opzione</th><th>Che cosa fa</th></tr></thead>
+<tr><td><code>--dry-run</code></td><td>mostra soltanto</td></tr>
+<tr><td><code>--yes</code></td><td>senza domande (anche da uno script)</td></tr>
+<tr><td><code>--cfg FILE</code></td><td>usa un altro <code>retroarch.cfg</code></td></tr>
+<tr><td><code class="nw">--cores DIR</code> <code class="nw">--info DIR</code> <code class="nw">--system DIR</code> <code class="nw">--saves DIR</code></td><td>le cartelle date a mano</td></tr>
+<tr><td><code class="nw">--list-backups</code>, <code class="nw">--restore DIR</code></td><td>le copie di sicurezza; rimettere una copia (capitolo 12)</td></tr>
+<tr><td><code class="nw">--uninstall</code> oppure <code class="nw">sh uninstall.sh</code></td><td>togliere il gioco (capitolo 12)</td></tr>
+</table>
+
+<h3>A mano</h3>
+<p>Con la scheda nel computer, tre copie nelle cartelle che RetroArch mostra in <em>Impostazioni → Cartella</em>
+(<em>Settings → Directory</em>):</p>
+<table>
+<thead><tr><th style="width:43%">Dal pacchetto</th><th>Nella cartella di RetroArch</th></tr></thead>
+<tr><td><code>cores/deva_adventures_libretro.so</code></td><td><em>Nuclei</em> (<em>Cores</em>)</td></tr>
+<tr><td><code>info/deva_adventures_libretro.info</code></td><td><em>Informazione sul Core</em> (<em>Core Info</em>), spesso la stessa dei core</td></tr>
+<tr><td><code>system/deva_adventures/</code> (la cartella intera)</td><td><em>Sistema/BIOS</em> (<em>System/BIOS</em>): deve diventare <code>&lt;sistema&gt;/deva_adventures/</code></td></tr>
+</table>
+<p>Aggiornando a mano, tenete da parte il vostro <code>deva_adventures.cfg</code> se lo avevate cambiato.</p>
+
+<h3>Nell'immagine di devaOS o di Lakka</h3>
+<ul>
+<li><strong>devaOS</strong> (Buildroot): nei sorgenti, <code>packaging/buildroot</code> è un <em>br2-external</em> pronto.
+<code>make BR2_EXTERNAL=/percorso/deva-adventures/packaging/buildroot menuconfig</code>, poi <em>External options →
+deva-adventures</em>. Core in <code>/usr/lib/libretro</code>, dati in <code>/usr/share/deva_adventures</code>.</li>
+<li><strong>Lakka</strong>: <code>packaging/lakka/README.md</code> nei sorgenti. Su un Lakka già installato basta il pacchetto
+aarch64 con <code>install.sh</code>.</li>
+</ul>
+<p class="small">Il core cerca i dati prima in <code>&lt;sistema&gt;/deva_adventures</code> e poi in
+<code>/usr/share/deva_adventures</code>: una cartella messa nella cartella di sistema vince su quella dell'immagine.</p>
+
+<h3>Avviare</h3>
+<p>Riavviate RetroArch (legge le schede dei core all'avvio), poi nel menu principale <em>Contentless Cores</em>
+(<em>Nuclei senza contenuto</em> con i menu in italiano) → <strong>Deva's Awesome Adventures</strong>. In alternativa:
+<em>Load Core</em> (<em>Carica Core</em>) → Deva's Awesome Adventures → <em>Start Core</em> (<em>Avvia Core</em>). Su un PC
+anche: <code>retroarch -L /percorso/deva_adventures_libretro.so</code>.</p>
+</section>
+
+<section id="prima">
+<h2>2. Prima di darle la console</h2>
+<ul>
+<li><strong>Il volume</strong>: provatelo voi, la voce deve arrivare chiara. Il gioco ha tre volumi suoi (voce, musica,
+effetti) nelle Opzioni.</li>
+<li><strong>Il tempo</strong>: 15 minuti di serie (<code>sessione_minuti</code>), giusti per le prime volte.</li>
+<li><strong>Il nome</strong>: <code>nome = DEVA</code> in <code>deva_adventures.cfg</code> è il nome del primo profilo, quello che
+scrive nel gioco «Il mio nome». Per un altro bambino cambiatelo, o fategli un profilo suo (capitolo 7).</li>
+<li><strong>Le scorciatoie di RetroArch</strong>: il gioco usa <kbd>L</kbd>+<kbd>R</kbd> tenuti (le porte dei grandi) e
+<kbd>START</kbd> o <kbd>SELECT</kbd> tenuti (la pausa). In <em>Impostazioni → Input → Scorciatoie</em> (<em>Settings →
+Input → Hotkeys</em>) controllate le combinazioni <em>Attiva/Disattiva Menu (Controller Combo)</em> ed <em>Esci (Controller
+Combo)</em>: non devono essere «L1 + R1», «Mantieni Start», «Mantieni Select» o «Start + Select». Per il menu va bene «Giù + Y + L1 + R1»,
+difficile da premere per caso; per l'uscita «Nessuno», oppure tenete attivo <em>Conferma Esci</em>.</li>
+<li>Se volete che lei non possa cambiare niente in RetroArch: <code>kiosk_mode_enable = "true"</code> in
+<code>retroarch.cfg</code> nasconde le impostazioni dal menu.</li>
+<li>La batteria carica. Se la console si spegne di colpo i salvataggi reggono (capitolo 9).</li>
+</ul>
+</section>
+
+<section id="giocare">
+<h2>3. Come si gioca</h2>
+<div class="side">
+<div>
+<p>La voce dice tutto: che cosa fare, quale bottone premere, se la risposta è giusta. I bottoni sono nominati per
+colore, come sulla RF35H.</p>
+<table>
+<thead><tr><th style="width:36%">Tasto</th><th>Che cosa fa</th></tr></thead>
+<tr><td>croce</td><td>scegliere una carta; le frecce nel ballo, nella ginnastica e nel sentiero</td></tr>
+<tr><td><kbd>A</kbd> bottone rosso</td><td>confermare, rispondere</td></tr>
+<tr><td><kbd>B</kbd> bottone giallo</td><td>risentire la domanda, rivedere il ballo; indietro nelle pagine</td></tr>
+<tr><td><kbd>Y</kbd> verde, <kbd>X</kbd> blu</td><td>Y fa risentire come B (nel sentiero solo Y: lì B toglie una freccia); X e Y servono ai grandi
+nei Salvataggi</td></tr>
+<tr><td><kbd>START</kbd> o <kbd>SELECT</kbd> tenuti</td><td>la pausa (da soli, per un attimo)</td></tr>
+<tr><td><kbd>L</kbd> + <kbd>R</kbd> tenuti</td><td>per i grandi: 2 secondi aprono Opzioni, Salvataggi, Esci; 1 secondo salta una frase di un
+racconto</td></tr>
+</table>
+</div>
+<figure><img src="img/prova.png" alt="La prova dei tasti: una grande console disegnata sullo schermo"><figcaption>La prova dei
+tasti, nelle prime tre sessioni: premere la croce, poi il rosso.</figcaption></figure>
+</div>
+
+<ul>
+<li><strong>La prima volta</strong>: nelle prime tre sessioni, prima del menu, una console grande sullo schermo chiede di
+premere la croce (Deva balla il passo) e poi il bottone rosso.</li>
+<li><strong>Il menu dei giochi</strong> è un carosello di carte (croce a sinistra e a destra): sotto ogni carta cinque
+stelline mostrano il livello raggiunto; l'ultima carta, «?», è il prossimo gioco che si aprirà. I primi quattro giochi
+sono aperti da subito, poi se ne apre uno ogni due round completati.</li>
+<li><strong>Un round</strong> sono 5 domande, una stellina ciascuna; poi il premio nel camerino.</li>
+<li><strong>Prima ascolta, poi rispondi</strong>: in una domanda nuova il rosso risponde solo quando la domanda è stata
+detta (al massimo 2,5 secondi); la croce si muove subito. Schiacciare il rosso a ripetizione non serve.</li>
+<li><strong>Se sbaglia</strong> la carta si spegne e la voce dice di riprovare. Dopo il secondo errore parte l'<strong>aiuto
+guidato</strong>: il gioco mostra la strada (contiamo insieme, battiamo le sillabe, il posto giusto che brilla) e la
+risposta arriva insieme. Nessun punteggio negativo.</li>
+<li><strong>I livelli</strong>, da 1 a 5 per ogni gioco: si sale dopo tre risposte giuste al primo colpo, si scende dopo
+una risposta arrivata con l'aiuto guidato.</li>
+<li><strong>Se non fa niente</strong>, dopo 12 secondi la voce ricorda che cosa fare, poi dopo il doppio e il quadruplo,
+poi tace fino al tasto successivo.</li>
+<li><strong>La fine</strong>: due minuti e mezzo prima il menu dice «Ancora un gioco, e poi la nanna!»; finito il tempo,
+al primo ritorno al menu Deva saluta, va a nanna e il gioco si chiude.</li>
+</ul>
+
+<div class="shots three">
+<figure><img src="img/giochi.png" alt="Il menu dei giochi con le carte e le stelline del livello"><figcaption>Il menu dei
+giochi: le stelline sotto le carte sono il livello.</figcaption></figure>
+<figure><img src="img/conta.png" alt="Una domanda di Conta: la bacheca con gli oggetti e tre carte con i numeri"><figcaption>Una
+domanda di Conta: tre carte, una è giusta.</figcaption></figure>
+<figure><img src="img/aiuto.png" alt="L'aiuto guidato in Parole: le sillabe come blocchetti"><figcaption>L'aiuto guidato in
+Parole: le sillabe si accendono a tempo.</figcaption></figure>
+</div>
+</section>
+
+<section id="giochi">
+<h2>4. I diciotto giochi</h2>
+<p>Il nome è quello che dice la voce. I primi quattro sono aperti da subito; gli altri si aprono in quest'ordine:
+Il mio nome, Ginnastica, Memory, Facciamo belli i mostri, Le ombre, Batti il ritmo, Le lettere, Il negozio, Forme e
+colori, Sopra e sotto, Il sentiero, Le misure, Le emozioni, La storia in ordine.</p>
+<table>
+<thead><tr><th style="width:21%">Gioco</th><th style="width:31%">Che cosa allena</th><th>Come cresce, dal livello 1 al 5</th></tr></thead>
+<tr><td><strong>I numeri</strong> (Conta)</td><td>contare fino a 20, confrontare, prima e dopo, sommare</td><td>da 1–5 oggetti → «dove ce ne sono di più?», la linea dei numeri, «quanti insieme?»</td></tr>
+<tr><td><strong>Le parole</strong></td><td>ascoltare i suoni delle parole (prima della lettura)</td><td>fondere le sillabe → contarle → le rime → la sillaba iniziale → la vocale iniziale</td></tr>
+<tr><td><strong>Che cosa viene dopo?</strong> (Sequenze)</td><td>logica, regolarità</td><td>AB → AAB, ABB → ABC, AABB → «che cosa manca?»</td></tr>
+<tr><td><strong>Balla con me</strong></td><td>memoria di lavoro, destra e sinistra</td><td>2–4 passi da guardare → 3–4 passi a memoria</td></tr>
+<tr><td><strong>Il mio nome</strong></td><td>riconoscere le lettere</td><td>il nome con il modello → parole brevi → lettere simili (E/F, M/N) → senza modello</td></tr>
+<tr><td><strong>Il memory</strong></td><td>memoria visiva, attenzione</td><td>da 3×2 a 4×4 carte, trucchi simili ai livelli alti</td></tr>
+<tr><td><strong>Batti il ritmo</strong></td><td>ascolto, ritmo</td><td>3–4 battiti regolari → 5–6 battiti con le pause</td></tr>
+<tr><td><strong>Sopra e sotto</strong></td><td>concetti spaziali, parole</td><td>sopra e sotto → dentro e fuori → destra e sinistra</td></tr>
+<tr><td><strong>Le emozioni</strong></td><td>riconoscere come ci si sente</td><td>la faccia di Deva (da 3 a 5 emozioni) → piccole storie</td></tr>
+<tr><td><strong>La storia in ordine</strong></td><td>prima e dopo, il tempo</td><td>«che cosa succede dopo?» → prima e poi → «come finisce?»</td></tr>
+<tr><td><strong>Facciamo ginnastica!</strong></td><td>fermarsi al numero giusto, istruzioni in più parti</td><td>1–3 salti → una mossa più volte → due mosse → due e poi tre a memoria</td></tr>
+<tr><td><strong>Facciamo belli i mostri</strong></td><td>colori e nomi delle cose, ricordare due o tre richieste</td><td>un trucco disegnato nel fumetto → il colore va ascoltato → due trucchi → tre, senza fumetto</td></tr>
+<tr><td><strong>Forme e colori</strong></td><td>forme, colori, due caratteristiche insieme, «non»</td><td>la forma → il colore → tutte e due → sei forme e sette colori → «qual è diverso?», «quale non è rosso?»</td></tr>
+<tr><td><strong>Le lettere</strong></td><td>la prima lettera di una parola, dal suono al segno</td><td>le vocali → le consonanti che si cantano (M, S, L…) → tutte → dalla lettera alla figura → lettere che si somigliano</td></tr>
+<tr><td><strong>Le ombre</strong></td><td>osservare forme e contorni</td><td>ombre molto diverse → ombre che si somigliano → dalla cosa all'ombra → un pezzo d'ombra coperto</td></tr>
+<tr><td><strong>Il sentiero</strong></td><td>primo coding: una fila di istruzioni, trovare l'errore</td><td>dritto, con le impronte → dietro l'angolo → rocce, senza impronte → prima il fiore e poi la stella → strade lunghe</td></tr>
+<tr><td><strong>Il negozio</strong></td><td>contare e pagare, il valore delle monete</td><td>monete da 1 → «quanto fanno?» → la moneta d'argento da 2 → quella d'oro da 5 → prezzi fino a 15</td></tr>
+<tr><td><strong>Le misure</strong></td><td>grande, lungo, alto, pieno, pesante; mettere in fila</td><td>misure molto diverse → anche il contrario → le bilance a molla → misure vicine → «mettiamoli in fila!»</td></tr>
+</table>
+
+<div class="shots">
+<figure><img src="img/sentiero.png" alt="Il sentiero: il prato a sassi, la piccola Deva e la stella, l'asse con le frecce"><figcaption>Il
+sentiero: le frecce in fila sull'asse di legno, poi il rosso fa partire Deva.</figcaption></figure>
+<figure><img src="img/negozio.png" alt="Il negozio: il giocattolo con il cartellino del prezzo e tre borsellini"><figcaption>Il
+negozio: quale borsellino paga il giocattolo?</figcaption></figure>
+</div>
+</section>
+
+<section id="avventure">
+<h2>5. Le quattro avventure</h2>
+<p>Quando si preme <em>Gioca</em> si arriva alla <strong>mappa</strong>. Ogni round giocato carica la bacchetta magica di
+Deva (2 round di serie, <code>round_per_sfida</code>); con la bacchetta carica, Deva va dal mostro successivo e lo sfida.
+La <strong>sfida</strong> usa le domande dei giochi di quel luogo, fra quelli già aperti: ogni risposta giusta fa
+scoppiare una bolla magica e,
+scoppiate tutte, l'incantesimo si rompe, il mostro torna buono e restituisce il tesoro, il suo luogo riprende colore.</p>
+<p>Il cattivo di ogni avventura non è cattivo davvero: è triste, ha paura, è stanco o si sente solo. L'ultima domanda
+della sfida è «come si sente?», e il finale lo fa lei, con un <strong>gesto gentile</strong> che non si può sbagliare (se
+non preme niente, dopo 6 secondi la voce lo ricorda e poi il gesto va avanti da solo). Un pizzico di brivido (ruggiti,
+tuoni, il castello al buio) e sempre il lieto fine.</p>
+<table>
+<thead><tr><th style="width:23%">Avventura</th><th style="width:20%">Chi la combina</th><th style="width:18%">I tesori</th><th>Il gesto gentile</th></tr></thead>
+<tr><td><strong>1. L'incantesimo grigio</strong></td><td>la Strega Grisella</td><td>cinque gemme dei colori</td><td>nessuno la invita mai alle feste: Deva la invita a ballare (quattro passi con la croce)</td></tr>
+<tr><td><strong>2. La notte senza stelle</strong></td><td>lo Stregone Mezzanotte</td><td>le stelle del cielo</td><td>ha paura del buio: una lanterna magica (tre volte il rosso)</td></tr>
+<tr><td><strong>3. La musica perduta</strong></td><td>l'Orco Brontolone</td><td>cinque note magiche</td><td>non riesce mai a dormire: la ninna nanna, una nota alla volta</td></tr>
+<tr><td><strong>4. I giocattoli del Re Capriccio</strong></td><td>il piccolo Re Capriccio</td><td>le chiavi della carica</td><td>vuole tutto per sé perché nessuno gioca con lui: il gioco a turno con la palla</td></tr>
+</table>
+<p>Ogni avventura comincia la sessione dopo la fine della precedente; il cattivo diventato buono fa da guida in quella
+dopo. Dopo la quarta c'è una festa a sorpresa del Mago Pistacchio con tutti gli amici. Le avventure finite si
+<strong>rivedono dall'album</strong> (inizio e fine), senza cambiare i progressi. Con <code>storia = 0</code> le avventure
+si spengono e <em>Gioca</em> porta direttamente al menu dei giochi.</p>
+
+<div class="shots three">
+<figure><img src="img/racconto.png" alt="Un racconto: il Regno delle Stelle con il castello, il fiume e il bosco"><figcaption>I
+racconti: il rosso va avanti quando la voce ha finito.</figcaption></figure>
+<figure><img src="img/mappa.png" alt="La mappa grigia della prima avventura con il mostro Ciuffone"><figcaption>La mappa: il
+luogo stregato è grigio finché il mostro non torna buono.</figcaption></figure>
+<figure><img src="img/sfida.png" alt="La sfida con il mostro: una domanda di Conta dentro un pannello"><figcaption>La sfida:
+ogni risposta giusta fa scoppiare una bolla.</figcaption></figure>
+</div>
+</section>
+
+<section id="premi">
+<h2>6. Premi, camerino e album</h2>
+<div class="shots three">
+<figure><img src="img/premio.png" alt="Il premio: tre carte con un trucco da scegliere e Deva allo specchio"><figcaption>Il
+premio di fine round: si sceglie un trucco e Deva lo indossa.</figcaption></figure>
+<figure><img src="img/camerino.png" alt="Il camerino: la griglia dei trucchi vinti e lo specchio"><figcaption>Il camerino:
+i trucchi vinti, da mettere e togliere.</figcaption></figure>
+<figure><img src="img/album.png" alt="L'album: la pagina della storia con gli amici liberati e le gemme"><figcaption>L'album:
+amici liberati, livelli, trucchi, adesivi, stelle.</figcaption></figure>
+</div>
+<ul>
+<li><strong>Il premio</strong>: alla fine di ogni round si sceglie un trucco fra tre (ombretti, rossetti, guance,
+brillantini, coroncine…) e Deva lo indossa. Quando li ha vinti tutti, il premio diventa un <strong>adesivo</strong> per
+l'album.</li>
+<li><strong>Il camerino</strong> (dal menu principale): tutti i trucchi vinti; il rosso li mette e li toglie, lo specchio
+mostra Deva. Quelli ancora da vincere sono sagome scure.</li>
+<li><strong>L'album</strong> (dal menu principale), da sfogliare con la croce: una pagina per avventura con gli amici
+liberati e i tesori (il rosso fa rivedere un'avventura finita), le stelline di livello dei giochi, i trucchi, gli
+adesivi, le stelle e il tempo di gioco.</li>
+</ul>
+</section>
+
+<section id="grandi">
+<h2>7. Per i grandi</h2>
+<div class="side">
+<div>
+<p>Nel menu principale le carte <strong>Salvataggi</strong>, <strong>Opzioni</strong> ed <strong>Esci</strong> hanno il lucchetto:
+si aprono tenendo premuti <kbd>L</kbd> e <kbd>R</kbd> insieme per <strong>2 secondi</strong> (un giro di stelline si riempie).
+Se lei preme il rosso su una di queste carte, la voce dice «Questo è per mamma e papà!» e sotto compare il gesto. Il
+tempo passato qui non conta nel tempo di gioco.</p>
+</div>
+<figure><img src="img/grandi.png" alt="Il menu principale con la carta Esci selezionata e la scritta Per i grandi: tieni premuti L e R"><figcaption>Una porta
+per i grandi: «tieni premuti L e R».</figcaption></figure>
+</div>
+
+<h3>Opzioni</h3>
+<div class="side">
+<div>
+<p>Su e giù per scegliere, sinistra e destra per cambiare; i volumi si sentono subito. Si salva uscendo con
+<kbd>B</kbd>. Le opzioni valgono sopra il file delle impostazioni (capitolo 8).</p>
+<ul>
+<li>volume di musica, voce ed effetti; vibrazione; animazioni;</li>
+<li>tempo di gioco (da 5 a 120 minuti, o senza limite), domande per round (1–10);</li>
+<li>avventure sì o no, round per caricare la bacchetta (1–5);</li>
+<li>giochi nuovi uno alla volta o tutti subito, round per aprirne uno (1–20);</li>
+<li>livello iniziale di Conta (per i profili nuovi);</li>
+<li><strong>Livelli dei giochi</strong>: il livello di ogni gioco, da cambiare a mano;</li>
+<li><strong>Progressi</strong>: per ogni gioco livello, round, domande e risposte giuste al primo colpo; sessioni, stelle,
+tempo, avventure, trucchi;</li>
+<li><strong>Crediti</strong> (con la versione); <strong>Ripristina le opzioni</strong> (tenere premuto <kbd>A</kbd> 2 secondi).</li>
+</ul>
+</div>
+<figure><img src="img/opzioni.png" alt="La pagina delle opzioni con i valori"><figcaption>Le opzioni.</figcaption></figure>
+</div>
+
+<h3>Salvataggi e profili</h3>
+<div class="side">
+<div>
+<p>Tre profili, ognuno con la sua mini-Deva truccata come l'ha lasciata quel bambino, il nome, i tesori, le stelle e
+l'ultima partita.</p>
+<ul>
+<li><kbd>A</kbd>: gioca con il profilo evidenziato.</li>
+<li><kbd>A</kbd> tenuto 2 secondi su una carta vuota: profilo nuovo; il nome si scrive con una tastiera di lettere
+grandi (ogni lettera dice il suo nome, al massimo 10).</li>
+<li><kbd>X</kbd> tenuto 2 secondi: cambia il nome.</li>
+<li><kbd>Y</kbd>, poi <kbd>X</kbd> e <kbd>Y</kbd> tenuti insieme 2 secondi: cancella. Il profilo in uso invece riparte da
+zero con lo stesso nome. L'ultimo profilo cancellato resta come <code>.bak</code> (capitolo 9).</li>
+</ul>
+</div>
+<figure><img src="img/salvataggi.png" alt="La pagina dei salvataggi con un profilo e due carte vuote"><figcaption>I
+salvataggi.</figcaption></figure>
+</div>
+
+<h3>Pausa ed Esci</h3>
+<div class="side">
+<div>
+<p><strong>La pausa</strong> si apre tenendo premuto <kbd>START</kbd> o <kbd>SELECT</kbd> da solo per un attimo (un
+segno di pausa si riempie di stelline in alto a destra): un tocco, o tutti i tasti stretti insieme, non la aprono.
+Il gioco resta fermo sotto il pannello: <em>Continua</em>, <em>Torna ai giochi</em> (o alla mappa), <em>Menu
+principale</em>. <kbd>B</kbd> o <kbd>START</kbd> continuano; la voce riprende un attimo prima della parola in cui si era
+fermata.</p>
+<p><strong>Esci</strong> chiede «Vuoi andare a fare la nanna?»: la luna chiude il gioco con la buonanotte, l'altra carta
+torna a giocare.</p>
+</div>
+<figure><img src="img/pausa.png" alt="Il pannello della pausa con tre carte: continua, mappa, menu"><figcaption>La
+pausa.</figcaption></figure>
+</div>
+</section>
+
+<section id="cfg">
+<h2>8. Le impostazioni</h2>
+<p>Il file <code>deva_adventures.cfg</code> sta nella cartella dei dati (<code>&lt;sistema&gt;/deva_adventures/</code>): si apre
+con qualsiasi editor di testo, le righe con <code>#</code> sono commenti, le modifiche valgono al prossimo avvio del gioco.
+Le Opzioni cambiate dentro il gioco finiscono invece in <code>deva_adventures_opzioni.cfg</code>, nella cartella dei
+salvataggi, e valgono <strong>sopra</strong> questo file: se una modifica al <code>.cfg</code> non ha effetto, è perché nel
+gioco quell'opzione è stata cambiata (<em>Ripristina le opzioni</em> le toglie tutte).</p>
+<table>
+<thead><tr><th style="width:24%">Riga</th><th style="width:11%">Di serie</th><th>Che cosa fa</th></tr></thead>
+<tr><td><code>sessione_minuti</code></td><td>15</td><td>minuti di gioco per sessione (0 = senza limite; pausa, opzioni e salvataggi non contano)</td></tr>
+<tr><td><code>livello_iniziale</code></td><td>2</td><td>il livello di Conta alla prima partita di un profilo (1: da 1 a 5 oggetti … 5: da 12 a 20)</td></tr>
+<tr><td><code>domande_per_round</code></td><td>5</td><td>domande prima del premio (1–10)</td></tr>
+<tr><td><code>volume_voce</code>, <code>volume_musica</code>, <code>volume_effetti</code></td><td>100, 45, 70</td><td>i volumi, da 0 a 100</td></tr>
+<tr><td><code>vibrazione</code></td><td>1</td><td>vibrazione a ogni risposta giusta (se la console ce l'ha)</td></tr>
+<tr><td><code>animazioni</code></td><td>1</td><td>transizioni e sfondi animati; 0 = sfondi fermi e cambi di scena immediati</td></tr>
+<tr><td><code>nome</code></td><td>DEVA</td><td>il nome del primo profilo (lettere A–Z, al massimo 10)</td></tr>
+<tr><td><code>sblocco_giochi</code></td><td>1</td><td>1 = giochi nuovi uno alla volta, 0 = tutti aperti da subito</td></tr>
+<tr><td><code>round_per_sblocco</code></td><td>2</td><td>round completati per aprire il gioco successivo (1–20)</td></tr>
+<tr><td><code>storia</code></td><td>1</td><td>1 = le avventure con la mappa, 0 = solo il menu dei giochi</td></tr>
+<tr><td><code>round_per_sfida</code></td><td>2</td><td>round che caricano la bacchetta prima di una sfida (1–5)</td></tr>
+</table>
+<div class="note"><p><strong>Ricominciare le avventure da capo</strong> senza perdere giochi e premi: nel salvataggio
+<code>deva_adventures.sav</code> cancellate le righe <code>avventura</code>, <code>capitolo</code>, <code>carica</code>,
+<code>racconti</code> ed <code>epilogo</code>, ma lasciate l'ultima riga, <code># fine</code>: senza, il gioco crede il file rovinato da uno
+spegnimento e riprende la copia precedente. Per ricominciare tutto: Salvataggi → <kbd>Y</kbd> sul profilo.</p></div>
+</section>
+
+<section id="file">
+<h2>9. I file del gioco e gli spegnimenti</h2>
+<p>Il gioco scrive nella cartella dei salvataggi di RetroArch (<em>Impostazioni → Cartella → Salva File</em>). Se in
+RetroArch è attivo l'ordinamento dei salvataggi in cartelle per nome del core (<em>Sort Saves into Folders by Core
+Name</em>), sono nella sottocartella <code>Deva's Awesome Adventures</code>; se RetroArch non ha una cartella dei
+salvataggi, nella cartella di sistema. <code>INSTALLATO.txt</code>, nella cartella dei dati, dice dove li ha trovati lo
+script.</p>
+<table>
+<thead><tr><th style="width:37%">File</th><th>Che cos'è</th></tr></thead>
+<tr><td><code>deva_adventures.sav</code>, <code>deva_adventures_2.sav</code>, <code>_3.sav</code></td><td>i tre profili, in testo
+leggibile: nome, livelli, giochi aperti, trucchi, punto delle avventure, statistiche; l'ultima riga è <code># fine</code></td></tr>
+<tr><td><code>….prev</code>, <code>….rotto</code></td><td>la versione precedente di un file; un file trovato rovinato all'avvio</td></tr>
+<tr><td><code>….bak</code></td><td>l'ultimo profilo cancellato, con il suo log e il suo diario: rinominato senza <code>.bak</code> torna</td></tr>
+<tr><td><code>deva_adventures_opzioni.cfg</code></td><td>le opzioni cambiate nel gioco e il profilo in uso</td></tr>
+<tr><td><code>deva_adventures_log.csv</code> (<code>_2_log</code>, <code>_3_log</code>)</td><td>una riga per risposta: data, sessione, gioco, livello, domanda, risposta giusta, scelta,
+esito, tentativo (3 = con l'aiuto guidato), secondi per rispondere, riascolti, secondo della sessione</td></tr>
+<tr><td><code>deva_adventures_diario.csv</code> (<code>_2_diario</code>, …)</td><td>una riga per evento: inizio, ogni scena, pause, promemoria, cambio di profilo, chiusura</td></tr>
+</table>
+<p>I <code>.csv</code> hanno il punto e virgola come separatore e si aprono con un foglio di calcolo.</p>
+<div class="note"><p><strong>Se la console si spegne mentre salva.</strong> Ogni salvataggio è scritto in un file a parte,
+chiuso dalla riga <code># fine</code> e forzato sulla scheda; solo allora prende il nome giusto, e la versione di prima
+resta come <code>.prev</code>. All'avvio, un file mancante, a metà o con un buco di zeri lascia il posto alla copia intera
+più recente: si perde al massimo l'ultimo round, mai il profilo. Log e diario si allungano una riga alla volta: uno
+spegnimento può troncare al massimo l'ultima riga, che il resoconto salta.</p></div>
+</section>
+
+<section id="prova">
+<h2>10. La prima prova</h2>
+<p>Il pacchetto contiene <code>docs/scheda_osservazione.pdf</code>: una pagina di guida per chi guarda (prima, durante,
+dopo) e una scheda da stampare per ogni sessione. Lo scopo non è vedere se è brava, ma dove il gioco non si fa capire.</p>
+<ol>
+<li>Stampate la guida una volta e la scheda una volta per sessione. Per la prima volta bastano i 15 minuti di serie.</li>
+<li>Lei gioca, voi guardate e annotate senza aiutare: dopo due errori il gioco mostra da sé la strada.</li>
+<li>Copiate sul computer, dalla cartella dei salvataggi, i file <code>deva_adventures*.csv</code> e
+<code>deva_adventures*.sav</code>, poi dalla cartella del pacchetto (serve Python 3, nient'altro):</li>
+</ol>
+<pre>python3 tools/report/report.py /percorso/dei/file/copiati -o report.html</pre>
+<p><code>report.html</code> si apre con qualsiasi browser, anche sul telefono: per ogni gioco le risposte giuste al primo
+colpo, l'aiuto guidato, il tempo per rispondere, il livello da dove a dove e i riascolti; sessione per sessione la durata,
+dove è andato il tempo, le pause e come è finita (buonanotte, chiusa, o interrotta: console spenta?); le domande sbagliate
+più spesso. Sono indizi da leggere accanto alla scheda. Con <code>--text</code> stampa anche un riassunto per giochi
+sul terminale.</p>
+<p class="small">Se la console non ha l'orologio con la batteria, le date possono essere sbagliate; i tempi no.</p>
+</section>
+
+<section id="problemi">
+<h2>11. Problemi e soluzioni</h2>
+<table>
+<thead><tr><th style="width:33%">Che cosa succede</th><th>Che cosa fare</th></tr></thead>
+<tr><td>Il gioco non compare fra i <em>Contentless Cores</em></td><td>Riavviate RetroArch. Controllate che
+<code>deva_adventures_libretro.info</code> sia nella cartella delle info. Se manca proprio la voce <em>Contentless
+Cores</em>: <em>Impostazioni → Interfaccia Utente → Visibilità delle voci del Menu → Mostra 'Nuclei senza Contenuti'</em>.
+In ogni caso funziona <em>Load Core → Start Core</em>.</td></tr>
+<tr><td>RetroArch non riesce ad avviarlo</td><td>Quasi sempre mancano i dati: la cartella <code>deva_adventures</code> deve
+stare dentro la cartella di sistema (nel log di RetroArch: <code>graphics missing: copy the 'deva_adventures' folder
+into …</code>). Altrimenti il core non è per quella macchina (aarch64 o x86_64) o il sistema non ha glibc: compilatelo dai
+sorgenti.</td></tr>
+<tr><td>Niente voce né suoni</td><td>I volumi del gioco (Opzioni) e quelli di RetroArch. Nel log: <code>no audio found</code>
+vuol dire che nella cartella dei dati mancano <code>voce</code>, <code>sfx</code> o <code>musica</code>.</td></tr>
+<tr><td><kbd>L</kbd>+<kbd>R</kbd> o <kbd>START</kbd> tenuto aprono il menu di RetroArch</td><td>È una scorciatoia di
+RetroArch: cambiatela (capitolo 2).</td></tr>
+<tr><td>Una combinazione di tasti chiude il gioco</td><td>Anche questa è una scorciatoia di RetroArch (<em>Esci</em>, o il
+tasto <em>Attiva Scorciatoia</em> del sistema): capitolo 2.</td></tr>
+<tr><td>Va a scatti</td><td><code>animazioni = 0</code>; in RetroArch togliete filtri e shader pesanti.</td></tr>
+<tr><td>Una modifica al <code>.cfg</code> non fa niente</td><td>Riavviate il gioco; se ancora niente, l'opzione è stata cambiata
+dentro il gioco: Opzioni, oppure <em>Ripristina le opzioni</em>.</td></tr>
+<tr><td>Il profilo è tornato indietro di un round</td><td>È il ripristino dopo uno spegnimento proprio mentre salvava; il
+file rovinato resta come <code>.rotto</code>.</td></tr>
+<tr><td>Non trovo i salvataggi</td><td><code>INSTALLATO.txt</code> nella cartella dei dati; poi il capitolo 9.</td></tr>
+<tr><td>Le date del resoconto sono sbagliate</td><td>La console non ha l'orologio con la batteria: i tempi sono giusti.</td></tr>
+</table>
+<p class="small">Il log di RetroArch: <em>Impostazioni → Registro log</em> (<em>Logging</em>), con <em>Log su file</em>.
+Le righe del gioco contengono <code>[deva]</code>.</p>
+</section>
+
+<section id="aggiornare">
+<h2>12. Aggiornare, tornare indietro, togliere</h2>
+<ul>
+<li><strong>Aggiornare</strong>: <code>sh install.sh</code> dal pacchetto nuovo. Salvataggi e impostazioni restano; la
+versione di prima va nella copia di sicurezza.</li>
+<li><strong>Tornare alla versione di prima</strong>:
+<pre># le copie di sicurezza fatte finora
+sh install.sh --list-backups
+# rimette core, scheda .info e dati di quella copia
+sh install.sh --restore /percorso/della/copia
+# ... e anche i salvataggi di allora
+sh install.sh --restore /percorso/della/copia --with-saves</pre></li>
+<li><strong>Togliere il gioco</strong>: <code>sh uninstall.sh</code> toglie core, <code>.info</code> e dati; salvataggi e
+copie di sicurezza restano. Per togliere anche quelli: i file <code>deva_adventures*</code> della cartella dei salvataggi
+e la cartella <code>deva_adventures_backup</code> in quella di sistema.</li>
+</ul>
+</section>
+
+<section id="licenze">
+<h2>13. Licenze e crediti</h2>
+<ul>
+<li>Il codice del gioco è sotto licenza MIT (<code>LICENSE</code>). Usa <code>libretro.h</code> (MIT), <code>stb_image</code>
+e <code>stb_vorbis</code> (pubblico dominio o MIT): dettagli in <code>THIRD_PARTY.md</code>.</li>
+<li>Disegni, musiche, effetti, storie e personaggi sono originali, generati dagli script del progetto: nessun
+personaggio, marchio o brano di altri.</li>
+<li>La voce è sintetizzata offline con il modello Piper <em>it_IT paola</em>. Per l'uso in famiglia non ci sono problemi;
+il modello però deriva da uno addestrato su dati con licenza di sola ricerca, quindi prima di <strong>pubblicare</strong>
+il gioco conviene sostituire la voce, registrandola o rigenerandola con un modello libero (<code>THIRD_PARTY.md</code>).</li>
+<li>Le novità di ogni versione sono in <code>CHANGELOG.md</code>; come compilarlo, provarlo e modificarlo, in
+<code>docs/SVILUPPO.md</code> dei sorgenti.</li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>

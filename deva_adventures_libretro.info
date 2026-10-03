@@ -1,0 +1,30 @@
+# Software Information
+display_name = "Deva's Awesome Adventures"
+authors = "Deva's Awesome Adventures authors"
+supported_extensions = ""
+corename = "Deva's Awesome Adventures"
+license = "MIT"
+permissions = ""
+display_version = "1.0.0"
+categories = "Game"
+
+# Hardware Information
+manufacturer = "N/A"
+systemname = "Deva's Awesome Adventures"
+systemid = "deva_adventures"
+
+# Libretro Features
+supports_no_game = "true"
+single_purpose = "true"
+savestate = "false"
+cheats = "false"
+input_descriptors = "true"
+memory_descriptors = "false"
+libretro_saves = "false"
+core_options = "false"
+hw_render = "false"
+needs_fullpath = "false"
+disk_control = "false"
+is_experimental = "false"
+
+description = "Gioco didattico per bambini di 5 anni: quattro storie di mostri, una strega, uno stregone, un orco e un piccolo re da far tornare buoni con un gesto gentile (ballo, lanterna, ninna nanna, gioco a turno) e una grande festa finale, diciotto giochi di numeri, monete, misure, parole, lettere, prime lettere, ombre, sequenze, ritmo, memoria, posizioni, emozioni, ballo, ginnastica, trucchi, forme e colori, frecce e sentieri (primo coding), camerino, album (con le storie da rivedere), tre salvataggi, opzioni e pausa. Personaggi vivi (respirano, sbattono le palpebre, parlano a tempo di voce, saltano con squash & stretch) e sfondi animati. A prova di bambino: opzioni, salvataggi e uscita si aprono solo tenendo premuti L e R, la pausa tenendo premuto START. Serve la cartella 'deva_adventures' nella directory system (oppure /usr/share/deva_adventures)."

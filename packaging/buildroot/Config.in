@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_DEVA_ADVENTURES_PATH/package/deva-adventures/Config.in"

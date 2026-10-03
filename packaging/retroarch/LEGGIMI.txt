@@ -1,0 +1,51 @@
+Deva's Awesome Adventures @VERSION@ - pacchetto per RetroArch (@ARCH@)
+======================================================================
+
+Un gioco didattico per bambini di 5 anni: diciotto giochi con la voce italiana, quattro storie,
+camerino, album, tre salvataggi. È un "core senza contenuto" di RetroArch.
+
+Che cosa c'è qui
+----------------
+  cores/deva_adventures_libretro.so    il gioco (core libretro, @ARCH@, Linux glibc >= @GLIBC@)
+  info/deva_adventures_libretro.info   la sua scheda per RetroArch
+  system/deva_adventures/              grafica, voci, musiche e le impostazioni (deva_adventures.cfg)
+  install.sh, uninstall.sh             installazione con copia di sicurezza, e disinstallazione
+  docs/manuale.pdf                     il manuale per i genitori
+  docs/scheda_osservazione.pdf         la guida e la scheda per la prima prova
+  tools/report/report.py               il resoconto delle partite (Python 3, sul computer)
+  SHA256SUMS                           le impronte di tutti i file, per verificarli
+
+Installazione con lo script (consigliata)
+-----------------------------------------
+Sulla console, da un terminale (SSH) nella cartella del pacchetto:
+
+  sh install.sh
+
+Lo script trova retroarch.cfg, mostra le cartelle che userà e chiede conferma. Prima di scrivere
+verifica il pacchetto, mette da parte la versione già installata e i salvataggi in
+<system>/deva_adventures_backup/<data-ora>/, e alla fine controlla i file copiati.
+Opzioni utili: --dry-run (mostra soltanto), --yes (senza domande), --cfg FILE, oppure le cartelle a
+mano: --cores DIR --info DIR --system DIR --saves DIR. Tutte: sh install.sh --help
+
+  Tornare alla versione di prima:  sh install.sh --list-backups
+                                   sh install.sh --restore <cartella della copia>
+  Disinstallare (i salvataggi restano):  sh uninstall.sh
+
+Installazione a mano
+--------------------
+1. cores/deva_adventures_libretro.so  ->  la cartella dei core di RetroArch
+2. info/deva_adventures_libretro.info ->  la cartella info di RetroArch (spesso la stessa dei core)
+3. system/deva_adventures/            ->  <cartella system di RetroArch>/deva_adventures/
+Le cartelle sono in RetroArch: Impostazioni -> Cartella (Settings -> Directory).
+Se aggiorni a mano, conserva il tuo deva_adventures.cfg se lo avevi modificato.
+
+Avvio
+-----
+Riavvia RetroArch, poi "Contentless Cores" ("Nuclei senza contenuto" con i menu in italiano)
+-> Deva's Awesome Adventures. Oppure: Load Core (Carica core) -> Deva's Awesome Adventures ->
+Start Core (Avvia core).
+Per i grandi: Opzioni, Salvataggi ed Esci si aprono tenendo premuti L e R per 2 secondi; la pausa
+tenendo premuto START.
+
+Tutto il resto (giochi, storie, impostazioni, file scritti, primo playtest, problemi e soluzioni) è
+nel manuale: docs/manuale.pdf.

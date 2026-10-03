@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scheda di osservazione</title>
+<style>
+:root{--ink:#2b2333;--soft:#6f6577;--line:#d9ccb9;--accent:#c2417a;--bg:#ffffff;--tint:#fbf3e8}
+@media screen and (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f1eaf5;--soft:#b5a9bd;--line:#4a4153;
+--accent:#ef7fb0;--bg:#1d1922;--tint:#28232f}}
+@media screen{:root[data-theme="dark"]{--ink:#f1eaf5;--soft:#b5a9bd;--line:#4a4153;--accent:#ef7fb0;--bg:#1d1922;--tint:#28232f}}
+@page{size:A4;margin:12mm 13mm}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:10.5pt/1.38 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.page{max-width:184mm;margin:0 auto;padding:16px}
+.page + .page{break-before:page;margin-top:24px}
+h1{font-size:17pt;margin:0 0 2px}h2{font-size:11.5pt;margin:9px 0 3px;color:var(--accent)}
+.sub{color:var(--soft);margin:0 0 8px}
+ul,ol{margin:2px 0 4px;padding-left:18px}li{margin:1px 0}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9.5pt;background:var(--tint);padding:0 3px;border-radius:3px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px}
+.box{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:6px 0}
+.fill{display:flex;flex-wrap:wrap;gap:3px 14px;margin:3px 0;align-items:baseline}
+.fill span{white-space:nowrap}
+.fill .q{min-width:33mm}
+.row{display:flex;gap:14px;margin:5px 0}
+.f{display:flex;flex:1;align-items:flex-end;gap:6px;white-space:nowrap}
+.f .blank{flex:1;min-width:0}
+.blank{display:inline-block;border-bottom:1px solid var(--line);min-width:26mm;height:1.1em;vertical-align:bottom}
+.c{display:inline-block;width:9pt;height:9pt;border:1px solid var(--soft);border-radius:2px;margin:0 3px 0 0;vertical-align:-1px}
+.lines div{border-bottom:1px solid var(--line);height:6mm}
+table{width:100%;border-collapse:collapse;font-size:9.5pt}
+th,td{border:1px solid var(--line);padding:3px 5px;text-align:left;vertical-align:top}
+th{background:var(--tint);font-weight:600}
+td{height:7.2mm}
+.q{font-weight:600}
+.small{font-size:9pt;color:var(--soft)}
+@media (max-width:620px){.cols{grid-template-columns:1fr}.row{flex-wrap:wrap}.f{min-width:40%}.fill .q{min-width:0}
+table{font-size:8.5pt}}
+@media print{body{background:#fff;color:#000}.page{padding:0;max-width:none}.page + .page{margin-top:0}}
+</style>
+</head>
+<body>
+
+<section class="page">
+<h1>La prima prova di Deva's Awesome Adventures</h1>
+<p class="sub">Guida per i grandi che guardano. Una pagina da leggere prima; la scheda dietro va stampata una volta per
+sessione. Lo scopo non è vedere se è brava: è vedere dove il gioco non si fa capire.</p>
+
+<h2>Prima</h2>
+<ul>
+<li>Console carica, volume provato da voi sulla <em>prova dei tasti</em> (la voce deve essere chiara anche per chi
+osserva: niente cuffie la prima volta).</li>
+<li>La prima volta bastano 15 minuti: è il valore di <code>sessione_minuti</code> nel <code>.cfg</code> come viene
+fornito; il gioco avvisa «Ancora un gioco, e poi la nanna!» e saluta da solo.</li>
+<li>Un momento tranquillo, non appena prima di cena o della nanna; la televisione spenta.</li>
+<li>Ditele soltanto: «È un gioco per te. La croce sposta, il bottone rosso sceglie.» Tutto il resto lo spiega il
+gioco, ed è proprio quello da controllare.</li>
+</ul>
+
+<h2>Durante</h2>
+<ul>
+<li>Sedetevi accanto, non davanti, e guardate lo schermo e lei, non le risposte.</li>
+<li>Non aiutate e non correggete: dopo due errori il gioco mostra da sé la strada. Aiutate solo se lo chiede o se è
+ferma da più di un minuto, e segnatelo (è un'informazione preziosa).</li>
+<li>Segnate i momenti, non i voti: quando ride, quando guarda altrove, quando dice «non ci riesco», quando chiede di
+rifare qualcosa, quando preme a caso.</li>
+<li>Se vuole smettere si smette, anche dopo due minuti: segnate quando e perché. Si può spegnere quando si vuole:
+dalla 0.15 il salvataggio regge anche lo spegnimento a metà.</li>
+<li>Le porte «per i grandi» (Salvataggi, Opzioni, Esci) si aprono tenendo premuti L e R per due secondi: se ci
+finisce lei, segnatelo.</li>
+</ul>
+
+<h2>Dopo (cinque minuti, con parole sue)</h2>
+<ol>
+<li>Cosa ti è piaciuto di più? E cosa di meno?</li>
+<li>C'era qualcosa di difficile? Qualcosa che non capivi?</li>
+<li>Chi è il tuo personaggio preferito? Qualcuno ti ha fatto un po' paura?</li>
+<li>Domani vuoi giocarci ancora? A cosa?</li>
+</ol>
+
+<h2>Il resoconto del gioco</h2>
+<div class="box">
+<p style="margin:0 0 4px">Il gioco scrive da solo, nella cartella dei salvataggi di RetroArch (<code>saves</code>):
+<code>deva_adventures_log.csv</code> (una riga per risposta: tentativi, secondi per rispondere, quante volte ha chiesto
+di riascoltare) e <code>deva_adventures_diario.csv</code> (scene, pause, promemoria, come è finita). Copiate quei file
+e il <code>.sav</code> sul computer, poi:</p>
+<p style="margin:0"><code>python3 tools/report/report.py &lt;cartella copiata&gt; -o report.html</code></p>
+<p class="small" style="margin:4px 0 0">Si apre con qualsiasi browser, anche sul telefono. I numeri sono indizi da
+mettere accanto alla scheda: il gioco cambia livello da solo (tre giuste di fila: sale; un aiuto guidato: scende), conta
+dove si ferma. Se la console non ha la batteria dell'orologio, le date possono essere sbagliate; i tempi no.</p>
+</div>
+
+<h2>Cosa guardare in particolare, la prima volta</h2>
+<div class="cols">
+<ul>
+<li>La <strong>prova dei tasti</strong>: la fa da sola?</li>
+<li>Il <strong>rosso tenuto giù</strong> o schiacciato di continuo: succede? Il gioco la riporta a ascoltare?</li>
+<li>La <strong>voce</strong>: quali parole non capisce (numeri, nomi dei personaggi, istruzioni)?</li>
+</ul>
+<ul>
+<li>La <strong>storia</strong>: la segue, la salta, la aspetta? Strega, orco e mostri: divertono o spaventano?</li>
+<li>Il <strong>premio e il camerino</strong>: li capisce? Ci resta troppo?</li>
+<li>La <strong>buonanotte</strong>: la accetta o la vive come un castigo?</li>
+</ul>
+</div>
+</section>
+
+<section class="page">
+<h1>Scheda di una sessione</h1>
+<div class="row">
+<span class="f">Data <span class="blank"></span></span>
+<span class="f">Ora d'inizio <span class="blank"></span></span>
+<span class="f">Sessione n. <span class="blank"></span></span>
+<span class="f">Durata vera <span class="blank"></span></span>
+</div>
+<div class="row">
+<span class="f">Chi guardava <span class="blank"></span></span>
+<span class="f">Dove <span class="blank"></span></span>
+</div>
+<div class="fill">
+<span class="q">Prima di iniziare era</span>
+<span><i class="c"></i>riposata</span><span><i class="c"></i>stanca</span><span><i class="c"></i>agitata</span>
+<span><i class="c"></i>con voglia</span><span><i class="c"></i>poco convinta</span>
+</div>
+
+<h2>Primi minuti</h2>
+<div class="fill">
+<span class="q">Prova dei tasti</span><span><i class="c"></i>da sola</span><span><i class="c"></i>con aiuto</span>
+<span><i class="c"></i>non capita</span>
+</div>
+<div class="fill">
+<span class="q">Console in mano</span><span><i class="c"></i>comoda</span><span><i class="c"></i>scomoda</span>
+<span class="q" style="min-width:0">&nbsp; Volume</span><span><i class="c"></i>giusto</span><span><i class="c"></i>basso</span>
+<span><i class="c"></i>alto</span>
+</div>
+<div class="fill">
+<span class="q">Schermo</span><span><i class="c"></i>vede bene</span><span><i class="c"></i>si avvicina / strizza gli occhi</span>
+</div>
+
+<h2>Gioco per gioco</h2>
+<table>
+<tr><th style="width:23%">Gioco</th><th style="width:19%">Ha capito cosa fare?<br><span class="small">sì · con aiuto · no</span></th>
+<th style="width:18%">Si diverte?<br><span class="small">tanto · così così · no</span></th>
+<th style="width:11%">Chiede di rifarlo?</th><th>Note (dove si blocca, cosa la fa ridere)</th></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Voce e storia</h2>
+<div class="fill">
+<span class="q">Capisce le parole</span><span><i class="c"></i>sempre</span><span><i class="c"></i>quasi sempre</span>
+<span><i class="c"></i>spesso no</span>
+</div>
+<div class="row"><span class="f">Parole non capite <span class="blank"></span></span></div>
+<div class="fill">
+<span class="q">La storia</span><span><i class="c"></i>la segue</span><span><i class="c"></i>a tratti</span>
+<span><i class="c"></i>la salta / si annoia</span>
+</div>
+<div class="fill">
+<span class="q">Paura</span><span><i class="c"></i>no</span><span><i class="c"></i>un po'</span><span><i class="c"></i>sì</span>
+<span class="f" style="flex:1">di chi, quando <span class="blank"></span></span>
+</div>
+
+<h2>Momenti difficili <span class="small">(pianto, rabbia, «non ci riesco», abbandono)</span></h2>
+<table>
+<tr><th style="width:13%">Quando</th><th style="width:22%">Gioco o scena</th><th>Cosa è successo, cosa ha fatto il gioco, cosa avete fatto voi</th></tr>
+<tr><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td></tr>
+</table>
+
+<h2>Tasti</h2>
+<div class="fill">
+<span><i class="c"></i>preme a caso spesso</span><span><i class="c"></i>tiene giù il rosso</span>
+<span><i class="c"></i>ha aperto una pausa</span><span><i class="c"></i>è finita nelle pagine dei grandi</span>
+<span><i class="c"></i>usa il giallo per riascoltare</span>
+</div>
+
+<h2>Come è finita</h2>
+<div class="fill">
+<span><i class="c"></i>buonanotte del gioco</span><span><i class="c"></i>stanca</span><span><i class="c"></i>annoiata</span>
+<span><i class="c"></i>ha spento lei</span><span><i class="c"></i>l'abbiamo fermata noi</span>
+</div>
+<div class="row"><span class="f">Cosa ha detto alla fine <span class="blank"></span></span></div>
+
+<h2>Le sue risposte, dopo</h2>
+<div class="lines"><div></div><div></div></div>
+
+<h2>Cosa cambierei</h2>
+<div class="lines"><div></div><div></div></div>
+</section>
+
+</body>
+</html>
