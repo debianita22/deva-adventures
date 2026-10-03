@@ -1,4 +1,4 @@
-build/
-release/
+/build/
+/release/
 __pycache__/
 *.pyc
