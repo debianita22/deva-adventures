@@ -93,7 +93,8 @@ make mac          # su un Mac: il programma per Apple Silicon e Intel (poi tools
 ```
 
 La CI di GitHub (`.github/workflows/ci.yml`) fa tutto questo a ogni modifica, prova i pacchetti su
-Windows e su un Mac veri e pubblica la release quando arriva un tag `vX.Y.Z`. Requisiti, test su ARM
+Windows e su un Mac veri e pubblica la release quando arriva un tag `vX.Y.Z` (oppure a mano:
+*Actions → CI → Run workflow* su `main` con *release* spuntato). Requisiti, test su ARM
 con qemu, sanitizer e tutto il resto: [`docs/SVILUPPO.md`](docs/SVILUPPO.md).
 
 ## Licenza

@@ -2,8 +2,9 @@
 #
 # Every push and pull request: the core, the 16 playthroughs and the saves, every package, the
 # RetroArch installer, the PC program on a virtual screen (Linux); the Windows packages tried on
-# Windows; the macOS app built and tried on a Mac. A tag vX.Y.Z also publishes the GitHub release
-# with every package and SHA256SUMS. The Linux and Windows packages are reproducible: the same commit
+# Windows; the macOS app built and tried on a Mac; the release prepared (SHA256SUMS, notes). It is
+# published, with every package, when a tag vX.Y.Z is pushed, or by hand: Actions > CI > Run
+# workflow on main with "release" ticked (the tag v<GAME_VERSION> is made on the commit tested). The Linux and Windows packages are reproducible: the same commit
 # gives the same bytes here and on a developer's machine (Zig, NSIS and SDL2 pinned below, by the
 # runner image and in the Makefile); the macOS disk image is not (hdiutil writes dates in it).
 name: CI
@@ -14,13 +15,18 @@ on:
     tags: ['v*']
   pull_request:
   workflow_dispatch:
+    inputs:
+      release:
+        description: 'Publish the release v<GAME_VERSION> after the tests (from main only)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+  group: ci-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
   ZIGLANG: ziglang==0.16.0 # the compiler of the release builds (pip)
@@ -97,8 +103,7 @@ jobs:
           if-no-files-found: error
 
   release:
-    name: GitHub release (tags vX.Y.Z)
-    if: startsWith(github.ref, 'refs/tags/v')
+    name: GitHub release (prepared every time, published on vX.Y.Z tags or by hand)
     needs: [linux, windows, macos]
     runs-on: ubuntu-24.04
     permissions:
@@ -116,18 +121,38 @@ jobs:
       - name: Checksums and notes
         run: |
           set -eu
-          v=${GITHUB_REF_NAME#v}
-          grep -q "^#define GAME_VERSION \"$v\"" src/common.h || { echo "::error::tag $GITHUB_REF_NAME is not GAME_VERSION"; exit 1; }
+          v=$(sed -n 's/^#define GAME_VERSION "\(.*\)"/\1/p' src/common.h)
+          if [ "$GITHUB_REF_TYPE" = tag ] && [ "$GITHUB_REF_NAME" != "v$v" ]; then
+            echo "::error::the tag $GITHUB_REF_NAME is not v$v (GAME_VERSION in src/common.h)"
+            exit 1
+          fi
+          echo "VERSION=$v" >> "$GITHUB_ENV"
           cd release
           rm -f SHA256SUMS
           sha256sum deva-adventures-* > SHA256SUMS
           cat SHA256SUMS
+          [ "$(wc -l < SHA256SUMS)" -eq 7 ] || { echo "::error::7 packages expected"; exit 1; }
           cd ..
           python3 tools/release/notes.py "$v" > notes.md
           cat notes.md
       - name: Publish
+        if: >-
+          startsWith(github.ref, 'refs/tags/v') ||
+          (github.event_name == 'workflow_dispatch' && inputs.release && github.ref == 'refs/heads/main')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" release/* --verify-tag \
-            --title "Deva's Awesome Adventures ${GITHUB_REF_NAME#v}" --notes-file notes.md
+          set -eu
+          tag=v$VERSION
+          title="Deva's Awesome Adventures $VERSION"
+          if [ "$GITHUB_REF_TYPE" = tag ]; then
+            gh release create "$tag" release/* --verify-tag --title "$title" --notes-file notes.md
+          else
+            # by hand from main: the tag is made now, on the commit just tested, never over an old one
+            if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null; then
+              echo "::error::$tag exists already: raise GAME_VERSION (and CHANGELOG.md) first"
+              exit 1
+            fi
+            gh release create "$tag" release/* --target "$GITHUB_SHA" --title "$title" --notes-file notes.md
+          fi
+          echo "::notice title=Release::$tag published"

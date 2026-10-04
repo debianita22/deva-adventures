@@ -138,7 +138,7 @@ tail -n 1 /tmp/prova/deva_adventures.sav   # "# fine"
 | `linux` (Ubuntu 24.04) | shellcheck e flake8, `make harness`, `make test` (senza video), `make dist`, `make test-dist`, `make test-linux`; i pacchetti come artifact |
 | `windows` (Windows Server) | `tools/release/try_windows.ps1`: il programma dello zip (`--version`, `--check`, una partita di 600 fotogrammi con SDL finta, salvataggio intero e in LF), poi l'installazione silenziosa, il programma installato (anche lui una partita), la voce in «App installate» e la disinstallazione |
 | `macos` (macOS arm64) | `make mac`, `tools/release/mkapp.sh`, poi `tools/release/test_app.sh`: l'app presa dal disco, firma, `--check`, una partita di 600 fotogrammi; anche in x86_64 con Rosetta, quando c'è |
-| `release` (solo i tag `v*`) | controlla che il tag sia `GAME_VERSION`, scrive `SHA256SUMS` di tutti i pacchetti e pubblica la release con le note di `CHANGELOG.md` (`tools/release/notes.py`) |
+| `release` | ogni volta prepara la release (`SHA256SUMS` dei sette pacchetti, le note della voce di `CHANGELOG.md` con `tools/release/notes.py`); la pubblica con un tag `vX.Y.Z` (che deve essere `GAME_VERSION`) o con *Run workflow* su `main` e *release* spuntato |
 
 Ogni passo gira dentro `tools/release/ci_step.sh` (o `try_windows.ps1`): se fallisce, la fine del suo
 output diventa anche un'annotazione di errore, che l'API dei *checks* di GitHub mostra senza il log
@@ -386,10 +386,13 @@ esempio la seconda: `avventura = 2`, `capitolo = 0`, `carica = 0`, `racconti = 2
 8. macOS, su un Mac: `make mac`, poi `tools/release/mkapp.sh` (l'app, controllata e firmata ad hoc,
    e `release/deva-adventures-<v>-macos.dmg`). Il disco non è riproducibile (`hdiutil` vi scrive date
    e identificatori): quello della release è quello della CI.
-9. Il commit su `main`, poi il tag: `git tag -a v1.2.0 -m "Deva's Awesome Adventures 1.2.0"` e
-   `git push origin v1.2.0`. La CI rifà tutto sui tre sistemi e, se ogni job passa, pubblica la release
-   con i pacchetti, `SHA256SUMS` e le note della voce di `CHANGELOG.md`. Le impronte dei pacchetti di
-   Linux e Windows della release devono essere quelle di `make dist` fatto in locale dallo stesso commit.
+9. Il commit su `main`, poi la release, in uno dei due modi: il tag
+   (`git tag -a v1.2.0 -m "Deva's Awesome Adventures 1.2.0"` e `git push origin v1.2.0`), oppure da
+   GitHub, *Actions → CI → Run workflow* su `main` con *release* spuntato (il tag `v<GAME_VERSION>` lo
+   fa la CI sul commit appena provato, mai sopra uno che c'è già). La CI rifà tutto sui tre sistemi e,
+   se ogni job passa, pubblica la release con i pacchetti, `SHA256SUMS` e le note della voce di
+   `CHANGELOG.md`. Le impronte dei pacchetti di Linux e Windows della release devono essere quelle di
+   `make dist` fatto in locale dallo stesso commit.
 
 ## devaOS (Buildroot) e Lakka
 

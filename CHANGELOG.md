@@ -60,8 +60,9 @@ versione nei Crediti).
 - GitHub Actions (`.github/workflows/ci.yml`), a ogni modifica: su Linux il controllo degli script,
   il core, le 16 partite, i salvataggi interrotti, i pacchetti, l'installatore per RetroArch e il
   programma su uno schermo virtuale; su Windows il programma dello zip e l'installazione provati
-  davvero; su un Mac l'app costruita e provata. Un tag `vX.Y.Z` pubblica la release con tutti i
-  pacchetti, `SHA256SUMS` e le note di questo file (`tools/release/notes.py`).
+  davvero; su un Mac l'app costruita e provata (anche come x86_64 con Rosetta). Un tag `vX.Y.Z`, o
+  *Run workflow* su `main` con *release* spuntato, pubblica la release con tutti i pacchetti,
+  `SHA256SUMS` e le note di questo file (`tools/release/notes.py`).
 
 ## [1.1.0] - 2026-10-04
 

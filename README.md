@@ -83,7 +83,8 @@ make mac          # on a Mac: one program for Apple Silicon and Intel (then tool
 ```
 
 GitHub Actions (`.github/workflows/ci.yml`) runs all of this on every push, tries the packages on real
-Windows and macOS runners, and publishes the release when a `vX.Y.Z` tag is pushed. Requirements, ARM
+Windows and macOS runners, and publishes the release when a `vX.Y.Z` tag is pushed (or by hand:
+*Actions → CI → Run workflow* on `main` with *release* ticked). Requirements, ARM
 tests under qemu, sanitizers and the rest: [`docs/SVILUPPO.md`](docs/SVILUPPO.md).
 
 Packaging for other systems is in [`packaging/`](packaging): the RetroArch, Linux, Windows and macOS
