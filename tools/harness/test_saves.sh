@@ -3,7 +3,7 @@
 # that did not finish writing or a grown-up with a text editor would leave it, starts the core for
 # two seconds (it loads the profile and saves it again) and checks what came back.
 #   CORE=... HARNESS=... tools/harness/test_saves.sh       (HARNESS may be "qemu-aarch64 -L ... harness")
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")/../.." || exit 1
 CORE=${CORE:-build/host/deva_adventures_libretro.so}
 HARNESS=${HARNESS:-./build/harness}
 OUT=${OUT:-build/test}/salvataggi

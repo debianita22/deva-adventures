@@ -3,6 +3,104 @@
 Le date sono quelle dei pacchetti. I numeri di prestazioni sono misurati con l'harness sul PC (x86_64),
 sempre confrontando due versioni sulla stessa macchina, una dopo l'altra.
 
+## [1.2.0] - 2026-10-04
+
+Il gioco anche su Windows e su macOS, senza RetroArch, e una CI che a ogni modifica lo costruisce e lo
+prova sui tre sistemi, poi pubblica la release. Il core non cambia: le 16 partite automatiche danno
+con la 1.0 la stessa impronta di ogni fotogramma e di ogni campione audio (cambia solo il numero di
+versione nei Crediti).
+
+### Windows
+
+- `deva-adventures.exe` per Windows 10 (1903 o successivo) e 11 a 64 bit: lo stesso programma del PC
+  Linux, con la sua icona, le informazioni di versione e un manifest (percorsi UTF-8, anche con le
+  lettere accentate nel nome dell'utente; pixel nitidi sugli schermi con il ridimensionamento). La
+  libreria SDL2 ufficiale (2.32.10, controllata con la sua impronta SHA-256) è nel pacchetto: non
+  serve installare altro.
+- `deva-adventures-1.2.0-windows-x64-setup.exe` installa per l'utente, senza permessi da
+  amministratore (`%LOCALAPPDATA%\Programs`, icone nel menu Start e sul desktop, voce in «App
+  installate»), aggiorna tenendo le impostazioni dei grandi (le nuove di serie accanto, in
+  `deva_adventures.cfg.default`) e si toglie lasciando i salvataggi. `-windows-x64.zip`: si scompatta
+  e si gioca, senza installare.
+- Salvataggi in `%APPDATA%\deva-adventures`, negli stessi byte della console e del PC Linux (si
+  copiano da un sistema all'altro); F11 o Alt+Invio per lo schermo intero, Alt+F4 chiude in ordine; i
+  messaggi per i grandi (SDL2 mancante, gioco già aperto) in una finestra di dialogo.
+
+### macOS
+
+- `Deva's Awesome Adventures.app` per macOS 10.13 o successivo: un programma solo per Apple Silicon e
+  Intel, con dentro `SDL2.framework` ufficiale (2.32.10, firmato dal progetto SDL). Il disco
+  `deva-adventures-1.2.0-macos.dmg` ha il collegamento ad Applicazioni, il `LEGGIMI.txt` e il manuale.
+- L'app è firmata «ad hoc» (senza un account Apple Developer): la prima volta macOS chiede di
+  consentirla (Impostazioni di Sistema → Privacy e sicurezza → Apri comunque), poi si apre con un
+  doppio clic. Salvataggi in `~/Library/Application Support/deva-adventures`; F11 o Cmd+F per lo
+  schermo intero.
+
+### Sui tre sistemi
+
+- Quello che il programma chiede al sistema (cartelle, librerie, finestre di dialogo, copia unica) è
+  in `platform/sdl/os.c`; il core sostituisce e scrive sul disco i file con `src/plat.c` (rinomina
+  atomica; `F_FULLFSYNC` su macOS, `FlushFileBuffers` su Windows): i salvataggi reggono lo spegnimento
+  a metà anche lì. I file si scrivono in modo binario: a capo LF su ogni sistema.
+- Alt+Invio per lo schermo intero anche su Linux; con Alt o Cmd premuto la tastiera non preme i tasti
+  del gioco (le scorciatoie del sistema non fanno scelte per sbaglio).
+- `DEVA_TEST_FRAMES=N`: il programma esce in ordine dopo N fotogrammi (le prove automatiche, anche
+  senza schermo con `SDL_VIDEODRIVER=dummy`).
+
+### Strumenti e rilascio
+
+- `make windows` (con Zig, da Linux), `make mac` (con il clang di Xcode, su un Mac) e
+  `tools/release/mkapp.sh` (l'app e il disco). `make dist` aggiunge lo zip per Windows e, con
+  `makensis` (NSIS), l'installazione; pacchetti e installazione sono riproducibili (stessi byte a
+  ogni build).
+- `make test-windows` (`tools/harness/test_windows.sh`, 48 controlli): il pacchetto sotto Wine su uno
+  schermo virtuale; finestra, tasti, Alt+Invio, F11, Alt+F4, salvataggi in `%APPDATA%` con gli a capo
+  LF, installazione silenziosa, aggiornamento che tiene le impostazioni, disinstallazione che tiene i
+  salvataggi.
+- GitHub Actions (`.github/workflows/ci.yml`), a ogni modifica: su Linux il controllo degli script,
+  il core, le 16 partite, i salvataggi interrotti, i pacchetti, l'installatore per RetroArch e il
+  programma su uno schermo virtuale; su Windows il programma dello zip e l'installazione provati
+  davvero; su un Mac l'app costruita e provata. Un tag `vX.Y.Z` pubblica la release con tutti i
+  pacchetti, `SHA256SUMS` e le note di questo file (`tools/release/notes.py`).
+
+## [1.1.0] - 2026-10-04
+
+Il gioco anche sul PC Linux, senza RetroArch. Il core non cambia: con la 1.0 stesse immagini e stesso
+suono, fotogramma per fotogramma (cambia solo il numero di versione nei Crediti).
+
+### Sul PC, da solo
+
+- `deva-adventures`: lo stesso core in un programma a sé (`platform/sdl`), in una finestra o a schermo
+  intero (F11), con la tastiera o con un gamepad. SDL2 si carica all'avvio (`libSDL2-2.0.so.0`, anche
+  `sdl2-compat`): il programma si compila con il solo compilatore C e gira su ogni Linux x86_64 con
+  glibc ≥ 2.17 e SDL2 ≥ 2.0.9. Se SDL2 manca lo dice, con il comando per installarla.
+- Pixel interi (finestra di serie la più grande che sta sullo schermo, a schermo intero 4× su 1280×1024
+  con bande nere); un fotogramma ogni 1/60 di secondo con l'orologio, e il suono che lo tiene in
+  passo: ogni immagine resta sullo schermo lo stesso tempo.
+- Tastiera: frecce, Invio o Spazio (rosso), Backspace (giallo), A (verde), S (blu), Q e W (L e R),
+  Esc tenuto (pausa). Gamepad: sui pad tipo Xbox i tasti seguono i colori che dice la voce (rosso B,
+  giallo Y, verde A, blu X); sugli altri la posizione della console (rosso a destra, giallo in basso);
+  `--pad colori` o `--pad posizione` per scegliere a mano.
+- Il gioco si ferma quando la finestra non è davanti (il tempo della sessione non corre); una copia
+  sola alla volta; Esci, la X della finestra, Alt+F4 e lo spegnimento chiudono in ordine, con i
+  salvataggi scritti. Salvataggi in `~/.local/share/deva-adventures` (gli stessi file della console),
+  con il log dell'ultima partita e di quella prima.
+- Pacchetto `deva-adventures-1.1.0-linux-x86_64.tar.gz`: si prova senza installare
+  (`./deva-adventures`); `install.sh` lo installa per l'utente (menu delle applicazioni con l'icona,
+  il comando `deva-adventures`), verifica pacchetto e copia, aggiorna mettendo da parte i
+  salvataggi e tenendo le impostazioni dei grandi, rimette tutto com'era se qualcosa va storto,
+  disinstalla lasciando i salvataggi; `--prefix /usr/local` per tutti gli utenti.
+- `make linux`, `make linux-x86_64`, `make install-linux` (distribuzioni), `make test-linux`.
+
+### Strumenti
+
+- `make test-linux` (`tools/harness/test_linux.sh`, 147 controlli): il programma su uno schermo
+  virtuale (Xvfb) con tasti veri e con un gamepad virtuale (per posizione e per colore), pausa,
+  finestra ridotta, schermo intero, chiusure, ritmo con e senza suono, e `install.sh` del pacchetto,
+  anche con dash e busybox.
+- `tools/harness/check_sdl2_api.sh`: le dichiarazioni di SDL2 del programma confrontate con gli
+  header veri (valori, strutture e prototipi).
+
 ## [1.0.0] - 2026-10-02
 
 Prima versione completa: più veloce, documentata e impacchettata per RetroArch, devaOS e Lakka.

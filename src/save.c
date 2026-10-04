@@ -2,17 +2,16 @@
  * SPDX-License-Identifier: MIT
  */
 #include "save.h"
+#include "plat.h"
 
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include <fcntl.h>
 #include <pthread.h>
 #include <sys/stat.h>
 #include <time.h>
-#include <unistd.h>
 
 const char *const GAME_IDS[GAME_COUNT] = {"conta",    "parole",     "sequenze", "balla",  "nome",
                                           "memory",   "ritmo",      "dove",     "emozioni", "storie",
@@ -138,11 +137,7 @@ static void sync_dir_of(const char *path)
     if (!slash)
         return;
     *slash = 0;
-    int fd = open(dir[0] ? dir : "/", O_RDONLY);
-    if (fd >= 0) { /* best effort: some file systems do not sync folders */
-        fsync(fd);
-        close(fd);
-    }
+    plat_flush_dir(dir);
 }
 
 /* a save cut by a power cut: the newest whole copy comes back */
@@ -163,9 +158,9 @@ static void recover(const char *path)
     if (exists(path)) {
         snprintf(broken, sizeof(broken), "%s.rotto", path);
         remove(broken);
-        rename(path, broken); /* kept, for the curious */
+        plat_replace(path, broken); /* kept, for the curious */
     }
-    if (rename(from, path) == 0) {
+    if (plat_replace(from, path) == 0) {
         sync_dir_of(path);
         log_msg(LOG_WARN, "%s was cut short (the console switched off while saving?): %s is back\n", path,
                 from == tmp ? "the save being written" : "the copy before");
@@ -194,20 +189,15 @@ static struct {
 static bool finish_save(const char *tmp, const char *path)
 {
     char prev[520];
-    int fd = open(tmp, O_RDONLY);
-    bool ok = fd >= 0;
-    if (ok) {
-        if (fsync(fd) != 0 && errno != EINVAL && errno != ENOTSUP)
-            ok = false; /* a write error; a file system that cannot flush (EINVAL) still gets its file */
-        close(fd);
-    }
+    /* a write error fails the save; a file system that cannot flush (EINVAL) still gets its file */
+    bool ok = plat_flush_file(tmp) == 0 || errno == EINVAL || errno == ENOTSUP;
     if (ok) {
         snprintf(prev, sizeof(prev), "%s.prev", path);
         if (exists(path) && file_whole(path)) { /* the last good one stays as .prev */
             remove(prev);
-            rename(path, prev);
+            plat_replace(path, prev);
         }
-        ok = rename(tmp, path) == 0;
+        ok = plat_replace(tmp, path) == 0;
     }
     if (ok)
         sync_dir_of(path);
@@ -245,7 +235,7 @@ static FILE *open_tmp(const char *path, char *tmp, size_t n)
 {
     save_wait(); /* (the helper may still be busy with this very file) */
     snprintf(tmp, n, "%s.tmp", path);
-    FILE *f = fopen(tmp, "w");
+    FILE *f = fopen(tmp, "wb"); /* (the same bytes on every system: a save moves between them) */
     if (!f)
         log_msg(LOG_WARN, "cannot write %s\n", tmp);
     return f;
@@ -468,12 +458,12 @@ bool profile_remove(const char *save_dir, int slot)
     remove(bak);
     snprintf(bak, sizeof(bak), "%s.bak", path);
     remove(bak);
-    bool ok = rename(path, bak) == 0;
+    bool ok = plat_replace(path, bak) == 0;
     for (int k = 0; k < 2; k++) { /* the logs: there may be none yet */
         (k ? profile_diary_path : profile_log_path)(path, sizeof(path), save_dir, slot);
         snprintf(bak, sizeof(bak), "%s.bak", path);
         remove(bak);
-        rename(path, bak);
+        plat_replace(path, bak);
     }
     return ok;
 }
@@ -683,7 +673,7 @@ void progress_wear(progress_t *p, int item)
 static FILE *open_log(const char *path, const char *header)
 {
     bool fresh = !exists(path);
-    FILE *f = fopen(path, "a");
+    FILE *f = fopen(path, "ab");
     if (f && fresh)
         fprintf(f, "%s\n", header);
     return f;

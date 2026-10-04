@@ -11,6 +11,11 @@ basta il manuale (`docs/manuale.pdf`); le novità di ogni versione sono in `CHAN
 | i core di rilascio (aarch64, x86_64) | Zig come compilatore C: `pip install ziglang` (glibc ≥ 2.17 come obiettivo) |
 | i test automatici | il core per il PC, `ffmpeg` per i video (`NOVIDEO=1` per farne a meno) |
 | i test ARM senza console | `qemu-user` e `libc6-arm64-cross` (Ubuntu/Debian) |
+| il gioco sul PC senza RetroArch | per compilarlo solo `cc`; per farlo girare SDL2 (`libsdl2-2.0-0`) |
+| il programma per Windows | Zig (da Linux), `curl` per la SDL2 ufficiale; l'installazione: `nsis` (`makensis` 3.x) |
+| il programma per macOS | un Mac con gli strumenti a riga di comando di Xcode (`clang`, `lipo`, `codesign`, `hdiutil`) |
+| `make test-linux` | `xvfb`, `openbox`, `xdotool`, `x11-utils`, ImageMagick; facoltativi `libsdl2-dev` (il confronto con gli header di SDL2), `desktop-file-utils`, `busybox` |
+| `make test-windows` | `wine` (64 bit), `xvfb`, `openbox`, `xdotool`, `x11-utils`, ImageMagick |
 | grafica e audio | Python 3 con Pillow e NumPy |
 | la voce | Python 3, `sherpa-onnx`, `ffmpeg` con libvorbis, i modelli (vedi *La voce*) |
 | i PDF della documentazione | Playwright con Chromium (`python3 -m playwright`) |
@@ -20,7 +25,8 @@ basta il manuale (`docs/manuale.pdf`); le novità di ogni versione sono in `CHAN
 
 | Percorso | Che cosa c'è |
 | --- | --- |
-| `src/` | il core in C99: `libretro.c` (interfaccia), `game.c` (scene, pausa, sessione, diario), `gfx.c` (renderer software RGB565), `audio.c` (mixer e voce in streaming), `save.c` (profili, opzioni, log), `quiz.c` (motore delle domande a carte), una scena per file (`scene_*.c`), `story.c` (le quattro storie), `hero.c` (Deva), `anim.c` (respiro, salti, squash & stretch), `fx.c` (particelle), `trans.c` (transizioni), `amb.c` (sfondi animati) |
+| `src/` | il core in C99: `libretro.c` (interfaccia), `game.c` (scene, pausa, sessione, diario), `gfx.c` (renderer software RGB565), `audio.c` (mixer e voce in streaming), `save.c` (profili, opzioni, log), `quiz.c` (motore delle domande a carte), una scena per file (`scene_*.c`), `story.c` (le quattro storie), `hero.c` (Deva), `anim.c` (respiro, salti, squash & stretch), `fx.c` (particelle), `trans.c` (transizioni), `amb.c` (sfondi animati), `plat.c` (sostituire e scrivere sul disco un file, su ogni sistema) |
+| `platform/sdl/` | il gioco sul PC senza RetroArch: `main.c` (il frontend), `os.c` (quello che chiede al sistema: Linux, macOS, Windows), `sdl2_api.h` e `sdl2_functions.h` (la parte di SDL2 che usa) |
 | `third_party/` | `libretro.h`, `stb_image.h`, `stb_vorbis.c`, `stb_image_write.h` (solo l'harness) |
 | `data/deva_adventures/` | i dati del gioco: atlante e sfondi (`gfx/`), voce (`voce/`), effetti (`sfx/`), musiche (`musica/`), `deva_adventures.cfg` |
 | `data/voce/` | `frasi.csv` (i testi della voce, con l'id di ogni frase), `registrate/` (registrazioni vostre) |
@@ -28,10 +34,11 @@ basta il manuale (`docs/manuale.pdf`); le novità di ogni versione sono in `CHAN
 | `tools/art/` | i generatori della grafica, il packer dell'atlante, `pngpal.py` |
 | `tools/audio/` | effetti, note e musiche, generati da codice |
 | `tools/voice/` | sintesi della voce e verifica con Whisper |
-| `tools/harness/` | il frontend di test senza schermo, i test (`run_tests.sh`, `test_saves.sh`), `transcript.py` |
+| `tools/harness/` | il frontend di test senza schermo, i test (`run_tests.sh`, `test_saves.sh`, `test_linux.sh` con `fake_pad.c`, `test_windows.sh`), `check_sdl2_api.sh`, `transcript.py` |
 | `tools/report/` | `report.py`, il resoconto delle partite per i grandi |
-| `tools/release/` | `mkdist.py`, i pacchetti di rilascio |
-| `packaging/` | `retroarch/` (install.sh, uninstall.sh, LEGGIMI.txt dei pacchetti), `buildroot/` (br2-external per devaOS), `lakka/` (pacchetto per Lakka) |
+| `tools/release/` | `mkdist.py` (i pacchetti di rilascio), `mkapp.sh` (l'app e il disco per macOS), `notes.py` (le note della release), `test_install.sh`, `test_app.sh` (l'app del disco provata su un Mac), `try_windows.ps1` (i pacchetti provati su Windows), `ci_step.sh` (un passo della CI), `html2pdf.py`, `doc_images.py` |
+| `packaging/` | `retroarch/` (install.sh, uninstall.sh, LEGGIMI.txt dei pacchetti), `linux/` (il pacchetto per PC: install.sh, LEGGIMI.txt, voce di menu e icona), `windows/` (installazione NSIS, manifest, risorse, icona), `macos/` (Info.plist, icona, LEGGIMI.txt), `sdl2/` (la SDL2 dei pacchetti: versione, impronte, licenza), `buildroot/` (br2-external per devaOS), `lakka/` (pacchetto per Lakka) |
+| `.github/workflows/` | `ci.yml`: la CI di GitHub (build, test e pacchetti su Linux, Windows e macOS; la release) |
 | `docs/` | il manuale (HTML e PDF), questa guida, il kit del playtest (`playtest/`), le schermate (`img/`) |
 
 ## Compilare
@@ -40,9 +47,16 @@ basta il manuale (`docs/manuale.pdf`); le novità di ogni versione sono in `CHAN
 make                 # build/host/deva_adventures_libretro.so, per il PC (-O2 -g)
 make aarch64         # build/aarch64/, il core per le console arm64 (Zig, -mcpu=cortex-a35)
 make x86_64          # build/x86_64/, il core di rilascio per il PC (Zig)
+make linux           # build/host/deva-adventures, il gioco sul PC senza RetroArch
+make linux-x86_64    # build/x86_64/deva-adventures, lo stesso per il rilascio (Zig, glibc ≥ 2.17)
+make windows         # build/win64/deva-adventures.exe, per Windows 10 e 11 x64 (Zig, da Linux)
+make mac             # build/mac/deva-adventures, per macOS arm64 + x86_64 (su un Mac, clang di Xcode)
 make dist            # i pacchetti in release/ (vedi Rilasciare)
 make test-dist       # install.sh e uninstall.sh dei pacchetti su cartelle di RetroArch finte
-make install PREFIX=/usr DESTDIR=/tmp/stage   # core, .info e dati (per chi fa pacchetti)
+make test-linux      # il programma per PC su uno schermo virtuale, e l'install.sh del suo pacchetto
+make test-windows    # il pacchetto per Windows di release/ sotto Wine, su uno schermo virtuale
+make install PREFIX=/usr DESTDIR=/tmp/stage         # core, .info e dati (per chi fa pacchetti)
+make install-linux PREFIX=/usr DESTDIR=/tmp/stage   # il programma per PC, i dati, voce di menu e icona
 make clean
 ```
 
@@ -75,6 +89,61 @@ cc -O1 -g -fsanitize=thread -std=c99 -D_POSIX_C_SOURCE=200809L -Ithird_party \
     -o build/harness-tsan tools/harness/harness.c -ldl -lm -lpthread
 CORE=build/tsan/deva_adventures_libretro.so HARNESS=./build/harness-tsan tools/harness/test_saves.sh
 ```
+
+### Il programma per PC
+
+`make test-linux` (`tools/harness/test_linux.sh`, circa due minuti) prova il programma
+`build/host/deva-adventures` (`BIN=` per un altro, ad esempio quello di rilascio) in tre parti: senza
+finestra (opzioni, codici di uscita, messaggi, dove trova i dati); su uno schermo virtuale (Xvfb con
+openbox: la finestra e la sua immagine, la classe e l'icona, i tasti veri mandati con xdotool lungo il
+titolo, la prova dei tasti e il primo racconto, la pausa tenuta, la finestra ridotta a icona, F11 con i
+pixel interi, la seconda copia, Alt+F4 e SIGTERM con salvataggio e diario chiusi; lo stesso giro con un
+gamepad virtuale, per posizione e per colore, poi staccato; 12 secondi di ritmo con e senza suono); poi
+`install.sh` del pacchetto di `release/` in una home finta (installazione, aggiornamento, pacchetto
+rovinato, errore prima e dopo lo scambio delle cartelle, gioco aperto, cartella con lo spazio,
+disinstallazione, con dash e busybox).
+Il gamepad virtuale è di SDL stessa: `tools/harness/fake_pad.c` è una libreria che il programma carica
+al posto di SDL2 (`DEVA_SDL2_LIB`), uguale alla vera tranne `SDL_Init`, che attacca il gamepad, e
+`SDL_PollEvent`, che preme i tasti scritti dal test in un file (`DEVA_FAKE_PAD`).
+`tools/harness/check_sdl2_api.sh` confronta `platform/sdl/sdl2_api.h` con gli header veri di SDL2:
+valori, strutture e prototipi (serve `libsdl2-dev`).
+
+### Windows e macOS
+
+`make test-windows` (`tools/harness/test_windows.sh`, 48 controlli, dopo `make dist`) prova il
+pacchetto per Windows sotto Wine (64 bit) su uno schermo virtuale: il programma dello zip (opzioni,
+codici di uscita, la finestra e la sua immagine disegnata da Direct3D, i tasti lungo il titolo, la
+pausa, Alt+Invio, F11, Alt+F4, la seconda copia, salvataggi e diario in `%APPDATA%` con gli a capo
+LF); poi l'installazione silenziosa (`/S`), l'aggiornamento che tiene le impostazioni dei grandi e la
+disinstallazione che tiene i salvataggi. Wine non è Windows: per questo la CI prova gli stessi
+pacchetti anche su Windows vero, e l'app su un Mac.
+
+Senza schermo, su qualsiasi sistema, basta una partita breve con il video e il suono finti di SDL:
+
+```sh
+SDL_VIDEODRIVER=dummy SDL_AUDIODRIVER=dummy DEVA_TEST_FRAMES=600 DEVA_NO_DIALOG=1 \
+    build/host/deva-adventures --data data --saves /tmp/prova --verbose
+tail -n 1 /tmp/prova/deva-adventures.log   # "600 frames in 10.0 s, ..."
+tail -n 1 /tmp/prova/deva_adventures.sav   # "# fine"
+```
+
+`DEVA_TEST_FRAMES=N` chiude il programma in ordine dopo N fotogrammi (salvataggio e diario scritti).
+
+### La CI
+
+`.github/workflows/ci.yml`, a ogni push e pull request:
+
+| Job | Che cosa fa |
+| --- | --- |
+| `linux` (Ubuntu 24.04) | shellcheck e flake8, `make harness`, `make test` (senza video), `make dist`, `make test-dist`, `make test-linux`; i pacchetti come artifact |
+| `windows` (Windows Server) | `tools/release/try_windows.ps1`: il programma dello zip (`--version`, `--check`, una partita di 600 fotogrammi con SDL finta, salvataggio intero e in LF), poi l'installazione silenziosa, il programma installato (anche lui una partita), la voce in «App installate» e la disinstallazione |
+| `macos` (macOS arm64) | `make mac`, `tools/release/mkapp.sh`, poi `tools/release/test_app.sh`: l'app presa dal disco, firma, `--check`, una partita di 600 fotogrammi; anche in x86_64 con Rosetta, quando c'è |
+| `release` (solo i tag `v*`) | controlla che il tag sia `GAME_VERSION`, scrive `SHA256SUMS` di tutti i pacchetti e pubblica la release con le note di `CHANGELOG.md` (`tools/release/notes.py`) |
+
+Ogni passo gira dentro `tools/release/ci_step.sh` (o `try_windows.ps1`): se fallisce, la fine del suo
+output diventa anche un'annotazione di errore, che l'API dei *checks* di GitHub mostra senza il log
+completo (`gh api repos/<owner>/<repo>/check-runs/<job>/annotations`). Le prove su Windows e su macOS
+lasciano anche una nota (*notice*) con il sistema provato.
 
 ### L'harness
 
@@ -192,6 +261,72 @@ Le voci dei personaggi (terzo campo di `frasi.csv`) sono la stessa voce trasform
 - Ogni estrazione casuale è in un'istruzione a sé: l'ordine di valutazione degli argomenti in C non è
   stabilito, e gcc e clang lo fanno al contrario (`rng_pair` per le coppie).
 
+## Il gioco sul PC senza RetroArch
+
+`platform/sdl/main.c` è un frontend libretro minimo collegato al core (gli stessi sorgenti, nessuna
+modifica): il gioco è identico a quello di RetroArch, fotogramma per fotogramma. Quello che cambia da
+un sistema all'altro sta in `platform/sdl/os.c` (cartelle, librerie, finestre di dialogo, lucchetto,
+file con nomi UTF-8) e, nel core, in `src/plat.c` (sostituire un file in un colpo solo e forzarlo sul
+disco: `rename` e `fsync`, `F_FULLFSYNC` su macOS, `MoveFileExW` e `FlushFileBuffers` su Windows). Il
+core scrive i file in modo binario: gli stessi byte, con gli a capo LF, su ogni sistema.
+
+- **SDL2 all'avvio**, mai collegata: su Linux `libSDL2-2.0.so.0` (o `libSDL2.so`); su Windows
+  `SDL2.dll` accanto al programma, con il percorso intero (mai una DLL trovata altrove); su macOS
+  quella dell'app (`../Frameworks/SDL2.framework/SDL2`), poi `libSDL2-2.0.0.dylib` accanto o di
+  Homebrew, poi `SDL2.framework`. `DEVA_SDL2_LIB` per un altro nome. Le funzioni che usa sono in
+  `sdl2_functions.h`, valori e strutture in `sdl2_api.h`, e `check_sdl2_api.sh` li tiene uguali a
+  quelli veri: così il programma si compila senza gli header di SDL2 (anche con Zig per glibc 2.17 o
+  per Windows) e non dipende dalla versione di SDL2 del PC di build. Serve SDL 2.0.9 o successiva
+  (anche sdl2-compat su SDL3); vibrazione e tipo di gamepad (2.0.12) sono facoltativi. I pacchetti per
+  Windows e macOS contengono la SDL2 ufficiale 2.32.10 (`packaging/sdl2/README.md`: da dove viene e
+  le sue impronte, controllate a ogni build).
+- **Dati**: `--data`, `DEVA_ADVENTURES_DATA`, su macOS `../Resources` dell'app, accanto al programma
+  (il pacchetto scompattato), `<programma>/../share`; fuori da Windows anche `/usr/local/share`,
+  `/usr/share`, `/opt/homebrew/share` (macOS) e il `DATA_DIR` della build. **Salvataggi**: `--saves`,
+  poi `$XDG_DATA_HOME/deva-adventures` o `~/.local/share/deva-adventures` (Linux),
+  `%APPDATA%\deva-adventures` (Windows), `~/Library/Application Support/deva-adventures` (macOS); lì
+  anche il lucchetto che tiene aperta una copia sola (`fcntl`; su Windows il file aperto senza
+  condivisione) e `deva-adventures.log` (`.log.1` la volta prima).
+- **Ritmo**: un fotogramma ogni 1/60 s con il contatore di SDL, così ogni immagine resta sullo
+  schermo lo stesso tempo. Il suono va in coda (`SDL_QueueAudio`) e parte quando ce n'è un pezzo
+  dell'altoparlante (1024 campioni) più due fotogrammi, circa 57 ms; l'altoparlante prende un pezzo
+  alla volta e non deve mai trovarne meno, quindi una coda bassa anticipa il fotogramma successivo e
+  una coda cresciuta (i due orologi si allontanano) salta un battito, al massimo uno al secondo. Con il
+  suono a dettare il ritmo i fotogrammi arriverebbero a gruppi, a ogni pezzo preso dall'altoparlante:
+  in una simulazione più di uno su quattro non si vedrebbe mai. Il log finale conta fotogrammi,
+  ritardi oltre 25 ms, fotogrammi a coppie e battiti saltati.
+- **Tasti**: i tasti premuti fra due fotogrammi contano per un fotogramma (un tocco brevissimo non si
+  perde). Gamepad: SDL nomina i tasti per posizione (`SDL_GAMECONTROLLER_USE_BUTTON_LABELS=0`); sui
+  pad che `SDL_GameControllerGetType` dice Xbox (360 e One) la mappa segue i colori stampati, quelli
+  che dice la voce (rosso B, giallo Y, verde A, blu X), sugli altri la posizione della RF35H (rosso a
+  destra, giallo in basso, blu in alto, verde a sinistra: i colori di un pad stile Super Nintendo);
+  `--pad colori|posizione` la sceglie a mano. Levette escluse come nel core. F11, Alt+Invio e Cmd+F
+  (schermo intero) sono del programma e non arrivano al gioco; con Alt o Cmd premuto la tastiera non
+  arriva al gioco (Alt+F4, Cmd+Q e le altre scorciatoie non scelgono niente per sbaglio).
+- **Finestra**: pixel interi (`SDL_RenderSetLogicalSize` + `SDL_RenderSetIntegerScale`), di serie la
+  più grande che sta nel 90% dello schermo; classe X11 e app id Wayland `deva-adventures`, come la
+  voce di menu (`StartupWMClass`). Ridotta a icona o non davanti: niente `retro_run` e suono in pausa.
+- **Messaggi per i grandi**: sul terminale; avviato dal menu (stderr non è un terminale) anche in una
+  finestra di SDL, o, quando SDL2 manca, di zenity, kdialog, xmessage (Linux), `MessageBoxW`
+  (Windows), `osascript` (macOS). `DEVA_NO_DIALOG=1` li tiene fuori dai test.
+- **Windows**: un programma grafico (`-Wl,--subsystem,windows`, niente finestra nera) che scrive sulla
+  console solo se avviato da un Prompt dei comandi o con l'uscita rediretta; manifest con la code page
+  UTF-8 (Windows 10 1903+: `fopen` del core e gli argomenti in UTF-8) e la scala per monitor
+  (`PerMonitorV2`: pixel nitidi), icona e versione da `packaging/windows/*.in` (`make windows` li
+  riempie con `GAME_VERSION`). UCRT e winpthreads dentro il programma: accanto serve solo `SDL2.dll`.
+- **macOS**: un solo programma per arm64 e x86_64 (`clang -arch arm64 -arch x86_64
+  -mmacosx-version-min=10.13`); l'app (`tools/release/mkapp.sh`) ha `SDL2.framework` com'è firmato
+  dal progetto SDL e una firma ad hoc di tutto il pacchetto (niente notarizzazione: serve un account
+  Apple Developer).
+
+| Uscita | Quando |
+| --- | --- |
+| 0 | finito: Esci, la finestra chiusa, SIGTERM, `--check` andato bene |
+| 2 | un'opzione sbagliata |
+| 3 | dati che non si trovano o non si caricano, salvataggi che non si possono scrivere |
+| 4 | niente SDL2 (o troppo vecchia), niente schermo |
+| 5 | il gioco è già aperto |
+
 ## I file scritti nella cartella dei salvataggi
 
 | File | Contenuto |
@@ -237,13 +372,24 @@ esempio la seconda: `avventura = 2`, `capitolo = 0`, `carica = 0`, `racconti = 2
 4. Le schermate del manuale, rifatte dalle partite appena giocate da `make test`:
    `python3 tools/release/doc_images.py` (`docs/img/`, l'elenco è nello script). Poi i PDF:
    `python3 tools/release/html2pdf.py docs/manuale.html docs/playtest/scheda_osservazione.html`.
-5. `make dist`: in `release/` i sorgenti, i due pacchetti RetroArch e `SHA256SUMS`. Gli archivi sono
-   riproducibili: rifatti dallo stesso albero hanno gli stessi byte (anche i core: Zig non vi scrive
-   percorsi né date).
+5. `make dist`: in `release/` i sorgenti, i due pacchetti RetroArch, il pacchetto per PC Linux
+   (`-linux-x86_64.tar.gz`), lo zip e l'installazione per Windows (`-windows-x64.zip`,
+   `-windows-x64-setup.exe`; l'installazione solo se c'è `makensis`) e `SHA256SUMS`. Gli archivi sono
+   riproducibili: rifatti dallo stesso albero hanno gli stessi byte (anche core e programmi: Zig non vi
+   scrive percorsi né date; NSIS senza le date dei file, `SetDateSave off`).
 6. `make test-dist`: lo script di installazione del pacchetto x86_64 su cartelle di RetroArch finte
    (installazione nuova, aggiornamento con impostazioni e salvataggi, copie di sicurezza e ritorno
    indietro, errore a metà con ripristino, disinstallazione), con busybox se c'è; il core installato
    viene anche fatto girare dall'harness. `NO_BUSYBOX=1` usa la `sh` e gli strumenti del sistema.
+7. `make test-linux`: il programma per PC e l'`install.sh` del suo pacchetto (vedi *Provare*);
+   `make test-windows`: il pacchetto per Windows sotto Wine.
+8. macOS, su un Mac: `make mac`, poi `tools/release/mkapp.sh` (l'app, controllata e firmata ad hoc,
+   e `release/deva-adventures-<v>-macos.dmg`). Il disco non è riproducibile (`hdiutil` vi scrive date
+   e identificatori): quello della release è quello della CI.
+9. Il commit su `main`, poi il tag: `git tag -a v1.2.0 -m "Deva's Awesome Adventures 1.2.0"` e
+   `git push origin v1.2.0`. La CI rifà tutto sui tre sistemi e, se ogni job passa, pubblica la release
+   con i pacchetti, `SHA256SUMS` e le note della voce di `CHANGELOG.md`. Le impronte dei pacchetti di
+   Linux e Windows della release devono essere quelle di `make dist` fatto in locale dallo stesso commit.
 
 ## devaOS (Buildroot) e Lakka
 

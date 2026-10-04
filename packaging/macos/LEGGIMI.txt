@@ -1,0 +1,65 @@
+Deva's Awesome Adventures @VERSION@ - per Mac (macOS 10.13 o successivo, Intel e Apple Silicon)
+================================================================================================
+
+Un gioco didattico per bambini di 5 anni: diciotto giochi con la voce italiana, quattro storie,
+camerino, album, tre salvataggi. È lo stesso gioco della console, del PC Linux e di Windows, con gli
+stessi salvataggi, in un'app a sé: una finestra o lo schermo intero, la tastiera o un gamepad.
+
+Installazione
+-------------
+1. Apri deva-adventures-@VERSION@-macos.dmg e trascina "Deva's Awesome Adventures" sulla cartella
+   Applicazioni. Niente altro da installare: la libreria SDL2 (finestra, suono, gamepad) è nell'app.
+2. La prima volta macOS non la apre: l'app non è firmata con un certificato Apple a pagamento.
+   - macOS 15 (Sequoia) e successivi: fai doppio clic, chiudi l'avviso, poi Impostazioni di Sistema
+     > Privacy e sicurezza > in fondo "Apri comunque", e conferma con la password.
+   - macOS 14 e precedenti: tasto destro (o Ctrl+clic) sull'app > Apri > Apri.
+   Dalla seconda volta si apre normalmente. Da un Terminale, in alternativa:
+     xattr -dr com.apple.quarantine "/Applications/Deva's Awesome Adventures.app"
+   Prima, se vuoi, controlla il file scaricato: shasum -a 256 deva-adventures-@VERSION@-macos.dmg
+   deve dare la riga di SHA256SUMS della release.
+
+Comandi
+-------
+  tastiera          nel gioco        gamepad tipo Xbox    altri gamepad (come la console)
+  frecce            croce            croce                croce
+  Invio o Spazio    rosso (A)        B, rosso             il tasto a destra
+  Backspace (⌫)     giallo (B)       Y, giallo            il tasto in basso
+  A                 verde (Y)        A, verde             il tasto a sinistra
+  S                 blu (X)          X, blu               il tasto in alto
+  Q e W             L e R            LB e RB              i tasti dorsali
+  Esc tenuto        pausa (START)    START tenuto         START tenuto
+
+Per i grandi: Opzioni, Salvataggi ed Esci si aprono tenendo premuti L e R (Q e W) per 2 secondi.
+Cmd+F (o F11 dove arriva all'app): schermo intero o finestra. Per chiudere: Esci nel gioco, Cmd+Q o
+la finestra; i salvataggi sono sempre già scritti. Quando la finestra non è davanti il gioco si
+ferma, e il tempo della sessione non conta. I gamepad tipo Xbox seguono i colori che dice la voce;
+gli altri la posizione della console.
+
+Dove sono i file
+----------------
+  ~/Library/Application Support/deva-adventures/   salvataggi, registro delle risposte, diario,
+                                                   deva-adventures.log (l'ultima partita)
+(Nel Finder: menu Vai > Vai alla cartella... e scrivi ~/Library/Application Support/deva-adventures)
+Portare i salvataggi dalla console, dal PC Linux o da Windows: a gioco chiuso, copia i file
+deva_adventures* in quella cartella (sono gli stessi file).
+Le impostazioni si cambiano dal gioco: Opzioni, con L e R (Q e W) tenuti 2 secondi; restano nei
+salvataggi. Il file deva_adventures.cfg dei grandi sta dentro l'app e lì non va cambiato (si
+romperebbe la firma dell'app): per usarne uno tuo, copia la cartella deva_adventures dell'app
+(tasto destro > Mostra contenuto pacchetto > Contents/Resources) e avvia il gioco con --data.
+
+Dal Terminale
+-------------
+  "/Applications/Deva's Awesome Adventures.app/Contents/MacOS/deva-adventures" --help
+  --fullscreen | --window, --scale N, --no-audio, --no-pause, --pad colori | posizione,
+  --verbose (tutti i messaggi nel Terminale), --check (controlla dati e SDL2, poi esce)
+
+Problemi e soluzioni
+--------------------
+- "È danneggiata e non può essere aperta": è la quarantena dei file scaricati; vedi Installazione,
+  punto 2 (il comando xattr).
+- "Il gioco è già aperto": ce n'è già una copia (anche nel Dock, ridotta a icona).
+- Il gamepad non risponde: SDL2 conosce quasi tutti i gamepad; per uno che non conosce si può dare
+  la mappatura con la variabile SDL_GAMECONTROLLERCONFIG.
+- Tutto quello che succede è scritto in deva-adventures.log (Dove sono i file).
+
+Tutto il resto (giochi, storie, impostazioni, prima prova) è nel manuale: docs/manuale.pdf.

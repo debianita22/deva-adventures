@@ -1,0 +1,21 @@
+[Desktop Entry]
+Type=Application
+Name=Deva's Awesome Adventures
+GenericName=Educational game for children
+GenericName[it]=Gioco educativo per bambini
+Comment=Eighteen games and four stories with an Italian voice, for 5-year-olds
+Comment[it]=Diciotto giochi e quattro storie con la voce in italiano, per bambini di 5 anni
+Icon=deva-adventures
+TryExec=deva-adventures
+Exec=deva-adventures --fullscreen
+Terminal=false
+Categories=Game;KidsGame;
+Keywords=Deva;children;kids;bambini;giochi;storie;
+StartupNotify=true
+StartupWMClass=deva-adventures
+Actions=window;
+
+[Desktop Action window]
+Name=Play in a window
+Name[it]=Gioca in una finestra
+Exec=deva-adventures --window

@@ -4,9 +4,9 @@
 # deva_adventures to LIBRETRO_CORES in packages/lakka/libretro_cores/package.mk (see README.md).
 
 PKG_NAME="deva_adventures"
-PKG_VERSION="1.0.0"
+PKG_VERSION="1.2.0"
 PKG_LICENSE="MIT"
-PKG_SITE="" # no public repository yet: the source tree is local (DEVA_ADVENTURES_SRC below)
+PKG_SITE="https://github.com/debianita22/deva-adventures" # the source tree is local (DEVA_ADVENTURES_SRC below)
 PKG_URL=""
 PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="Deva's Awesome Adventures: educational contentless libretro core for 5-year-olds (Italian voice), 18 games and 4 stories."

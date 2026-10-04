@@ -1,0 +1,133 @@
+# Deva's Awesome Adventures - build, test and release (1.2).
+#
+# Every push and pull request: the core, the 16 playthroughs and the saves, every package, the
+# RetroArch installer, the PC program on a virtual screen (Linux); the Windows packages tried on
+# Windows; the macOS app built and tried on a Mac. A tag vX.Y.Z also publishes the GitHub release
+# with every package and SHA256SUMS. The Linux and Windows packages are reproducible: the same commit
+# gives the same bytes here and on a developer's machine (Zig, NSIS and SDL2 pinned below, by the
+# runner image and in the Makefile); the macOS disk image is not (hdiutil writes dates in it).
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+env:
+  ZIGLANG: ziglang==0.16.0 # the compiler of the release builds (pip)
+  NOVIDEO: '1' # the playthroughs without their MP4 videos
+
+jobs:
+  linux:
+    name: Linux - build, tests, packages
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - name: Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends xvfb openbox xdotool x11-utils imagemagick \
+            libsdl2-dev desktop-file-utils busybox nsis shellcheck
+          python3 -m pip install --user --break-system-packages "$ZIGLANG" flake8
+      # (tools/release/ci_step.sh: when a step fails, the end of its output becomes error annotations)
+      - name: Lint (shell scripts, release tools)
+        run: >-
+          tools/release/ci_step.sh lint sh -c 'shellcheck -s sh -S warning tools/*/*.sh packaging/*/*.sh &&
+          python3 -m flake8 --select=E9,F63,F7,F82 tools &&
+          python3 -m flake8 --max-line-length 120 tools/release tools/harness tools/art/make_icon.py'
+      - name: Core and test frontend
+        run: tools/release/ci_step.sh "make harness" make -j4 harness
+      - name: SDL2 declarations against the real headers
+        run: tools/release/ci_step.sh check_sdl2_api tools/harness/check_sdl2_api.sh
+      - name: 16 playthroughs and the saves cut by a power cut (make test)
+        run: tools/release/ci_step.sh "make test" make test
+      - name: Packages (make dist)
+        run: tools/release/ci_step.sh "make dist" make dist
+      - name: RetroArch installer on fake RetroArch folders (make test-dist)
+        run: tools/release/ci_step.sh "make test-dist" make test-dist
+      - name: PC program on a virtual screen, and its install.sh (make test-linux)
+        run: tools/release/ci_step.sh "make test-linux" make test-linux
+      - uses: actions/upload-artifact@v7
+        with:
+          name: packages
+          path: release/
+          if-no-files-found: error
+
+  windows:
+    name: Windows - the zip and the installer, on Windows
+    needs: linux
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: packages
+          path: release
+      - name: The program of the zip, then installed and removed
+        shell: pwsh
+        run: ./tools/release/try_windows.ps1
+
+  macos:
+    name: macOS - the app, built and tried on a Mac
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: One program for arm64 and x86_64 (make mac)
+        run: tools/release/ci_step.sh "make mac" make -j4 mac
+      - name: The app and its disk image
+        run: tools/release/ci_step.sh mkapp.sh sh -x tools/release/mkapp.sh --out release
+      - name: Tried from the disk image (arm64, and x86_64 under Rosetta when there is Rosetta)
+        run: tools/release/ci_step.sh test_app.sh sh -x tools/release/test_app.sh
+      - uses: actions/upload-artifact@v7
+        with:
+          name: macos
+          path: release/*.dmg
+          if-no-files-found: error
+
+  release:
+    name: GitHub release (tags vX.Y.Z)
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [linux, windows, macos]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: packages
+          path: release
+      - uses: actions/download-artifact@v8
+        with:
+          name: macos
+          path: release
+      - name: Checksums and notes
+        run: |
+          set -eu
+          v=${GITHUB_REF_NAME#v}
+          grep -q "^#define GAME_VERSION \"$v\"" src/common.h || { echo "::error::tag $GITHUB_REF_NAME is not GAME_VERSION"; exit 1; }
+          cd release
+          rm -f SHA256SUMS
+          sha256sum deva-adventures-* > SHA256SUMS
+          cat SHA256SUMS
+          cd ..
+          python3 tools/release/notes.py "$v" > notes.md
+          cat notes.md
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" release/* --verify-tag \
+            --title "Deva's Awesome Adventures ${GITHUB_REF_NAME#v}" --notes-file notes.md

@@ -75,7 +75,7 @@ figcaption{font-size:8.8pt;color:var(--soft);margin-top:2px;line-height:1.3}
 
 <section class="cover">
 <h1>Deva's Awesome Adventures</h1>
-<p class="sub">Manuale per i genitori · versione 1.0.0 · ottobre 2026</p>
+<p class="sub">Manuale per i genitori · versione 1.2.0 · ottobre 2026</p>
 <img class="hero" src="img/menu.png" alt="Il menu principale del gioco: il logo, le carte Gioca, Camerino, Album e Deva sul palco">
 
 <div class="box">
@@ -86,8 +86,9 @@ figcaption{font-size:8.8pt;color:var(--soft);margin-top:2px;line-height:1.3}
 posizioni, emozioni, ballo, ginnastica, trucchi, primo coding) con livelli da 1 a 5 che si adattano da soli.</li>
 <li><strong>Quattro avventure</strong> con la mappa e i mostri stregati da far tornare buoni; camerino, album, tre profili.</li>
 <li>Gira in <strong>RetroArch</strong> come «core senza contenuto» (niente ROM da cercare): console Linux arm64 come la
-XiFan RF35H, oppure PC Linux.</li>
-<li>Niente internet, pubblicità, acquisti o dati inviati: tutto resta sulla console.</li>
+XiFan RF35H, oppure PC Linux. Sul PC anche <strong>senza RetroArch</strong>, come programma a sé per <strong>Windows,
+macOS e Linux</strong> (capitolo 2).</li>
+<li>Niente internet, pubblicità, acquisti o dati inviati: tutto resta sulla console o sul PC.</li>
 <li>Sessioni di <strong>15 minuti</strong> (si cambia), poi Deva va a nanna e il gioco si chiude. Le porte per i grandi si
 aprono solo tenendo premuti <kbd>L</kbd> e <kbd>R</kbd>.</li>
 </ul>
@@ -96,6 +97,7 @@ aprono solo tenendo premuti <kbd>L</kbd> e <kbd>R</kbd>.</li>
 <strong>Indice</strong>
 <ol class="toc">
 <li><a href="#installare">Installare</a></li>
+<li><a href="#pc">Sul PC, senza RetroArch</a></li>
 <li><a href="#prima">Prima di darle la console</a></li>
 <li><a href="#giocare">Come si gioca</a></li>
 <li><a href="#giochi">I diciotto giochi</a></li>
@@ -116,20 +118,27 @@ aprono solo tenendo premuti <kbd>L</kbd> e <kbd>R</kbd>.</li>
 
 <table>
 <thead><tr><th style="width:38%">Pacchetto</th><th>Per</th></tr></thead>
-<tr><td><code class="nw">deva-adventures-1.0.0-aarch64.zip</code></td><td>console Linux a 64 bit ARM con RetroArch (RK3326 come la
+<tr><td><code class="nw">deva-adventures-1.2.0-aarch64.zip</code></td><td>console Linux a 64 bit ARM con RetroArch (RK3326 come la
 XiFan RF35H, e le altre arm64)</td></tr>
-<tr><td><code class="nw">deva-adventures-1.0.0-x86_64.zip</code></td><td>PC Linux con RetroArch</td></tr>
-<tr><td><code class="nw">deva-adventures-1.0.0-src.tar.gz</code></td><td>i sorgenti: per l'immagine di devaOS o di Lakka, per altre
+<tr><td><code class="nw">deva-adventures-1.2.0-x86_64.zip</code></td><td>PC Linux con RetroArch</td></tr>
+<tr><td><code class="nw">deva-adventures-1.2.0-windows-x64-setup.exe</code>, <code class="nw">…-windows-x64.zip</code></td><td>Windows
+10 e 11 <strong>senza</strong> RetroArch: un programma a sé (capitolo 2)</td></tr>
+<tr><td><code class="nw">deva-adventures-1.2.0-macos.dmg</code></td><td>macOS (Apple Silicon e Intel) <strong>senza</strong>
+RetroArch (capitolo 2)</td></tr>
+<tr><td><code class="nw">deva-adventures-1.2.0-linux-x86_64.tar.gz</code></td><td>PC Linux <strong>senza</strong> RetroArch
+(capitolo 2)</td></tr>
+<tr><td><code class="nw">deva-adventures-1.2.0-src.tar.gz</code></td><td>i sorgenti: per l'immagine di devaOS o di Lakka, per altre
 architetture, per chi vuole modificarlo</td></tr>
 </table>
-<p>Servono RetroArch su Linux con la libreria C glibc 2.17 o più nuova (tutte le distribuzioni dal 2014 in poi; con
-musl il core va compilato dai sorgenti) e circa 17 MB liberi. Prima di copiarli, sul computer, controllate che i
-pacchetti siano arrivati interi: <code>sha256sum -c SHA256SUMS</code> nella cartella dove li avete scaricati.</p>
+<p>I pacchetti per RetroArch chiedono RetroArch su Linux con la libreria C glibc 2.17 o più nuova (tutte le distribuzioni
+dal 2014 in poi; con musl il core va compilato dai sorgenti) e circa 17 MB liberi. Prima di copiarli, sul computer,
+controllate che siano arrivati interi: <code class="nw">sha256sum -c --ignore-missing SHA256SUMS</code> nella cartella dove li
+avete scaricati, con il file <code>SHA256SUMS</code> della release.</p>
 
 <h3>Con lo script di installazione (consigliato)</h3>
 <p>Copiate lo zip sulla console, poi da un terminale (SSH) o, per il pacchetto x86_64, dal terminale del PC:</p>
-<pre>unzip deva-adventures-1.0.0-aarch64.zip
-cd deva-adventures-1.0.0-aarch64
+<pre>unzip deva-adventures-1.2.0-aarch64.zip
+cd deva-adventures-1.2.0-aarch64
 sh install.sh --dry-run     # mostra le cartelle e che cosa farebbe, senza toccare niente
 sh install.sh               # installa, dopo aver chiesto conferma</pre>
 <p>Lo script, in quest'ordine:</p>
@@ -155,8 +164,8 @@ nella copia di sicurezza.</p>
 <tr><td><code>--yes</code></td><td>senza domande (anche da uno script)</td></tr>
 <tr><td><code>--cfg FILE</code></td><td>usa un altro <code>retroarch.cfg</code></td></tr>
 <tr><td><code class="nw">--cores DIR</code> <code class="nw">--info DIR</code> <code class="nw">--system DIR</code> <code class="nw">--saves DIR</code></td><td>le cartelle date a mano</td></tr>
-<tr><td><code class="nw">--list-backups</code>, <code class="nw">--restore DIR</code></td><td>le copie di sicurezza; rimettere una copia (capitolo 12)</td></tr>
-<tr><td><code class="nw">--uninstall</code> oppure <code class="nw">sh uninstall.sh</code></td><td>togliere il gioco (capitolo 12)</td></tr>
+<tr><td><code class="nw">--list-backups</code>, <code class="nw">--restore DIR</code></td><td>le copie di sicurezza; rimettere una copia (capitolo 13)</td></tr>
+<tr><td><code class="nw">--uninstall</code> oppure <code class="nw">sh uninstall.sh</code></td><td>togliere il gioco (capitolo 13)</td></tr>
 </table>
 
 <h3>A mano</h3>
@@ -188,14 +197,136 @@ aarch64 con <code>install.sh</code>.</li>
 anche: <code>retroarch -L /percorso/deva_adventures_libretro.so</code>.</p>
 </section>
 
+<section id="pc" class="newpage">
+<h2>2. Sul PC, senza RetroArch</h2>
+<p>Il gioco c'è anche come <strong>programma a sé per il PC</strong>: per Linux dalla versione 1.1, per Windows e macOS
+dalla 1.2. Lo stesso gioco, con gli stessi salvataggi, in una finestra o a schermo intero, con la tastiera o con un
+gamepad. RetroArch non serve.</p>
+<table>
+<thead><tr><th style="width:27%">Sistema</th><th style="width:33%">Pacchetto</th><th>Che cosa serve</th></tr></thead>
+<tr><td><strong>Windows</strong> 10 (1903 o successivo) e 11, a 64 bit</td><td><code class="nw">…-windows-x64-setup.exe</code>
+(installazione) o <code class="nw">…-windows-x64.zip</code></td><td>nient'altro: la libreria SDL2 è nel pacchetto</td></tr>
+<tr><td><strong>macOS</strong> 10.13 o successivo, Apple Silicon o Intel</td><td><code class="nw">…-macos.dmg</code></td><td>nient'altro:
+SDL2 è dentro l'app</td></tr>
+<tr><td><strong>Linux</strong> a 64 bit su PC Intel o AMD (x86_64), glibc 2.17 o più nuova (le distribuzioni dal 2014)</td>
+<td><code class="nw">…-linux-x86_64.tar.gz</code></td><td>la libreria SDL2, 2.0.9 o successiva: quasi sempre già installata con
+il desktop; altrimenti <code class="nw">sudo apt install libsdl2-2.0-0</code> (Debian, Ubuntu, Mint), <code class="nw">sudo dnf
+install SDL2</code> (Fedora), <code class="nw">sudo pacman -S sdl2-compat</code> (Arch, Manjaro), <code class="nw">sudo zypper
+install libSDL2-2_0-0</code> (openSUSE)</td></tr>
+</table>
+<p>Su ogni sistema: circa 20 MB liberi, la tastiera oppure un gamepad USB o Bluetooth. Prima di aprirlo, se volete,
+controllate il pacchetto scaricato: la sua impronta (<code>sha256sum</code> su Linux, <code>shasum -a 256</code> su macOS,
+<code>Get-FileHash</code> in PowerShell) deve essere quella della sua riga in <code>SHA256SUMS</code>.</p>
+
+<h3>Windows</h3>
+<p><strong>Con l'installazione</strong> (consigliata): doppio clic su <code>deva-adventures-1.2.0-windows-x64-setup.exe</code>,
+<em>Avanti</em>, <em>Fine</em>. Il gioco va in <code>%LOCALAPPDATA%\Programs\Deva's Awesome Adventures</code>, per il vostro
+utente: non servono permessi da amministratore. L'icona nel menu Start e quella sul desktop lo aprono a schermo intero.
+<strong>Senza installare</strong>: scompattate lo zip in una cartella (non giocate da dentro lo zip) e aprite
+<code>deva-adventures.exe</code>.</p>
+<p>Il programma non è firmato con un certificato a pagamento: la prima volta Windows dice «Windows ha protetto il PC».
+Cliccate <em>Ulteriori informazioni</em>, poi <em>Esegui comunque</em>.</p>
+
+<h3>macOS</h3>
+<p>Aprite <code>deva-adventures-1.2.0-macos.dmg</code> e trascinate <strong>Deva's Awesome Adventures</strong> sulla cartella
+<em>Applicazioni</em> accanto. L'app è firmata «ad hoc», non da uno sviluppatore registrato da Apple: la prima volta
+macOS non la apre. Su macOS 15 (Sequoia) e successivi: <em>Impostazioni di Sistema → Privacy e sicurezza</em>, in fondo
+<em>Apri comunque</em>, e confermate con la password; sulle versioni precedenti: tasto destro (o <kbd>Ctrl</kbd>+clic)
+sull'app → <em>Apri</em> → <em>Apri</em>. Dalla volta dopo si apre con un doppio clic. Il <code>LEGGIMI.txt</code> del disco
+ha anche il comando del Terminale.</p>
+
+<h3>Linux</h3>
+<pre>tar xzf deva-adventures-1.2.0-linux-x86_64.tar.gz
+cd deva-adventures-1.2.0-linux-x86_64
+./deva-adventures --check     # controlla soltanto che ci siano i dati e SDL2
+./deva-adventures             # subito, senza installare: in una finestra
+./install.sh --dry-run        # mostra le cartelle e che cosa farebbe
+./install.sh                  # installa per il vostro utente (consigliato)</pre>
+<p>Senza <code>sudo</code>: programma e dati vanno in <code>~/.local/lib/deva-adventures</code>, il comando
+<code>deva-adventures</code> in <code>~/.local/bin</code>, la voce <strong>Deva's Awesome Adventures</strong> nel menu delle
+applicazioni (fra i Giochi) con la sua icona; dal menu si apre a schermo intero, e con il tasto destro c'è <em>Gioca in
+una finestra</em>. Lo script verifica il pacchetto con <code>SHA256SUMS</code>, ricontrolla i file copiati e chiede al
+programma installato se trova dati e SDL2; se qualcosa si interrompe a metà rimette tutto com'era. Per tutti gli utenti
+del PC: <code>sudo ./install.sh --prefix /usr/local</code>; tutte le opzioni: <code>./install.sh --help</code>.</p>
+
+<h3>Giocare e chiudere</h3>
+<ul>
+<li><kbd>F11</kbd> passa dalla finestra allo schermo intero e ritorno; anche <kbd>Alt</kbd>+<kbd>Invio</kbd> (Windows,
+Linux) e <kbd>Cmd</kbd>+<kbd>F</kbd> (macOS). L'immagine è ingrandita a pixel interi: in una finestra la più grande che sta
+sullo schermo, a schermo intero con bande nere intorno. Niente pixel sfocati o deformati.</li>
+<li>Quando la finestra non è davanti (un'altra finestra sopra, ridotta a icona) il gioco si ferma, voce compresa, e il
+tempo della sessione non corre.</li>
+<li>Si chiude con <em>Esci</em> nel gioco, con la X della finestra, con <kbd>Alt</kbd>+<kbd>F4</kbd> o
+<kbd>Cmd</kbd>+<kbd>Q</kbd>: i salvataggi sono sempre già scritti. Il gioco si apre una volta sola: un secondo avvio dice
+«Il gioco è già aperto».</li>
+<li>Da un terminale (Prompt dei comandi, Terminale): <code>deva-adventures --help</code> mostra le opzioni, fra cui
+<code>--fullscreen</code>, <code>--window</code>, <code>--scale N</code>, <code>--no-audio</code>, <code>--check</code>.</li>
+</ul>
+
+<h3>I tasti</h3>
+<table>
+<thead><tr><th style="width:21%">Tastiera</th><th style="width:27%">Nel gioco</th><th style="width:20%">Gamepad tipo Xbox</th><th>Altri
+gamepad (come la console)</th></tr></thead>
+<tr><td>frecce</td><td>croce</td><td>croce</td><td>croce</td></tr>
+<tr><td><kbd>Invio</kbd> o <kbd>Spazio</kbd></td><td>rosso (<kbd>A</kbd>)</td><td>B, rosso</td><td>il tasto a destra</td></tr>
+<tr><td><kbd>Backspace</kbd></td><td>giallo (<kbd>B</kbd>)</td><td>Y, giallo</td><td>il tasto in basso</td></tr>
+<tr><td><kbd>A</kbd></td><td>verde (<kbd>Y</kbd>)</td><td>A, verde</td><td>il tasto a sinistra</td></tr>
+<tr><td><kbd>S</kbd></td><td>blu (<kbd>X</kbd>)</td><td>X, blu</td><td>il tasto in alto</td></tr>
+<tr><td><kbd>Q</kbd> e <kbd>W</kbd></td><td><kbd>L</kbd> e <kbd>R</kbd>: tenuti insieme 2 secondi aprono le porte dei
+grandi</td><td>LB e RB</td><td>i tasti dorsali</td></tr>
+<tr><td><kbd>Esc</kbd> tenuto</td><td>la pausa (<kbd>START</kbd>)</td><td><kbd>START</kbd> tenuto</td><td><kbd>START</kbd> tenuto</td></tr>
+</table>
+<p>Sui gamepad tipo Xbox (anche molti compatibili) i tasti seguono i colori che dice la voce; sugli altri la posizione
+della console: il rosso, il più usato, è sempre il tasto a destra, e con un gamepad in stile Super Nintendo coincidono anche
+i colori. Per scegliere a mano: <code class="nw">--pad colori</code> oppure <code class="nw">--pad posizione</code>. Le levette
+non contano. Con <kbd>Alt</kbd> o <kbd>Cmd</kbd> premuto la tastiera non tocca il gioco: le scorciatoie del sistema non
+fanno scelte per sbaglio.</p>
+
+<h3>I file sul PC</h3>
+<table>
+<thead><tr><th style="width:15%"></th><th style="width:42%">Salvataggi</th><th>Programma e impostazioni (<code>deva_adventures.cfg</code>, capitolo 9)</th></tr></thead>
+<tr><td>Windows</td><td><code>%APPDATA%\deva-adventures\</code></td><td>la cartella del gioco (installato:
+<code>%LOCALAPPDATA%\Programs\Deva's Awesome Adventures</code>), in <code>deva_adventures\</code></td></tr>
+<tr><td>macOS</td><td><code>~/Library/Application Support/deva-adventures/</code></td><td>dentro l'app: le impostazioni si
+cambiano dalle Opzioni del gioco (il file dentro l'app non va toccato: se ne romperebbe la firma)</td></tr>
+<tr><td>Linux</td><td><code>~/.local/share/deva-adventures/</code> (e <code>copie/</code>: i salvataggi messi da parte a ogni
+aggiornamento)</td><td><code>~/.local/lib/deva-adventures/</code>, in <code>deva_adventures/</code></td></tr>
+</table>
+<p>Nella cartella dei salvataggi ci sono i profili, il log delle risposte e il diario (gli stessi file del capitolo 10),
+e <code>deva-adventures.log</code> con i messaggi dell'ultima partita (<code>.log.1</code>: quella prima). I salvataggi sono
+gli stessi file su ogni sistema: per continuare sul PC la partita cominciata sulla console (o il contrario), a gioco
+chiuso copiate i file <code>deva_adventures*</code> da una cartella dei salvataggi all'altra. Il resoconto delle partite
+(capitolo 11) si fa direttamente da lì, per esempio su Linux:</p>
+<pre>python3 ~/.local/lib/deva-adventures/tools/report/report.py \
+    ~/.local/share/deva-adventures -o report.html</pre>
+
+<h3>Se qualcosa non va</h3>
+<table>
+<thead><tr><th style="width:33%">Che cosa succede</th><th>Che cosa fare</th></tr></thead>
+<tr><td>«Manca SDL2.dll» (Windows), «Manca la libreria SDL2» (macOS)</td><td>Il pacchetto è incompleto: scompattate di nuovo
+tutto lo zip, oppure reinstallate; su macOS scaricate di nuovo il <code>.dmg</code> e ricopiate l'app.</td></tr>
+<tr><td>«Serve la libreria SDL2» (Linux)</td><td>Installatela con il comando della vostra distribuzione (qui sopra).</td></tr>
+<tr><td>macOS: «è danneggiata e non può essere aperta»</td><td>È la quarantena dei file scaricati: <em>Apri comunque</em>
+come sopra, oppure il comando del <code>LEGGIMI.txt</code>.</td></tr>
+<tr><td>Niente voce né musica</td><td>Il gioco usa l'uscita audio di serie del sistema; se non riesce ad aprirla parte lo
+stesso, in silenzio, e lo dice. Controllate il volume del sistema e i volumi del gioco (Opzioni).</td></tr>
+<tr><td>Il gamepad non risponde</td><td>SDL2 riconosce quasi tutti i gamepad; per uno che non conosce si può dare la
+mappatura con la variabile <code>SDL_GAMECONTROLLERCONFIG</code>.</td></tr>
+<tr><td>Schermo nero o immagine lenta (schede video vecchie)</td><td>Avviatelo con la variabile
+<code>SDL_RENDER_DRIVER=software</code>.</td></tr>
+<tr><td>Altro</td><td><code>deva-adventures.log</code> nella cartella dei salvataggi dice che cosa è successo;
+<code>--verbose</code> mostra tutto anche nel terminale.</td></tr>
+</table>
+</section>
+
 <section id="prima">
-<h2>2. Prima di darle la console</h2>
+<h2>3. Prima di darle la console</h2>
 <ul>
 <li><strong>Il volume</strong>: provatelo voi, la voce deve arrivare chiara. Il gioco ha tre volumi suoi (voce, musica,
 effetti) nelle Opzioni.</li>
 <li><strong>Il tempo</strong>: 15 minuti di serie (<code>sessione_minuti</code>), giusti per le prime volte.</li>
 <li><strong>Il nome</strong>: <code>nome = DEVA</code> in <code>deva_adventures.cfg</code> è il nome del primo profilo, quello che
-scrive nel gioco «Il mio nome». Per un altro bambino cambiatelo, o fategli un profilo suo (capitolo 7).</li>
+scrive nel gioco «Il mio nome». Per un altro bambino cambiatelo, o fategli un profilo suo (capitolo 8).</li>
 <li><strong>Le scorciatoie di RetroArch</strong>: il gioco usa <kbd>L</kbd>+<kbd>R</kbd> tenuti (le porte dei grandi) e
 <kbd>START</kbd> o <kbd>SELECT</kbd> tenuti (la pausa). In <em>Impostazioni → Input → Scorciatoie</em> (<em>Settings →
 Input → Hotkeys</em>) controllate le combinazioni <em>Attiva/Disattiva Menu (Controller Combo)</em> ed <em>Esci (Controller
@@ -203,12 +334,12 @@ Combo)</em>: non devono essere «L1 + R1», «Mantieni Start», «Mantieni Selec
 difficile da premere per caso; per l'uscita «Nessuno», oppure tenete attivo <em>Conferma Esci</em>.</li>
 <li>Se volete che lei non possa cambiare niente in RetroArch: <code>kiosk_mode_enable = "true"</code> in
 <code>retroarch.cfg</code> nasconde le impostazioni dal menu.</li>
-<li>La batteria carica. Se la console si spegne di colpo i salvataggi reggono (capitolo 9).</li>
+<li>La batteria carica. Se la console si spegne di colpo i salvataggi reggono (capitolo 10).</li>
 </ul>
 </section>
 
 <section id="giocare">
-<h2>3. Come si gioca</h2>
+<h2>4. Come si gioca</h2>
 <div class="side">
 <div>
 <p>La voce dice tutto: che cosa fare, quale bottone premere, se la risposta è giusta. I bottoni sono nominati per
@@ -260,7 +391,7 @@ Parole: le sillabe si accendono a tempo.</figcaption></figure>
 </section>
 
 <section id="giochi">
-<h2>4. I diciotto giochi</h2>
+<h2>5. I diciotto giochi</h2>
 <p>Il nome è quello che dice la voce. I primi quattro sono aperti da subito; gli altri si aprono in quest'ordine:
 Il mio nome, Ginnastica, Memory, Facciamo belli i mostri, Le ombre, Batti il ritmo, Le lettere, Il negozio, Forme e
 colori, Sopra e sotto, Il sentiero, Le misure, Le emozioni, La storia in ordine.</p>
@@ -295,7 +426,7 @@ negozio: quale borsellino paga il giocattolo?</figcaption></figure>
 </section>
 
 <section id="avventure">
-<h2>5. Le quattro avventure</h2>
+<h2>6. Le quattro avventure</h2>
 <p>Quando si preme <em>Gioca</em> si arriva alla <strong>mappa</strong>. Ogni round giocato carica la bacchetta magica di
 Deva (2 round di serie, <code>round_per_sfida</code>); con la bacchetta carica, Deva va dal mostro successivo e lo sfida.
 La <strong>sfida</strong> usa le domande dei giochi di quel luogo, fra quelli già aperti: ogni risposta giusta fa
@@ -328,7 +459,7 @@ ogni risposta giusta fa scoppiare una bolla.</figcaption></figure>
 </section>
 
 <section id="premi">
-<h2>6. Premi, camerino e album</h2>
+<h2>7. Premi, camerino e album</h2>
 <div class="shots three">
 <figure><img src="img/premio.png" alt="Il premio: tre carte con un trucco da scegliere e Deva allo specchio"><figcaption>Il
 premio di fine round: si sceglie un trucco e Deva lo indossa.</figcaption></figure>
@@ -350,7 +481,7 @@ adesivi, le stelle e il tempo di gioco.</li>
 </section>
 
 <section id="grandi">
-<h2>7. Per i grandi</h2>
+<h2>8. Per i grandi</h2>
 <div class="side">
 <div>
 <p>Nel menu principale le carte <strong>Salvataggi</strong>, <strong>Opzioni</strong> ed <strong>Esci</strong> hanno il lucchetto:
@@ -366,7 +497,7 @@ per i grandi: «tieni premuti L e R».</figcaption></figure>
 <div class="side">
 <div>
 <p>Su e giù per scegliere, sinistra e destra per cambiare; i volumi si sentono subito. Si salva uscendo con
-<kbd>B</kbd>. Le opzioni valgono sopra il file delle impostazioni (capitolo 8).</p>
+<kbd>B</kbd>. Le opzioni valgono sopra il file delle impostazioni (capitolo 9).</p>
 <ul>
 <li>volume di musica, voce ed effetti; vibrazione; animazioni;</li>
 <li>tempo di gioco (da 5 a 120 minuti, o senza limite), domande per round (1–10);</li>
@@ -393,7 +524,7 @@ l'ultima partita.</p>
 grandi (ogni lettera dice il suo nome, al massimo 10).</li>
 <li><kbd>X</kbd> tenuto 2 secondi: cambia il nome.</li>
 <li><kbd>Y</kbd>, poi <kbd>X</kbd> e <kbd>Y</kbd> tenuti insieme 2 secondi: cancella. Il profilo in uso invece riparte da
-zero con lo stesso nome. L'ultimo profilo cancellato resta come <code>.bak</code> (capitolo 9).</li>
+zero con lo stesso nome. L'ultimo profilo cancellato resta come <code>.bak</code> (capitolo 10).</li>
 </ul>
 </div>
 <figure><img src="img/salvataggi.png" alt="La pagina dei salvataggi con un profilo e due carte vuote"><figcaption>I
@@ -417,12 +548,14 @@ pausa.</figcaption></figure>
 </section>
 
 <section id="cfg">
-<h2>8. Le impostazioni</h2>
+<h2>9. Le impostazioni</h2>
 <p>Il file <code>deva_adventures.cfg</code> sta nella cartella dei dati (<code>&lt;sistema&gt;/deva_adventures/</code>): si apre
 con qualsiasi editor di testo, le righe con <code>#</code> sono commenti, le modifiche valgono al prossimo avvio del gioco.
 Le Opzioni cambiate dentro il gioco finiscono invece in <code>deva_adventures_opzioni.cfg</code>, nella cartella dei
 salvataggi, e valgono <strong>sopra</strong> questo file: se una modifica al <code>.cfg</code> non ha effetto, è perché nel
-gioco quell'opzione è stata cambiata (<em>Ripristina le opzioni</em> le toglie tutte).</p>
+gioco quell'opzione è stata cambiata (<em>Ripristina le opzioni</em> le toglie tutte). Sul PC senza RetroArch il file è
+nella cartella del programma (capitolo 2, <em>I file sul PC</em>); su macOS sta dentro l'app e lì non si tocca: si usano le
+Opzioni del gioco.</p>
 <table>
 <thead><tr><th style="width:24%">Riga</th><th style="width:11%">Di serie</th><th>Che cosa fa</th></tr></thead>
 <tr><td><code>sessione_minuti</code></td><td>15</td><td>minuti di gioco per sessione (0 = senza limite; pausa, opzioni e salvataggi non contano)</td></tr>
@@ -444,12 +577,12 @@ spegnimento e riprende la copia precedente. Per ricominciare tutto: Salvataggi �
 </section>
 
 <section id="file">
-<h2>9. I file del gioco e gli spegnimenti</h2>
+<h2>10. I file del gioco e gli spegnimenti</h2>
 <p>Il gioco scrive nella cartella dei salvataggi di RetroArch (<em>Impostazioni → Cartella → Salva File</em>). Se in
 RetroArch è attivo l'ordinamento dei salvataggi in cartelle per nome del core (<em>Sort Saves into Folders by Core
 Name</em>), sono nella sottocartella <code>Deva's Awesome Adventures</code>; se RetroArch non ha una cartella dei
 salvataggi, nella cartella di sistema. <code>INSTALLATO.txt</code>, nella cartella dei dati, dice dove li ha trovati lo
-script.</p>
+script. Sul PC senza RetroArch: capitolo 2, <em>I file sul PC</em>.</p>
 <table>
 <thead><tr><th style="width:37%">File</th><th>Che cos'è</th></tr></thead>
 <tr><td><code>deva_adventures.sav</code>, <code>deva_adventures_2.sav</code>, <code>_3.sav</code></td><td>i tre profili, in testo
@@ -470,7 +603,7 @@ spegnimento può troncare al massimo l'ultima riga, che il resoconto salta.</p><
 </section>
 
 <section id="prova">
-<h2>10. La prima prova</h2>
+<h2>11. La prima prova</h2>
 <p>Il pacchetto contiene <code>docs/scheda_osservazione.pdf</code>: una pagina di guida per chi guarda (prima, durante,
 dopo) e una scheda da stampare per ogni sessione. Lo scopo non è vedere se è brava, ma dove il gioco non si fa capire.</p>
 <ol>
@@ -489,7 +622,7 @@ sul terminale.</p>
 </section>
 
 <section id="problemi">
-<h2>11. Problemi e soluzioni</h2>
+<h2>12. Problemi e soluzioni</h2>
 <table>
 <thead><tr><th style="width:33%">Che cosa succede</th><th>Che cosa fare</th></tr></thead>
 <tr><td>Il gioco non compare fra i <em>Contentless Cores</em></td><td>Riavviate RetroArch. Controllate che
@@ -503,23 +636,24 @@ sorgenti.</td></tr>
 <tr><td>Niente voce né suoni</td><td>I volumi del gioco (Opzioni) e quelli di RetroArch. Nel log: <code>no audio found</code>
 vuol dire che nella cartella dei dati mancano <code>voce</code>, <code>sfx</code> o <code>musica</code>.</td></tr>
 <tr><td><kbd>L</kbd>+<kbd>R</kbd> o <kbd>START</kbd> tenuto aprono il menu di RetroArch</td><td>È una scorciatoia di
-RetroArch: cambiatela (capitolo 2).</td></tr>
+RetroArch: cambiatela (capitolo 3).</td></tr>
 <tr><td>Una combinazione di tasti chiude il gioco</td><td>Anche questa è una scorciatoia di RetroArch (<em>Esci</em>, o il
-tasto <em>Attiva Scorciatoia</em> del sistema): capitolo 2.</td></tr>
+tasto <em>Attiva Scorciatoia</em> del sistema): capitolo 3.</td></tr>
 <tr><td>Va a scatti</td><td><code>animazioni = 0</code>; in RetroArch togliete filtri e shader pesanti.</td></tr>
 <tr><td>Una modifica al <code>.cfg</code> non fa niente</td><td>Riavviate il gioco; se ancora niente, l'opzione è stata cambiata
 dentro il gioco: Opzioni, oppure <em>Ripristina le opzioni</em>.</td></tr>
 <tr><td>Il profilo è tornato indietro di un round</td><td>È il ripristino dopo uno spegnimento proprio mentre salvava; il
 file rovinato resta come <code>.rotto</code>.</td></tr>
-<tr><td>Non trovo i salvataggi</td><td><code>INSTALLATO.txt</code> nella cartella dei dati; poi il capitolo 9.</td></tr>
+<tr><td>Non trovo i salvataggi</td><td><code>INSTALLATO.txt</code> nella cartella dei dati; poi il capitolo 10.</td></tr>
 <tr><td>Le date del resoconto sono sbagliate</td><td>La console non ha l'orologio con la batteria: i tempi sono giusti.</td></tr>
+<tr><td>Sul PC senza RetroArch</td><td>Il capitolo 2, <em>Se qualcosa non va</em>.</td></tr>
 </table>
 <p class="small">Il log di RetroArch: <em>Impostazioni → Registro log</em> (<em>Logging</em>), con <em>Log su file</em>.
 Le righe del gioco contengono <code>[deva]</code>.</p>
 </section>
 
 <section id="aggiornare">
-<h2>12. Aggiornare, tornare indietro, togliere</h2>
+<h2>13. Aggiornare, tornare indietro, togliere</h2>
 <ul>
 <li><strong>Aggiornare</strong>: <code>sh install.sh</code> dal pacchetto nuovo. Salvataggi e impostazioni restano; la
 versione di prima va nella copia di sicurezza.</li>
@@ -533,14 +667,27 @@ sh install.sh --restore /percorso/della/copia --with-saves</pre></li>
 <li><strong>Togliere il gioco</strong>: <code>sh uninstall.sh</code> toglie core, <code>.info</code> e dati; salvataggi e
 copie di sicurezza restano. Per togliere anche quelli: i file <code>deva_adventures*</code> della cartella dei salvataggi
 e la cartella <code>deva_adventures_backup</code> in quella di sistema.</li>
+<li><strong>Sul PC senza RetroArch</strong> i salvataggi restano sempre, anche togliendo il gioco.
+<ul>
+<li><strong>Windows</strong>: si aggiorna aprendo il <code>setup.exe</code> nuovo (le vostre impostazioni restano, quelle nuove
+di serie vanno in <code>deva_adventures.cfg.default</code>), si torna indietro con quello vecchio, si toglie da
+<em>Impostazioni → App → App installate</em>. Senza installazione: si cancella la cartella.</li>
+<li><strong>macOS</strong>: si aggiorna mettendo l'app nuova al posto della vecchia in Applicazioni, si toglie trascinandola nel
+Cestino.</li>
+<li><strong>Linux</strong>: si aggiorna con <code>./install.sh</code> del pacchetto nuovo (i salvataggi di prima vanno in
+<code>~/.local/share/deva-adventures/copie/</code>); si torna indietro con <code>./install.sh</code> del pacchetto vecchio; si
+toglie con <code>~/.local/lib/deva-adventures/install.sh --uninstall</code>.</li>
+</ul></li>
 </ul>
 </section>
 
 <section id="licenze">
-<h2>13. Licenze e crediti</h2>
+<h2>14. Licenze e crediti</h2>
 <ul>
 <li>Il codice del gioco è sotto licenza MIT (<code>LICENSE</code>). Usa <code>libretro.h</code> (MIT), <code>stb_image</code>
-e <code>stb_vorbis</code> (pubblico dominio o MIT): dettagli in <code>THIRD_PARTY.md</code>.</li>
+e <code>stb_vorbis</code> (pubblico dominio o MIT); il programma per PC usa SDL2 (licenza zlib): su Linux quella del
+sistema, nei pacchetti per Windows e macOS la versione ufficiale, con la sua licenza in <code>LICENSE-SDL2.txt</code>.
+Dettagli in <code>THIRD_PARTY.md</code>.</li>
 <li>Disegni, musiche, effetti, storie e personaggi sono originali, generati dagli script del progetto: nessun
 personaggio, marchio o brano di altri.</li>
 <li>La voce è sintetizzata offline con il modello Piper <em>it_IT paola</em>. Per l'uso in famiglia non ci sono problemi;

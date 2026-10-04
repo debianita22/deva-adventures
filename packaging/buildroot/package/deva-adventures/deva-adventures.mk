@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-DEVA_ADVENTURES_VERSION = 1.0.0
+DEVA_ADVENTURES_VERSION = 1.2.0
 DEVA_ADVENTURES_SITE = $(call qstrip,$(BR2_PACKAGE_DEVA_ADVENTURES_SRC))
 DEVA_ADVENTURES_SITE_METHOD = local
 # the developer's build outputs and release packages stay out of the copy

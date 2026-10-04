@@ -12,7 +12,15 @@ nessun personaggio, logo, brano o immagine di terzi.
 | `stb_image.h` (Sean Barrett) | 2.30 | pubblico dominio oppure MIT, a scelta | decodifica delle PNG (solo PNG) |
 | `stb_vorbis.c` (Sean Barrett) | 1.22 | pubblico dominio oppure MIT, a scelta | decodifica delle voci e delle musiche OGG |
 
-## Solo negli strumenti (non finiscono nel core né nei pacchetti RetroArch)
+## Sul PC senza RetroArch (Linux dalla 1.1, Windows e macOS dalla 1.2)
+
+| Componente | Versione | Licenza | Uso |
+| --- | --- | --- | --- |
+| SDL2 (Sam Lantinga e collaboratori), oppure sdl2-compat su SDL3 | Linux: 2.0.9 o successiva, quella del sistema | zlib | finestra, immagine, suono e gamepad del programma `deva-adventures`: su Linux si carica all'avvio dal sistema (`libSDL2-2.0.so.0`) e **non è inclusa** nel pacchetto. `platform/sdl/sdl2_api.h` ne dichiara la parte che il programma usa, per compilarlo senza gli header di SDL2; `tools/harness/check_sdl2_api.sh` la confronta con gli header veri |
+| SDL2, la build ufficiale del progetto SDL | 2.32.10 | zlib | **inclusa** nei pacchetti per Windows (`SDL2.dll`, da `SDL2-2.32.10-win32-x64.zip`) e per macOS (`SDL2.framework` dentro l'app, da `SDL2-2.32.10.dmg`, con la firma del progetto SDL): i file come sono pubblicati, controllati con le impronte SHA-256 di `packaging/sdl2/README.md`; la licenza accanto, `LICENSE-SDL2.txt` |
+| runtime di mingw-w64: winpthreads e codice di avvio | quello di Zig 0.16.0 | MIT (winpthreads), ZPL 2.1 e pubblico dominio (il resto) | collegato dentro `deva-adventures.exe` (i thread dei salvataggi, l'avvio del programma); le licenze sono in `LICENSE-mingw-w64.txt` nei pacchetti per Windows |
+
+## Solo negli strumenti (non finiscono nel core né nei pacchetti)
 
 | Componente | Licenza | Uso |
 | --- | --- | --- |
@@ -22,7 +30,11 @@ nessun personaggio, logo, brano o immagine di terzi.
 | ffmpeg con libvorbis | LGPL-2.1+ / BSD-3-Clause | codifica delle frasi in OGG |
 | Whisper (modelli per sherpa-onnx) | MIT | `tools/voice/check_voice.py` controlla che le frasi si capiscano |
 | Pillow, NumPy | MIT-CMU, BSD-3-Clause | generazione della grafica |
-| Zig (compilatore C per aarch64 e x86_64) | MIT | build di rilascio |
+| Zig (compilatore C per aarch64, x86_64 e Windows) | MIT | build di rilascio |
+| NSIS (makensis) | zlib/libpng; LZMA SDK di pubblico dominio | l'installazione per Windows: `setup.exe` contiene il suo programma di installazione e disinstallazione |
+| clang, lipo, codesign, hdiutil di Xcode (su un Mac) | Apple / Apache-2.0 con eccezione LLVM | il programma, l'app e il disco per macOS |
+| Xvfb, openbox, xdotool, ImageMagick, desktop-file-utils | MIT/X11, GPL-2.0+, BSD-3-Clause, ImageMagick, GPL-2.0+ | `make test-linux` e `make test-windows`: il programma per PC su uno schermo virtuale |
+| Wine | LGPL-2.1+ | `make test-windows`: il pacchetto per Windows provato su Linux |
 
 ## La voce
 
@@ -50,3 +62,6 @@ In pratica:
 - MIT (questo gioco): `LICENSE`.
 - `libretro.h`, `stb_image.h`, `stb_vorbis.c`: il testo della licenza è in fondo a ciascun file in
   `third_party/`.
+- SDL2: `packaging/sdl2/LICENSE.txt` (nei pacchetti per Windows e macOS: `LICENSE-SDL2.txt`).
+- mingw-w64 e winpthreads: `packaging/windows/LICENSE-mingw-w64.txt` (nei pacchetti per Windows con lo
+  stesso nome).

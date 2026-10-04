@@ -11,7 +11,7 @@
 #define SCREEN_W 320
 #define SCREEN_H 240
 #define FPS 60
-#define GAME_VERSION "1.0.0"
+#define GAME_VERSION "1.2.0"
 #define AUDIO_RATE 44100
 #define SAMPLES_PER_FRAME (AUDIO_RATE / FPS) /* 735 stereo frames */
 

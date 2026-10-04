@@ -1,0 +1,109 @@
+Deva's Awesome Adventures @VERSION@ - per PC Linux, senza RetroArch (x86_64)
+===========================================================================
+
+Un gioco didattico per bambini di 5 anni: diciotto giochi con la voce italiana, quattro storie,
+camerino, album, tre salvataggi. Qui è un programma a sé, che si apre in una finestra o a schermo
+intero: lo stesso gioco del pacchetto per RetroArch, con gli stessi salvataggi.
+
+Che cosa serve
+--------------
+- Linux a 64 bit su un PC Intel o AMD (x86_64) con glibc 2.17 o successiva (tutte le distribuzioni
+  dal 2014 in poi).
+- La libreria SDL2, 2.0.9 o successiva (quasi sempre già installata con il desktop). Se manca:
+    Debian, Ubuntu, Mint:  sudo apt install libsdl2-2.0-0
+    Fedora:                sudo dnf install SDL2
+    Arch, Manjaro:         sudo pacman -S sdl2-compat
+    openSUSE:              sudo zypper install libSDL2-2_0-0
+- Una tastiera, oppure un gamepad USB o Bluetooth.
+
+Che cosa c'è qui
+----------------
+  deva-adventures                  il gioco (programma per Linux x86_64)
+  deva_adventures/                 grafica, voci, musiche e le impostazioni (deva_adventures.cfg)
+  deva-adventures.desktop, .png    la voce del menu delle applicazioni e la sua icona
+  install.sh                       installazione per il tuo utente, aggiornamento, disinstallazione
+  docs/manuale.pdf                 il manuale per i genitori
+  docs/scheda_osservazione.pdf     la guida e la scheda per la prima prova
+  tools/report/report.py           il resoconto delle partite (Python 3)
+  SHA256SUMS                       le impronte di tutti i file, per verificarli
+
+Provarlo subito, senza installare
+---------------------------------
+  tar xzf deva-adventures-@VERSION@-linux-x86_64.tar.gz
+  cd deva-adventures-@VERSION@-linux-x86_64
+  ./deva-adventures --check        controlla soltanto che ci sia tutto (dati e SDL2)
+  ./deva-adventures                in una finestra (F11: schermo intero e ritorno)
+
+Installazione (consigliata)
+---------------------------
+  ./install.sh
+
+Per il tuo utente, senza sudo: programma e dati in ~/.local/lib/deva-adventures, il comando
+deva-adventures in ~/.local/bin, la voce "Deva's Awesome Adventures" nel menu delle applicazioni
+(Giochi) con la sua icona: si apre a schermo intero; con il tasto destro c'è "Gioca in una finestra".
+Lo script verifica il pacchetto e alla fine il programma installato; in un aggiornamento copia
+prima i salvataggi in ~/.local/share/deva-adventures/copie/<data-ora>/ e tiene le impostazioni dei
+grandi, se le avevi cambiate (quelle nuove di serie vanno in deva_adventures.cfg.default).
+Opzioni: --dry-run (mostra soltanto), --yes (senza domande), --prefix DIR (un'altra cartella).
+Per tutti gli utenti del PC:  sudo ./install.sh --prefix /usr/local
+Disinstallare (i salvataggi restano):  ~/.local/lib/deva-adventures/install.sh --uninstall
+
+Comandi
+-------
+  tastiera          nel gioco        gamepad tipo Xbox    altri gamepad (come la console)
+  frecce            croce            croce                croce
+  Invio o Spazio    rosso (A)        B, rosso             il tasto a destra
+  Backspace         giallo (B)       Y, giallo            il tasto in basso
+  A                 verde (Y)        A, verde             il tasto a sinistra
+  S                 blu (X)          X, blu               il tasto in alto
+  Q e W             L e R            LB e RB              i tasti dorsali
+  Esc tenuto        pausa (START)    START tenuto         START tenuto
+  Shift destro      SELECT           Back (View)          SELECT
+
+Sui gamepad tipo Xbox (anche molti compatibili) i tasti seguono i colori che dice la voce; sugli
+altri la posizione della console: il rosso, il tasto più usato, è sempre quello a destra, e con un
+gamepad in stile Super Nintendo coincidono anche i colori. Per scegliere a mano: --pad colori oppure
+--pad posizione. Le levette analogiche non contano, come sulla console.
+Per i grandi: Opzioni, Salvataggi ed Esci si aprono tenendo premuti L e R (Q e W) per 2 secondi.
+F11: schermo intero o finestra. Per chiudere: Esci nel gioco, la X della finestra o Alt+F4; i
+salvataggi sono sempre già scritti. Quando la finestra non è davanti (un'altra finestra sopra,
+ridotta a icona) il gioco si ferma, e il tempo della sessione non conta.
+
+Dove sono i file
+----------------
+  ~/.local/share/deva-adventures/     salvataggi, registro delle risposte, diario delle sessioni
+  deva-adventures.log (lì accanto)    i messaggi dell'ultima partita (.log.1: quella prima)
+  deva_adventures/deva_adventures.cfg le impostazioni dei grandi, nella cartella del programma
+                                      (~/.local/lib/deva-adventures/ se installato)
+Portare i salvataggi dalla console: a gioco chiuso, copia i file deva_adventures* della cartella dei
+salvataggi di RetroArch in ~/.local/share/deva-adventures/ (sono gli stessi file).
+Il resoconto delle partite:
+  python3 tools/report/report.py ~/.local/share/deva-adventures -o resoconto.html
+
+Opzioni del programma (deva-adventures --help)
+----------------------------------------------
+  --fullscreen | --window   schermo intero o finestra
+  --scale N                 finestra N volte 320x240 (di serie la più grande che sta sullo schermo)
+  --data DIR, --saves DIR   altre cartelle per i dati e per i salvataggi
+  --no-audio                senza suono
+  --no-pause                non fermare il gioco quando la finestra non è davanti
+  --pad colori | posizione  i tasti del gamepad per colore (come su Xbox) o per posizione
+  --verbose                 tutti i messaggi, anche nel terminale
+  --check                   controlla dati e SDL2, poi esce
+
+Problemi e soluzioni
+--------------------
+- "Serve la libreria SDL2": installala con i comandi qui sopra (Che cosa serve).
+- "Il gioco è già aperto": ce n'è già una copia (anche ridotta a icona); i salvataggi sono uno solo.
+- Niente suono: il gioco usa l'uscita audio di serie del desktop. Se l'audio non si apre il gioco
+  parte lo stesso, senza voce né musica, e lo dice.
+- Il gamepad non risponde: SDL2 conosce quasi tutti i gamepad; per uno che non conosce si può dare
+  la mappatura con la variabile SDL_GAMECONTROLLERCONFIG (il formato è quello di SDL2).
+- Schermo nero o immagine lenta con schede video vecchie:  SDL_RENDER_DRIVER=software deva-adventures
+- Su un desktop Wayland SDL2 sceglie da sé fra Wayland e XWayland; per forzare la scelta:
+  SDL_VIDEODRIVER=x11 deva-adventures  (oppure wayland).
+- Tutto quello che succede è scritto nel log (Dove sono i file); --verbose lo mostra anche nel
+  terminale.
+
+Tutto il resto (giochi, storie, impostazioni, prima prova, problemi e soluzioni) è nel manuale:
+docs/manuale.pdf.

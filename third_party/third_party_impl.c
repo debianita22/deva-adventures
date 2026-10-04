@@ -5,5 +5,8 @@
 #define STBI_NO_LINEAR
 #include "stb_image.h"
 
+#if defined(__APPLE__)
+#include <alloca.h> /* (stb_vorbis includes it only on Linux and a few others; macOS has it there too) */
+#endif
 #define STB_VORBIS_NO_PUSHDATA_API
 #include "stb_vorbis.c"

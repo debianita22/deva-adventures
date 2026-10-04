@@ -1,0 +1,76 @@
+Deva's Awesome Adventures @VERSION@ - per Windows 10 e 11 (64 bit)
+=================================================================
+
+Un gioco didattico per bambini di 5 anni: diciotto giochi con la voce italiana, quattro storie,
+camerino, album, tre salvataggi. È lo stesso gioco della console e del PC Linux, con gli stessi
+salvataggi, in un programma a sé: una finestra o lo schermo intero, la tastiera o un gamepad.
+
+Che cosa serve
+--------------
+- Windows 10 (versione 1903 o successiva) o Windows 11, a 64 bit. Nient'altro: la libreria SDL2
+  (finestra, suono, gamepad) è nel pacchetto.
+- Circa 20 MB liberi. Una tastiera, oppure un gamepad USB o Bluetooth.
+
+Due modi di averlo
+------------------
+1. Con l'installazione (consigliata): deva-adventures-@VERSION@-windows-x64-setup.exe
+   Doppio clic, Avanti, Fine. Il gioco va in %LOCALAPPDATA%\Programs\Deva's Awesome Adventures
+   per il tuo utente (non servono permessi da amministratore), con l'icona nel menu Start e sul
+   desktop. Si toglie da Impostazioni > App > App installate; i salvataggi restano.
+2. Senza installare: scompatta deva-adventures-@VERSION@-windows-x64.zip in una cartella (non
+   dentro lo zip!) e fai doppio clic su deva-adventures.exe.
+
+Windows potrebbe dire "Windows ha protetto il PC": il programma non è firmato con un certificato a
+pagamento. Clicca "Ulteriori informazioni", poi "Esegui comunque". Prima, se vuoi, controlla il file:
+in PowerShell, nella cartella dove l'hai scaricato,
+  (Get-FileHash .\deva-adventures-@VERSION@-windows-x64.zip).Hash
+deve essere uguale (maiuscole a parte) alla riga di SHA256SUMS della release.
+
+Comandi
+-------
+  tastiera          nel gioco        gamepad tipo Xbox    altri gamepad (come la console)
+  frecce            croce            croce                croce
+  Invio o Spazio    rosso (A)        B, rosso             il tasto a destra
+  Backspace         giallo (B)       Y, giallo            il tasto in basso
+  A                 verde (Y)        A, verde             il tasto a sinistra
+  S                 blu (X)          X, blu               il tasto in alto
+  Q e W             L e R            LB e RB              i tasti dorsali
+  Esc tenuto        pausa (START)    START tenuto         START tenuto
+
+Per i grandi: Opzioni, Salvataggi ed Esci si aprono tenendo premuti L e R (Q e W) per 2 secondi.
+F11 o Alt+Invio: schermo intero o finestra. Per chiudere: Esci nel gioco, la X della finestra o
+Alt+F4; i salvataggi sono sempre già scritti. Quando la finestra non è davanti il gioco si ferma, e
+il tempo della sessione non conta. I gamepad tipo Xbox seguono i colori che dice la voce; gli altri
+la posizione della console (--pad colori oppure --pad posizione per scegliere a mano).
+
+Dove sono i file
+----------------
+  %APPDATA%\deva-adventures\          salvataggi, registro delle risposte, diario delle sessioni,
+                                      deva-adventures.log (i messaggi dell'ultima partita)
+  deva_adventures\deva_adventures.cfg le impostazioni dei grandi, nella cartella del gioco
+(%APPDATA% si apre scrivendolo nella barra degli indirizzi di Esplora file.)
+Portare i salvataggi dalla console o dal PC Linux: a gioco chiuso, copia i file deva_adventures* in
+%APPDATA%\deva-adventures\ (sono gli stessi file).
+
+Opzioni (in un collegamento, dopo il percorso del programma, o dal Prompt dei comandi)
+--------------------------------------------------------------------------------------
+  --fullscreen | --window   schermo intero o finestra
+  --scale N                 finestra N volte 320x240 (di serie la più grande che sta)
+  --no-audio                senza suono
+  --no-pause                non fermare il gioco quando la finestra non è davanti
+  --pad colori | posizione  i tasti del gamepad per colore o per posizione
+  --verbose                 tutti i messaggi, anche nel Prompt dei comandi
+  --check                   controlla dati e SDL2, poi esce
+  --help                    tutte le opzioni
+
+Problemi e soluzioni
+--------------------
+- "Manca SDL2.dll": scompatta di nuovo tutto il pacchetto (SDL2.dll deve stare accanto a
+  deva-adventures.exe), oppure reinstalla.
+- "Il gioco è già aperto": ce n'è già una copia (anche ridotta a icona).
+- Niente suono: il gioco usa l'uscita audio di serie di Windows; controlla il mixer del volume.
+- Il gamepad non risponde: SDL2 conosce quasi tutti i gamepad; per uno che non conosce si può dare
+  la mappatura con la variabile d'ambiente SDL_GAMECONTROLLERCONFIG.
+- Tutto quello che succede è scritto in deva-adventures.log (Dove sono i file).
+
+Tutto il resto (giochi, storie, impostazioni, prima prova) è nel manuale: docs\manuale.pdf.
