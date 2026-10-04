@@ -132,6 +132,9 @@ jobs:
           sha256sum deva-adventures-* > SHA256SUMS
           cat SHA256SUMS
           [ "$(wc -l < SHA256SUMS)" -eq 7 ] || { echo "::error::7 packages expected"; exit 1; }
+          # (also as a notice: the checksums of a run can be read, and compared with a local make dist,
+          # from the checks API without the raw log)
+          echo "::notice title=SHA256SUMS $v::$(awk '{ printf "%s%%0A", $0 }' SHA256SUMS)"
           cd ..
           python3 tools/release/notes.py "$v" > notes.md
           cat notes.md
